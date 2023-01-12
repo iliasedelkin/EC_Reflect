@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct NoteReflectionView: View {
-    var date = "10 January, 2023"
-    var notes = "Today the crazy old lady watched TV loud again. But we made a prototype for Challenge."
-    var emoji = "😀"
+    var date: String
+    var notes: String
+    var emoji: String
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
@@ -36,6 +36,8 @@ struct NoteReflectionView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteReflectionView()
+        NoteReflectionView(date: "10 January, 2023",
+                           notes: "Today the crazy old lady watched TV loud again. But we made a prototype for Challenge.",
+                           emoji: "😀")
     }
 }
