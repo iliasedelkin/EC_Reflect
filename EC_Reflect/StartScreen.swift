@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StartScreen: View {
     
+    @State private var showingWriteReflectionView: Bool = false
+    
     var title = "Today"
     var days = "0"
     var body: some View {
@@ -87,36 +89,25 @@ struct StartScreen: View {
             Spacer()
             
             Button{
-                
+                showingWriteReflectionView.toggle()
+                print("toggle")
             }label: {
-           
-           
                         HStack{
-                     
-                        Text("Daily reflection")
-                            .font(.system(size: 25))
-                            .fontWeight(.light)
-                            .foregroundColor(.white)
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(.white)
-                          
-                    }
-                    .padding(.init(top: 15, leading: 30, bottom: 15, trailing: 30))
-                    .background(Color.black)
-                    .cornerRadius(60)
-                
-                     
-                        
-                        
-                    
-                    
-                
-         
-                .padding(.bottom, 350)
+                            Text("Daily reflection")
+                                .font(.system(size: 25))
+                                .fontWeight(.light)
+                                .foregroundColor(.white)
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(.white)
+                        }
+                        .padding(.init(top: 15, leading: 30, bottom: 15, trailing: 30))
+                        .background(Color.black)
+                        .cornerRadius(60)
+                        .padding(.bottom, 350)
                 
                 
             }
-            
+            .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
             
         }
  
