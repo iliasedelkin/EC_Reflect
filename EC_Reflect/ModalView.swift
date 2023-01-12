@@ -19,6 +19,7 @@ struct ModalView: View {
                     TextField("Write down what made you feel good or bad", text: $reflection)
                         .padding()
                 }
+                Spacer()
                 VStack (spacing: 19){
                     Text("Overall, was the day good or bad?")
                         .font(.system(size: 18))
@@ -49,7 +50,7 @@ struct ModalView: View {
                     }
                 }
                 .navigationTitle("Reflect on your day")
-                Spacer()
+//                Spacer()
             }
         }
     }
