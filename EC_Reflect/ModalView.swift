@@ -49,6 +49,7 @@ struct ModalView: View {
                     }
                 }
                 .navigationTitle("Reflect on your day")
+                Spacer()
             }
         }
     }
