@@ -10,25 +10,23 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
+            
             StartScreen()
                 .tabItem {
-                    Image(systemName: "heart")
-                    Text("Home")
+                    Label("Today", systemImage: "doc.text.image")
+                }
+            
+            JournalView()
+                .tabItem {
+                    Label("Journal", systemImage: "text.book.closed.fill")
                 }
         }
-        
-       
-        .onAppear() {
-            UITabBar.appearance().barTintColor = .white
+    }
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
         }
-        
-        .padding()
-    }
-    }
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
