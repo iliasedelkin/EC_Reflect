@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct WriteReflectionView: View {
-    @State private var reflection: String = ""
+    @ObservedObject var reflectionVM: ReflectionViewModel
+    
+    @State private var isEmojiSelected: Bool = false
+    
+    
     @Environment (\.dismiss) private var dismiss
+    
     
     var background: some View {
         RoundedRectangle(cornerRadius: 10.0)
@@ -25,7 +30,7 @@ struct WriteReflectionView: View {
                     background
                     TextField("""
                               Share what made you feel good or bad
-                              """, text: $reflection, axis: .vertical)
+                              """, text: $reflectionVM.reflection.notes, axis: .vertical)
                         .lineLimit(1...8)
                         .padding(.all, 30.0)
                 }
@@ -35,9 +40,9 @@ struct WriteReflectionView: View {
                         .font(.system(size: 18))
                         .fontWeight(.black)
                     HStack(spacing: 30){
-                        EmojiButtonView(feeling: .sad)
-                        EmojiButtonView(feeling: .neutral)
-                        EmojiButtonView(feeling: .happy)
+                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😀")
+                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😐")
+                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😫")
                     }
                     .font(.system(size: 60))
                 }
@@ -52,7 +57,8 @@ struct WriteReflectionView: View {
                     }
                     ToolbarItem(placement: .automatic){
                         Button("Save"){
-
+//                            reflectionVM.reflection.notes = reflectionText
+//                            writeReflectionVM.reflection.date = 
                         }
                     }
                 }
@@ -66,32 +72,19 @@ struct WriteReflectionView: View {
 extension WriteReflectionView {
     
     struct EmojiButtonView: View {
+        @ObservedObject var reflectionVM: ReflectionViewModel
         
-        @State private var isSelected: Bool = false
-        
-        let feeling: Feeling
-        
-        var icon: String {
-            
-            switch feeling {
-            case .sad:
-                return "😫"
-            case .neutral:
-                return  "😐"
-            case .happy:
-                return  "😀"
-            }
-        }
+        var icon: String
         
         var body: some View {
             
-            if isSelected {
+            if reflectionVM.reflection.emoji == icon {
                 Button(icon) {
-                    isSelected.toggle()
+                    
                 }
             } else {
                 Button(icon) {
-                    isSelected.toggle()
+                    reflectionVM.reflection.emoji = icon
                 }
                 .opacity(0.4)
             }
@@ -99,14 +92,11 @@ extension WriteReflectionView {
     }
 }
 
-enum Feeling {
-    case sad
-    case neutral
-    case happy
-}
-
 struct WriteReflectionView_Previews: PreviewProvider {
     static var previews: some View {
-        WriteReflectionView()
+        
+        WriteReflectionView(reflectionVM: ReflectionViewModel(reflection: Reflection(id: 1, date: "10 January 2023",
+                                                                                         notes: "",
+                                                                                         emoji: "😀")))
     }
 }
