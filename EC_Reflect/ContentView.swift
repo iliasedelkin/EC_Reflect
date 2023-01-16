@@ -14,6 +14,7 @@ struct ContentView: View {
             StartScreen()
                 .tabItem {
                     Label("Today", systemImage: "doc.text.image")
+                    
                 }
             
             JournalView()
@@ -21,6 +22,7 @@ struct ContentView: View {
                     Label("Journal", systemImage: "text.book.closed.fill")
                 }
         }
+        
     }
     
     

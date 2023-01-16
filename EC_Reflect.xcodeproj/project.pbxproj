@@ -15,6 +15,8 @@
 		34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE682970738A00E8934B /* StartScreen.swift */; };
 		34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE692970738A00E8934B /* JournalView.swift */; };
 		34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE6E2970988600E8934B /* WriteReflectionView.swift */; };
+		8ABEB1D8297567770015165A /* Reflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D6297567770015165A /* Reflection.swift */; };
+		8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D7297567770015165A /* ReflectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		34F7EE682970738A00E8934B /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		34F7EE692970738A00E8934B /* JournalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		34F7EE6E2970988600E8934B /* WriteReflectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReflectionView.swift; sourceTree = "<group>"; };
+		8ABEB1D6297567770015165A /* Reflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflection.swift; sourceTree = "<group>"; };
+		8ABEB1D7297567770015165A /* ReflectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 		342D1EAC296EBBE700042838 /* EC_Reflect */ = {
 			isa = PBXGroup;
 			children = (
+				8ABEB1D5297567770015165A /* Model */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE692970738A00E8934B /* JournalView.swift */,
 				34F7EE6E2970988600E8934B /* WriteReflectionView.swift */,
@@ -77,6 +82,15 @@
 				342D1EB4296EBBE900042838 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8ABEB1D5297567770015165A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8ABEB1D6297567770015165A /* Reflection.swift */,
+				8ABEB1D7297567770015165A /* ReflectionViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +166,8 @@
 				34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */,
 				34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */,
 				342D1EB0296EBBE700042838 /* ContentView.swift in Sources */,
+				8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */,
+				8ABEB1D8297567770015165A /* Reflection.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
 				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
