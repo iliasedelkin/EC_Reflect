@@ -17,74 +17,31 @@ struct StartScreen: View {
         
         VStack (alignment: .center) {
             HStack{
-                Text(title)
-                    .font(.system(size: 40).bold())
-                    .fontWeight(.light)
+                Text("Hello, Irina!")
+                    .font(.system(size: 20).bold())
+                    .fontWeight(.regular)
                 Spacer()
             }
-            .padding(.top, 40)
+            .padding(.top, 30)
             .padding(.leading, 16)
-          
             HStack{
-                Text ("This week")
-                    .font(.system(size: 20))
+                Text("Today")
+                    .font(.system(size: 50).bold())
+                    .fontWeight(.black)
                 Spacer()
             }
-            .padding(.leading, 16)
-            .padding(.top, 15)
-            HStack (spacing: 25){
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Mon")
-                }
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Tue")
-                }
-               
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Wed")
-                }
-              
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.blue)
-                    Text ("Thu")
-                }
         
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Fri")
-                    
-                }
-                   
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Sat")
-                }
-                VStack {
-                    Circle()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(.gray)
-                    Text ("Sun")
-                }
-                    
-                
-               
+            .padding(.leading, 16)
+            HStack{
+                Text("Thursday, 13 January")
+                    .font(.system(size: 20).bold())
+                    .fontWeight(.regular)
+                Spacer()
             }
-            .padding(.top, 15)
+        
+            .padding(.leading, 16)
+     
+
             
             Spacer()
             
@@ -92,24 +49,32 @@ struct StartScreen: View {
                 showingWriteReflectionView.toggle()
                 print("toggle")
             }label: {
-                        HStack{
-                            Text("Daily reflection")
-                                .font(.system(size: 25))
-                                .fontWeight(.light)
-                                .foregroundColor(.white)
-                            Image(systemName: "arrow.right")
-                                .foregroundColor(.white)
-                        }
-                        .padding(.init(top: 15, leading: 30, bottom: 15, trailing: 30))
-                        .background(Color.black)
-                        .cornerRadius(60)
-                        .padding(.bottom, 350)
-                
+                ZStack{
+              
+                    HStack (alignment: .center){
+                        Text("Daily reflection")
+                            .font(.system(size: 25))
+                            .fontWeight(.light)
+                            .foregroundColor(.white)
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(.white)
+                        
+                    }
+                    .padding(.init(top: 20, leading: 40, bottom: 20, trailing: 40))
+                    .background(Color.black)
+                    .cornerRadius(50)
+                    
+                }
                 
             }
             .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
-            
-        }
+            Text("It's 4th day of reflection. Great job!")
+                .font(.system(size: 20))
+                .fontWeight(.regular)
+                
+                .frame(width: 350, height: 50)
+                .foregroundColor(.black)
+        }.padding(.bottom, 300)
  
     }
     
