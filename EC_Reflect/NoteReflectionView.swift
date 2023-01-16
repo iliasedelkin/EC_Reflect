@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct NoteReflectionView: View {
-    var date: String
-    var notes: String
-    var emoji: String
+    @ObservedObject var reflectionVM: ReflectionViewModel
+    
+    init(reflectionVM: ReflectionViewModel) {
+        self.reflectionVM = reflectionVM
+    }
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
@@ -21,14 +23,14 @@ struct NoteReflectionView: View {
                 .opacity(0.5)
             
             VStack(alignment: .leading, spacing: 15){
-                Text(date).font(.system(size: 16, weight: .bold))
+                Text(reflectionVM.reflection.date).font(.system(size: 16, weight: .bold))
                     .opacity(0.5)
-                Text(notes).font(.system(size: 16, weight: .regular))
+                Text(reflectionVM.reflection.notes).font(.system(size: 16, weight: .regular))
                     .frame(width: 250, height: 58)
             }
             .padding()
             
-            Text(emoji).font(.system(size: 60, weight: .regular))
+            Text(reflectionVM.reflection.emoji).font(.system(size: 60, weight: .regular))
                 .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)
         }
     }
@@ -36,8 +38,8 @@ struct NoteReflectionView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteReflectionView(date: "10 January, 2023",
+        NoteReflectionView(reflectionVM: ReflectionViewModel(reflection: Reflection(id: 1, date: "10 January 2023",
                            notes: "Today the crazy old lady watched TV loud again. But we made a prototype for Challenge.",
-                           emoji: "😀")
+                           emoji: "😀")))
     }
 }
