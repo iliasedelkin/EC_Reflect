@@ -11,14 +11,23 @@ struct WriteReflectionView: View {
     @State private var reflection: String = ""
     @Environment (\.dismiss) private var dismiss
     
+    var background: some View {
+        RoundedRectangle(cornerRadius: 10.0)
+            .padding()
+            .foregroundColor(Color("TextFieldColor"))
+    }
+    
     var body: some View {
+        
         NavigationStack{
             VStack{
                 ZStack (alignment: .topTrailing){
-                    Image("dots")
-                    
-                    TextField("Write down what made you feel good or bad", text: $reflection)
-                        .padding()
+                    background
+                    TextField("""
+                              Share what made you feel good or bad
+                              """, text: $reflection, axis: .vertical)
+                        .lineLimit(1...8)
+                        .padding(.all, 30.0)
                 }
                 Spacer()
                 VStack (spacing: 19){
@@ -26,12 +35,9 @@ struct WriteReflectionView: View {
                         .font(.system(size: 18))
                         .fontWeight(.black)
                     HStack(spacing: 30){
-                        Button("😫"){
-                        }
-                        Button("😐"){
-                        }
-                        Button("😀"){
-                        }
+                        EmojiButtonView(feeling: .sad)
+                        EmojiButtonView(feeling: .neutral)
+                        EmojiButtonView(feeling: .happy)
                     }
                     .font(.system(size: 60))
                 }
@@ -55,6 +61,48 @@ struct WriteReflectionView: View {
             }
         }
     }
+}
+
+extension WriteReflectionView {
+    
+    struct EmojiButtonView: View {
+        
+        @State private var isSelected: Bool = false
+        
+        let feeling: Feeling
+        
+        var icon: String {
+            
+            switch feeling {
+            case .sad:
+                return "😫"
+            case .neutral:
+                return  "😐"
+            case .happy:
+                return  "😀"
+            }
+        }
+        
+        var body: some View {
+            
+            if isSelected {
+                Button(icon) {
+                    isSelected.toggle()
+                }
+            } else {
+                Button(icon) {
+                    isSelected.toggle()
+                }
+                .opacity(0.4)
+            }
+        }
+    }
+}
+
+enum Feeling {
+    case sad
+    case neutral
+    case happy
 }
 
 struct WriteReflectionView_Previews: PreviewProvider {
