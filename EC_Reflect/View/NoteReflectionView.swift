@@ -30,7 +30,7 @@ struct NoteReflectionView: View {
             }
             .padding()
             
-            Text(reflectionVM.reflection.emoji).font(.system(size: 60, weight: .regular))
+            Text(emojiFromFeeling(feeling: reflectionVM.reflection.feeling)).font(.system(size: 60, weight: .regular))
                 .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)
         }
     }
@@ -38,8 +38,6 @@ struct NoteReflectionView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteReflectionView(reflectionVM: ReflectionViewModel(reflection: Reflection(id: 1, date: "10 January 2023",
-                           notes: "Today the crazy old lady watched TV loud again. But we made a prototype for Challenge.",
-                           emoji: "😀")))
+        NoteReflectionView(reflectionVM: ReflectionViewModel(reflection: reflection1))
     }
 }

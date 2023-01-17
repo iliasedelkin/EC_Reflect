@@ -13,4 +13,8 @@ class ReflectionViewModel: ObservableObject {
     init(reflection: Reflection) {
         self.reflection = reflection
     }
+    
+    func save() {
+        
+    }
 }

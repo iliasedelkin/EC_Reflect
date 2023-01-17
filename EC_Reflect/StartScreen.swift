@@ -10,13 +10,6 @@ import SwiftUI
 struct StartScreen: View {
     
     @State private var showingWriteReflectionView: Bool = false
-    var question = "How was your day?"
-//    var days: Int
-//    var daysCount: String {
-//        get {
-//            return "It's day \(days) of reflection. Great job!"
-//        }
-//    }
     
     var title = "Today"
 

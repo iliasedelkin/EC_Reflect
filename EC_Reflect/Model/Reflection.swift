@@ -11,5 +11,8 @@ struct Reflection: Codable, Hashable, Identifiable{
     var id: Int
     var date: String
     var notes: String
-    var emoji: String
+    var feeling: Feeling
+//    var emoji: String
+    
+    
 }
