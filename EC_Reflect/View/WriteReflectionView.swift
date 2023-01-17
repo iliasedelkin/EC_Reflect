@@ -40,9 +40,9 @@ struct WriteReflectionView: View {
                         .font(.system(size: 18))
                         .fontWeight(.black)
                     HStack(spacing: 30){
-                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😀")
-                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😐")
-                        EmojiButtonView(reflectionVM: reflectionVM, icon: "😫")
+                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .sad)
+                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .neutral)
+                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .happy)
                     }
                     .font(.system(size: 60))
                 }
@@ -74,17 +74,17 @@ extension WriteReflectionView {
     struct EmojiButtonView: View {
         @ObservedObject var reflectionVM: ReflectionViewModel
         
-        var icon: String
+        var feeling: Feeling
         
         var body: some View {
             
-            if reflectionVM.reflection.emoji == icon {
-                Button(icon) {
+            if reflectionVM.reflection.feeling == feeling {
+                Button(emojiFromFeeling(feeling: feeling)) {
                     
                 }
             } else {
-                Button(icon) {
-                    reflectionVM.reflection.emoji = icon
+                Button(emojiFromFeeling(feeling: feeling)) {
+                    reflectionVM.reflection.feeling = feeling
                 }
                 .opacity(0.4)
             }
@@ -97,6 +97,6 @@ struct WriteReflectionView_Previews: PreviewProvider {
         
         WriteReflectionView(reflectionVM: ReflectionViewModel(reflection: Reflection(id: 1, date: "10 January 2023",
                                                                                          notes: "",
-                                                                                         emoji: "😀")))
+                                                                                     feeling: .unknown)))
     }
 }

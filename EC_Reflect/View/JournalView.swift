@@ -23,18 +23,10 @@ struct JournalView: View {
                 .padding(.top, 40)
                 .padding(.leading, 16)
                 
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: Reflection(id:1, date: "13 January 2023",
-                                   notes: "I love my classmates, they are so nice ... I hope we meet on the weekend.",
-                                   emoji:"😀")))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: Reflection(id: 2, date: "12 January 2023",
-                                   notes: "Today the weather is not good, but luckily I took my umbrella. I hate rain.",
-                                   emoji:"😐")))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: Reflection(id:3, date: "11 January 2023",
-                                   notes: "I am  so tired, I should have gone to bed earlier. Deprivation of sleeping is the worst thing.",
-                                   emoji:"😫")))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: Reflection(id: 4, date: "10 January 2023",
-                                   notes: "Today the crazy old lady watched TV loud again. But we made a prototype for Challenge.",
-                                   emoji:"😀")))
+                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection1))
+                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection2))
+                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection3))
+                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection4))
                 
             }
             

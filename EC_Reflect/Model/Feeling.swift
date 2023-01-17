@@ -7,13 +7,22 @@
 
 import Foundation
 
-enum Feeling {
+enum Feeling: String, Codable {
     case sad
     case neutral
     case happy
+    case unknown
 }
 
-//func emojiFromFeeling() {
-//    switch feeling:
-//case .sad
-//}
+func emojiFromFeeling(feeling: Feeling) -> String {
+    switch(feeling) {
+    case .sad:
+        return "😫"
+    case .neutral:
+        return "😐"
+    case .happy:
+        return "😀"
+    default:
+        return ""
+    }
+}
