@@ -67,7 +67,7 @@ struct StartScreen: View {
                 }
                 
             }
-            .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
+//            .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
             Text("It's 4th day of reflection. Great job!")
                 .font(.system(size: 20))
                 .fontWeight(.regular)
