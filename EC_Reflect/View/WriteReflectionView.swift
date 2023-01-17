@@ -51,8 +51,8 @@ struct WriteReflectionView: View {
                         Button{
                             dismiss()
                         } label: {
-                            Image(systemName: "chevron.backward")
-                            Text("Back")
+//                            Image(systemName: "chevron.backward")
+                            Text("Cancel")
                         }
                     }
                     ToolbarItem(placement: .automatic){

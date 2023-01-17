@@ -14,7 +14,9 @@ class ReflectionViewModel: ObservableObject {
         self.reflection = reflection
     }
     
-    func save() {
-        
+    var reflections: [Reflection] = [reflection1, reflection2, reflection3, reflection4]
+    
+    func saveReflection(reflection: Reflection) {
+        reflections.append(reflection)
     }
 }
