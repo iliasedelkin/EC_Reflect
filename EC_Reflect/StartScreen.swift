@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartScreen: View {
-    
+    @ObservedObject var reflectionVM: ReflectionViewModel
     @State private var showingWriteReflectionView: Bool = false
     
     var title = "Today"
@@ -75,7 +75,7 @@ struct StartScreen: View {
                         .padding(.top, 15)
                         
                     }
-                    .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
+                    .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)})
                     Text("It's day 4 of reflection. Great job!")
                         .font(.system(size: 20))
                         .fontWeight(.regular)
@@ -106,6 +106,6 @@ struct StartScreen: View {
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreen()
+        StartScreen(reflectionVM: ReflectionViewModel(reflection: reflection1))
     }
 }
