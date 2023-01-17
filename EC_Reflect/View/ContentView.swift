@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             
-            StartScreen()
+            StartScreen(reflectionVM: ReflectionViewModel(reflection: reflection0))
                 .tabItem {
                     Label("Today", systemImage: "doc.text.image")
                     

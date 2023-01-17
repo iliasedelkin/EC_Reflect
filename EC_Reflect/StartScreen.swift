@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct StartScreen: View {
-    
+    @ObservedObject var reflectionVM: ReflectionViewModel
     @State private var showingWriteReflectionView: Bool = false
     
     var title = "Today"
-    var days = "0"
+
     var body: some View {
         
         VStack (alignment: .center) {
@@ -26,7 +26,7 @@ struct StartScreen: View {
             .padding(.leading, 16)
             HStack{
                 Text("Today")
-                    .font(.system(size: 50).bold())
+                    .font(.system(size: 40).bold())
                     .fontWeight(.black)
                 Spacer()
             }
@@ -44,36 +44,60 @@ struct StartScreen: View {
 
             
             Spacer()
-            
-            Button{
-                showingWriteReflectionView.toggle()
-                print("toggle")
-            }label: {
-                ZStack{
-              
-                    HStack (alignment: .center){
-                        Text("Daily reflection")
-                            .font(.system(size: 25))
-                            .fontWeight(.light)
-                            .foregroundColor(.white)
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(.white)
+            ZStack {
+
+                VStack{
+                    Text("How was your day?")
+                        .font(.system(size: 30))
+                        .fontWeight(.bold)
+                
+                        .foregroundColor(.white)
+                        .padding(.top, 15)
+                      
+                    Button{
+                        showingWriteReflectionView.toggle()
+                        print("toggle")
+                    }label: {
+                        ZStack{
+                            HStack (alignment: .center){
+                                Text("Daily reflection")
+                                    .font(.system(size: 25))
+                                    .foregroundColor(.black)
+                                Image(systemName: "arrow.right")
+                                    .foregroundColor(.black)
+                                
+                            }
+                            .padding(.init(top: 20, leading: 40, bottom: 20, trailing: 40))
+                            .background(Color.white)
+                            .cornerRadius(50)
+                            
+                        }
+                        .padding(.top, 15)
                         
                     }
-                    .padding(.init(top: 20, leading: 40, bottom: 20, trailing: 40))
-                    .background(Color.black)
-                    .cornerRadius(50)
+                    .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)})
+                    Text("It's day 4 of reflection. Great job!")
+                        .font(.system(size: 20))
+                        .fontWeight(.regular)
                     
+                        .frame(width: 350, height: 50)
+                        .foregroundColor(.white)
+                        .padding(.top, 20)
                 }
+                .background {
+                    Image("bg")
+                    
+                        .frame(width: 365, height: 280)
+                        
+                        .cornerRadius(15)
+                }
+            
                 
+               
             }
-//            .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView()})
-            Text("It's 4th day of reflection. Great job!")
-                .font(.system(size: 20))
-                .fontWeight(.regular)
-                
-                .frame(width: 350, height: 50)
-                .foregroundColor(.black)
+
+           
+            
         }.padding(.bottom, 300)
  
     }
@@ -82,6 +106,6 @@ struct StartScreen: View {
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreen()
+        StartScreen(reflectionVM: ReflectionViewModel(reflection: reflection1))
     }
 }
