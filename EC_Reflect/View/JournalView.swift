@@ -17,7 +17,7 @@ struct JournalView: View {
                 HStack{
                     Text("Journal")
                         .font(.system(size: 40).bold())
-                        .fontWeight(.light)
+                        .fontWeight(.black)
                     Spacer()
                 }
                 .padding(.top, 40)

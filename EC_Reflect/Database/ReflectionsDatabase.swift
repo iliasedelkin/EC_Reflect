@@ -7,6 +7,12 @@
 
 import Foundation
 
+
+var reflection0 = Reflection(id: 0, date: "",
+                             notes: "",
+                             feeling: .unknown)
+
+
 var reflection1 = Reflection(id: 1, date: "13 January 2023",
                              notes: "I love my classmates, they are so nice ... I hope we meet on the weekend.",
                              feeling: .happy)

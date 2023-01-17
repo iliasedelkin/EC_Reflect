@@ -67,6 +67,7 @@
 		3429654D29757BA000E0E663 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE692970738A00E8934B /* JournalView.swift */,
 				34F7EE6E2970988600E8934B /* WriteReflectionView.swift */,
@@ -95,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */,
-				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				3429654D29757BA000E0E663 /* View */,
 				3429654C29757B8200E0E663 /* ViewModel */,
 				3429654729757A1100E0E663 /* Database */,
