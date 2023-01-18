@@ -38,9 +38,3 @@ struct SwiftUIView_Previews: PreviewProvider {
         NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: reflection1)
     }
 }
-
-public func dateToString(date: Date) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm, d MMM y"
-    return formatter.string(from: date)
-}

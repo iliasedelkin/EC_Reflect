@@ -19,10 +19,16 @@ class ReflectionViewModel: ObservableObject {
         reflections.append(reflection)
     }
     
-    public func dateToString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm, d MMM y"
-        return formatter.string(from: date)
-    }
-    
+}
+
+public func dateTimeToString(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm, d MMM y"
+    return formatter.string(from: date)
+}
+
+public func dateToString(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d MMM y"
+    return formatter.string(from: date)
 }
