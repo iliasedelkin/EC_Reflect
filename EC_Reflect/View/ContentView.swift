@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    let vm = ReflectionViewModel()
+    
     var body: some View {
         TabView {
             
-            StartScreen(reflectionVM: ReflectionViewModel(reflection: reflection0))
+            StartScreen(reflectionVM: vm)
                 .tabItem {
                     Label("Today", systemImage: "doc.text.image")
                     
                 }
             
-            JournalView()
+            JournalView(reflectionVM: vm)
                 .tabItem {
                     Label("Journal", systemImage: "text.book.closed.fill")
                 }

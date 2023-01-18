@@ -106,6 +106,6 @@ struct StartScreen: View {
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreen(reflectionVM: ReflectionViewModel(reflection: reflection1))
+        StartScreen(reflectionVM: ReflectionViewModel())
     }
 }

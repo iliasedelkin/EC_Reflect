@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct JournalView: View {
+    @ObservedObject var reflectionVM: ReflectionViewModel
     
     var body: some View {
         
         ScrollView{
             VStack(spacing: 30){
-                
                 HStack{
                     Text("Journal")
                         .font(.system(size: 40).bold())
@@ -23,11 +23,9 @@ struct JournalView: View {
                 .padding(.top, 40)
                 .padding(.leading, 16)
                 
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection1))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection2))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection3))
-                NoteReflectionView(reflectionVM: ReflectionViewModel( reflection: reflection4))
-                
+                ForEach(reflectionVM.reflections) { index in
+                    NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: index)
+                }
             }
             
         }
@@ -36,6 +34,6 @@ struct JournalView: View {
 
 struct JournalView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalView()
+        JournalView(reflectionVM: ReflectionViewModel())
     }
 }

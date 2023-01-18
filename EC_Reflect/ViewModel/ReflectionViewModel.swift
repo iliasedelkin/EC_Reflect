@@ -8,15 +8,21 @@
 import Foundation
 
 class ReflectionViewModel: ObservableObject {
-    @Published var reflection: Reflection
     
-    init(reflection: Reflection) {
-        self.reflection = reflection
-    }
+    @Published var reflections: [Reflection] = reflectionData
     
-    var reflections: [Reflection] = [reflection1, reflection2, reflection3, reflection4]
+//    init() {
+//        self.reflections = reflectionData
+//    }
     
     func saveReflection(reflection: Reflection) {
         reflections.append(reflection)
     }
+    
+    public func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm, d MMM y"
+        return formatter.string(from: date)
+    }
+    
 }
