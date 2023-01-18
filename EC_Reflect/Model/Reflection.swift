@@ -8,11 +8,23 @@
 import Foundation
 
 struct Reflection: Codable, Hashable, Identifiable{
-    var id: Int
-    var date: String
+    var id: UUID
+    var date: Date
     var notes: String
     var feeling: Feeling
-//    var emoji: String
     
+    init(id: UUID, date: Date, notes: String, feeling: Feeling) {
+        self.id = id
+        self.date = date
+        self.notes = notes
+        self.feeling = feeling
+    }
+
+    init(notes: String, feeling: Feeling) {
+        self.id = UUID()
+        self.date = Date()
+        self.notes = notes
+        self.feeling = feeling
+    }
     
 }

@@ -10,7 +10,10 @@ import SwiftUI
 struct WriteReflectionView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     
+    @State private var notesToAdd: String = ""
+    @State private var feelingToAdd: Feeling = .unknown
     @State private var isEmojiSelected: Bool = false
+
     
     
     @Environment (\.dismiss) private var dismiss
@@ -30,7 +33,7 @@ struct WriteReflectionView: View {
                     background
                     TextField("""
                               Share what made you feel good or bad
-                              """, text: $reflectionVM.reflection.notes, axis: .vertical)
+                              """, text: $notesToAdd, axis: .vertical)
                         .lineLimit(1...8)
                         .padding(.all, 30.0)
                 }
@@ -40,9 +43,9 @@ struct WriteReflectionView: View {
                         .font(.system(size: 18))
                         .fontWeight(.black)
                     HStack(spacing: 30){
-                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .sad)
-                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .neutral)
-                        EmojiButtonView(reflectionVM: reflectionVM, feeling: .happy)
+                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .sad)
+                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .neutral)
+                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .happy)
                     }
                     .font(.system(size: 60))
                 }
@@ -51,19 +54,20 @@ struct WriteReflectionView: View {
                         Button{
                             dismiss()
                         } label: {
-                            Image(systemName: "chevron.backward")
-                            Text("Back")
+//                            Image(systemName: "chevron.backward")
+                            Text("Cancel")
                         }
                     }
                     ToolbarItem(placement: .automatic){
                         Button("Save"){
-//                            reflectionVM.reflection.notes = reflectionText
-//                            writeReflectionVM.reflection.date = 
+                            reflectionVM.saveReflection(
+                                reflection: Reflection(notes: notesToAdd, feeling: feelingToAdd))
+                            dismiss()
                         }
+//                        .onChange(of: Equatable, perform: <#T##(Equatable) -> Void##(Equatable) -> Void##(_ newValue: Equatable) -> Void#>)
                     }
                 }
                 .navigationTitle("Reflect on your day")
-//                Spacer()
             }
         }
     }
@@ -72,19 +76,19 @@ struct WriteReflectionView: View {
 extension WriteReflectionView {
     
     struct EmojiButtonView: View {
-        @ObservedObject var reflectionVM: ReflectionViewModel
+        @Binding var feelingToAdd: Feeling
         
         var feeling: Feeling
         
         var body: some View {
             
-            if reflectionVM.reflection.feeling == feeling {
+            if feelingToAdd == feeling {
                 Button(emojiFromFeeling(feeling: feeling)) {
                     
                 }
             } else {
                 Button(emojiFromFeeling(feeling: feeling)) {
-                    reflectionVM.reflection.feeling = feeling
+                    feelingToAdd = feeling
                 }
                 .opacity(0.4)
             }
@@ -95,8 +99,6 @@ extension WriteReflectionView {
 struct WriteReflectionView_Previews: PreviewProvider {
     static var previews: some View {
         
-        WriteReflectionView(reflectionVM: ReflectionViewModel(reflection: Reflection(id: 1, date: "10 January 2023",
-                                                                                         notes: "",
-                                                                                     feeling: .unknown)))
+        WriteReflectionView(reflectionVM: ReflectionViewModel())
     }
 }
