@@ -18,7 +18,7 @@ struct QuoteView: View {
                 RoundedRectangle(cornerRadius: 15)
                     .shadow(radius: 5)
                     .foregroundColor(Color.white)
-                    .frame(width: 350, height: 250)
+//                    .frame(width: 350, height: 250)
                 HStack {
                     Spacer()
                     Button {

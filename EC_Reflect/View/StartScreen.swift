@@ -9,17 +9,15 @@ import SwiftUI
 
 struct StartScreen: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
+    @ObservedObject var quoteVM: QuoteViewModel
+    
     @State private var showingWriteReflectionView: Bool = false
     
     var title = "Today"
 
     var body: some View {
-        
-      
-            VStack (alignment: .leading) {
-                
+            VStack (alignment: .center) {
                             VStack (alignment: .leading) {
-                
                                 Text("Hello, Irina!")
                                     .font(.system(size: 20).bold())
                                     .fontWeight(.regular)
@@ -28,13 +26,11 @@ struct StartScreen: View {
                                         .font(.system(size: 40).bold())
                                         .fontWeight(.bold)
                 
-                                    Text("Thursday, 13 January")
+                                Text(dateToString(date: Date()))
                                         .font(.system(size: 20).bold())
-                                        .fontWeight(.regular)
-                
+                                        .fontWeight(.regular)             
                             }
                             .padding(.top, 10)
-                
                 ZStack{
                     Image("bg")
                         .resizable()
@@ -58,8 +54,6 @@ struct StartScreen: View {
                         }label: {
                             ZStack{
                                 HStack (alignment: .center){
-                                    
-                                    
                                     Text("Daily reflection")
                                         .font(.system(size: 20))
                                         .foregroundColor(.black)
@@ -70,13 +64,9 @@ struct StartScreen: View {
                                 .padding(.init(top: 20, leading: 30, bottom: 20, trailing: 30))
                                 .background(Color.white)
                                 .cornerRadius(15)
-                                
                             }
-                            
-                            
                         }
                         .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
-                            
                         }
                         )
                         Text("It's day 4 of reflection. Great job!")
@@ -88,24 +78,12 @@ struct StartScreen: View {
                             .padding(.top, 20)
                     }
                     .padding(.top, 10)
-                    
                 }
                 .padding(.top, 20)
                 .padding(.bottom, 10)
                 
-        
-                
-                
-                
-                
-                
+                QuoteView(quoteVM: QuoteViewModel())
             }
-         
-        
-        
-        
-       
- 
     }
     
 }
