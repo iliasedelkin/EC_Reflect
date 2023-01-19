@@ -23,9 +23,11 @@ struct QuoteView: View {
                     Spacer()
                     Button {
                         refreshQuote.toggle()
+//                        print("Quote reftesh requested, refreshQuote: \(refreshQuote)")
                         if refreshQuote == true {
                             Task {
                                 await quoteVM.getQuote()
+                                refreshQuote = false
                             }
                         }
                     } label: {
@@ -50,7 +52,7 @@ struct QuoteView: View {
                         Text(quote.author)
                         
                     } else {
-                        Text("You are better than you were be")
+                        Text("You are better than you were")
                     }
                 }
                 .frame(width: 300.0, height: 150.0)
