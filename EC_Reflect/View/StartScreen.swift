@@ -112,6 +112,7 @@ struct StartScreen: View {
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
+    
        ContentView()
     }
 }

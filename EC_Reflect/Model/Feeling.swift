@@ -26,3 +26,5 @@ func emojiFromFeeling(feeling: Feeling) -> String {
         return ""
     }
 }
+
+

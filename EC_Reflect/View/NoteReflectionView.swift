@@ -9,10 +9,7 @@ import SwiftUI
 
 struct NoteReflectionView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
-    
-    init(reflectionVM: ReflectionViewModel) {
-        self.reflectionVM = reflectionVM
-    }
+    @State var reflection: Reflection
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
@@ -23,14 +20,14 @@ struct NoteReflectionView: View {
                 .opacity(0.5)
             
             VStack(alignment: .leading, spacing: 15){
-                Text(reflectionVM.reflection.date).font(.system(size: 16, weight: .bold))
+                Text(dateToString(date: reflection.date)).font(.system(size: 16, weight: .bold))
                     .opacity(0.5)
-                Text(reflectionVM.reflection.notes).font(.system(size: 16, weight: .regular))
+                Text(reflection.notes).font(.system(size: 16, weight: .regular))
                     .frame(width: 250, height: 58)
             }
             .padding()
             
-            Text(emojiFromFeeling(feeling: reflectionVM.reflection.feeling)).font(.system(size: 60, weight: .regular))
+            Text(emojiFromFeeling(feeling: reflection.feeling)).font(.system(size: 60, weight: .regular))
                 .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)
         }
     }
@@ -38,6 +35,6 @@ struct NoteReflectionView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteReflectionView(reflectionVM: ReflectionViewModel(reflection: reflection1))
+        NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: reflection1)
     }
 }
