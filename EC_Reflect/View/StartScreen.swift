@@ -10,8 +10,7 @@ import SwiftUI
 struct StartScreen: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var quoteVM: QuoteViewModel
-    
-    @State private var showingWriteReflectionView: Bool = false
+
     
     var title = "Today"
 
@@ -31,56 +30,9 @@ struct StartScreen: View {
                                         .fontWeight(.regular)             
                             }
                             .padding(.top, 10)
-                ZStack{
-                    Image("bg")
-                        .resizable()
-                        .scaledToFill()
-                    
-                        .frame(width: 360, height: 270)
-                        .clipped()
-                        .cornerRadius(15)
-                    
-                    VStack{
-                        Text("How was your day?")
-                        
-                            .font(.system(size: 25))
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(.bottom, 30)
-                        
-                        Button{
-                            showingWriteReflectionView.toggle()
-                            print("toggle")
-                        }label: {
-                            ZStack{
-                                HStack (alignment: .center){
-                                    Text("Daily reflection")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(.black)
-                                    Image(systemName: "arrow.right")
-                                        .foregroundColor(.black)
-                                    
-                                }
-                                .padding(.init(top: 20, leading: 30, bottom: 20, trailing: 30))
-                                .background(Color.white)
-                                .cornerRadius(15)
-                            }
-                        }
-                        .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
-                        }
-                        )
-                        Text("It's day 4 of reflection. Great job!")
-                            .font(.system(size: 20))
-                            .fontWeight(.regular)
-                        
-                            .frame(width: 350, height: 50)
-                            .foregroundColor(.white)
-                            .padding(.top, 20)
-                    }
-                    .padding(.top, 10)
-                }
+                StartscreenCardView(reflectionVM: reflectionVM)
                 .padding(.top, 20)
-                .padding(.bottom, 10)
+               
                 
                 QuoteView(quoteVM: QuoteViewModel())
             }
