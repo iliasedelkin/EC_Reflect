@@ -26,6 +26,7 @@ struct QuoteView: View {
                         if refreshQuote == true {
                             Task {
                                 await quoteVM.getQuote()
+                                refreshQuote.toggle()
                             }
                         }
                     } label: {
