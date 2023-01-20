@@ -64,7 +64,7 @@ struct WriteReflectionView: View {
                                 reflection: Reflection(notes: notesToAdd, feeling: feelingToAdd))
                             dismiss()
                         }
-//                        .onChange(of: Equatable, perform: <#T##(Equatable) -> Void##(Equatable) -> Void##(_ newValue: Equatable) -> Void#>)
+                        .disabled(feelingToAdd == .unknown)
                     }
                 }
                 .navigationTitle("Reflect on your day")

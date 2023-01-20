@@ -52,7 +52,7 @@ struct QuoteView: View {
                         Text(quote.author)
                         
                     } else {
-                        Text("You are better than you were")
+                        Text("Loading...")
                     }
                 }
                 .frame(width: 300.0, height: 150.0)
