@@ -23,7 +23,6 @@ struct QuoteView: View {
                     Spacer()
                     Button {
                         refreshQuote.toggle()
-//                        print("Quote reftesh requested, refreshQuote: \(refreshQuote)")
                         if refreshQuote == true {
                             Task {
                                 await quoteVM.getQuote()
@@ -37,30 +36,35 @@ struct QuoteView: View {
                 }
                 .padding()
             }
-            VStack (spacing: 5){
-                Text("Quote of the day")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                VStack(spacing: 10) {
-                    
-                    if let quote = quoteVM.quote?.first {
+            
+                VStack (spacing: 5){
+                    Text("Quote of the day")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    ScrollView{
+                    VStack(spacing: 10) {
                         
-                        Text(quote.quote)
-                            .font(.system(size: 25))
-                            .multilineTextAlignment(.center)
-                            .lineLimit(4)
-                        Text(quote.author)
-                        
-                    } else {
-                        Text("Loading...")
+                        if let quote = quoteVM.quote?.first {
+                            
+                            Text(quote.quote)
+                                .font(.system(size: 25))
+                                .multilineTextAlignment(.center)
+                                .lineLimit(4)
+                            Text(quote.author)
+                            
+                        } else {
+                            Text("You are better than you were be")
+                        }
+                    }
+                    .frame(width: 300.0, height: 100)
+                    //        .onReceive(timer) { _ in
+                    .task{
+                        await quoteVM.getQuote()
                     }
                 }
-                .frame(width: 300.0, height: 150.0)
-                //        .onReceive(timer) { _ in
-                .task{
-                    await quoteVM.getQuote()
-                }
+                    .padding(.top, 15)
             }
+                .padding(.top, 30)
         }
         .padding()
     }
