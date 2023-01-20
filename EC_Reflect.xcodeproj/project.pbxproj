@@ -11,7 +11,7 @@
 		342D1EB0296EBBE700042838 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D1EAF296EBBE700042838 /* ContentView.swift */; };
 		342D1EB2296EBBE900042838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB1296EBBE900042838 /* Assets.xcassets */; };
 		342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB4296EBBE900042838 /* Preview Assets.xcassets */; };
-		542329392970096700E4EC18 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542329382970096700E4EC18 /* ModalView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		342D1EAF296EBBE700042838 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		342D1EB1296EBBE900042838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		342D1EB4296EBBE900042838 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		542329382970096700E4EC18 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +53,9 @@
 		342D1EAC296EBBE700042838 /* EC_Reflect */ = {
 			isa = PBXGroup;
 			children = (
-				342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */,
+				34F7EE672970738A00E8934B /* MainView.swift */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
-				542329382970096700E4EC18 /* ModalView.swift */,
+
 				342D1EB1296EBBE900042838 /* Assets.xcassets */,
 				342D1EB3296EBBE900042838 /* Preview Content */,
 			);
@@ -140,8 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				542329392970096700E4EC18 /* ModalView.swift in Sources */,
+
 				342D1EB0296EBBE700042838 /* ContentView.swift in Sources */,
+				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
+				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
