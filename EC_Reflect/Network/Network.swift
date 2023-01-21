@@ -38,17 +38,4 @@ class Network: NSObject {
         return try JSONDecoder().decode([Quote].self, from: data)
     }
     
-//    func getQuote() async throws -> [Quote]? {
-//        
-//        let request = buildRequest(
-//            method: "GET",
-//            path: "/quotes",
-//            apiKey: "P4jKiNzcdmk2Sl45KdpXRA==1VhEpeajatu91FgP",
-//            queryItems: [URLQueryItem(name: "category", value: "inspirational")])
-//        
-//        let data = try await perform(request: request)
-//        return try decoder.decode([Quote].self, from: data)
-//        
-//    }
-    
 }

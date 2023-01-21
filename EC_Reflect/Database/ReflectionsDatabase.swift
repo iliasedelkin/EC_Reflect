@@ -7,11 +7,6 @@
 
 import Foundation
 
-//var reflection0 = Reflection(id: 0, date: "",
-//                             notes: "",
-//                             feeling: .unknown)
-
-
 var reflectionData: [Reflection] = [reflection1, reflection2, reflection3, reflection4]
 
 var reflection1 = Reflection(id: UUID(), date: Date().addingTimeInterval(-60 * 60 * 24 * 4),

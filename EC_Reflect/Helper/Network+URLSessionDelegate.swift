@@ -63,6 +63,8 @@ extension Network: URLSessionDelegate {
             }
         }
         
+        request.timeoutInterval = 10
+        
         return request
     }
     

@@ -10,8 +10,7 @@ import Foundation
 @MainActor
 class QuoteViewModel: ObservableObject {
     
-    @Published var quoteLoadable: Loadable = Loadable<[Quote], Error>.idle
-//    [Quote]?
+    @Published var quoteLoadable: Loadable = Loadable<[Quote], NetworkError>.idle
     
     let quotePath: String = "/quotes"
     let quoteApiKey: String = "P4jKiNzcdmk2Sl45KdpXRA==1VhEpeajatu91FgP"
@@ -21,12 +20,15 @@ class QuoteViewModel: ObservableObject {
         do {
             if case .loading = quoteLoadable { return }
             quoteLoadable = .loading
-            quoteLoadable = try await .loaded(Network.shared.get(path: quotePath, apiKey: quoteApiKey, queryItems: quoteQueryItems) ?? [])
+            quoteLoadable = try await .loaded(
+                Network.shared.get(path: quotePath,
+                                   apiKey: quoteApiKey,
+                                   queryItems: quoteQueryItems) ?? [])
         } catch {
             let error = ResponseHandler.shared.mapError(error)
-            print(error.localizedDescription)
+            print("The error is: " + error.localizedDescription)
             
-            quoteLoadable = .error(ResponseHandler.shared.mapError(error))
+            quoteLoadable = .error(error)
         }
     }
     

@@ -11,14 +11,9 @@ class ReflectionViewModel: ObservableObject {
     
     @Published var reflections: [Reflection] = reflectionData
     
-//    init() {
-//        self.reflections = reflectionData
-//    }
-    
     func saveReflection(reflection: Reflection) {
         reflections.append(reflection)
     }
-    
 }
 
 public func dateTimeToString(date: Date) -> String {

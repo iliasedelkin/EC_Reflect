@@ -53,6 +53,7 @@ struct QuoteView: View {
                             Text("Loading..")
                             
                         case .loaded(let quote):
+                            // Quote appearance can be changed here
                             Text(quote.first?.quote ?? "No quote")
                                 .font(.system(size: 25))
                                 .multilineTextAlignment(.center)
@@ -62,18 +63,6 @@ struct QuoteView: View {
                         case .error(let error):
                             Text(error.localizedDescription)
                         }
-                        
-//                        if let quote = quoteVM.quote?.first {
-//
-//                            Text(quote.quote)
-//                                .font(.system(size: 25))
-//                                .multilineTextAlignment(.center)
-//                                .lineLimit(4)
-//                            Text(quote.author)
-//
-//                        } else {
-//                            Text("Loading...")
-//                        }
                     }
                     .frame(width: 300.0, height: 100)
                     //        .onReceive(timer) { _ in
