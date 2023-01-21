@@ -44,17 +44,36 @@ struct QuoteView: View {
                     ScrollView{
                     VStack(spacing: 10) {
                         
-                        if let quote = quoteVM.quote?.first {
+                        switch quoteVM.quoteLoadable {
                             
-                            Text(quote.quote)
+                        case .idle:
+                            Text("Idle")
+                            
+                        case .loading:
+                            Text("Loading..")
+                            
+                        case .loaded(let quote):
+                            Text(quote.first?.quote ?? "No quote")
                                 .font(.system(size: 25))
                                 .multilineTextAlignment(.center)
                                 .lineLimit(4)
-                            Text(quote.author)
+                            Text(quote.first?.author ?? "No author")
                             
-                        } else {
-                            Text("You are better than you were be")
+                        case .error(let error):
+                            Text(error.localizedDescription)
                         }
+                        
+//                        if let quote = quoteVM.quote?.first {
+//
+//                            Text(quote.quote)
+//                                .font(.system(size: 25))
+//                                .multilineTextAlignment(.center)
+//                                .lineLimit(4)
+//                            Text(quote.author)
+//
+//                        } else {
+//                            Text("Loading...")
+//                        }
                     }
                     .frame(width: 300.0, height: 100)
                     //        .onReceive(timer) { _ in
