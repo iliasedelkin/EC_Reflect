@@ -12,46 +12,62 @@ struct QuoteView: View {
     @State var refreshQuote: Bool = false
     
     var body: some View {
+        
         ZStack{
-           
-        VStack (alignment: .leading){
-            Text("Quote of the day")
-                .font(.title)
-                .fontWeight(.semibold)
-            
-            VStack (alignment: .leading, spacing: 10) {
-                
-                if let quote = quoteVM.quote?.first {
-                    
-                    Text(quote.quote)
-                        .font(.system(size: 25))
-                    
-                    Text(quote.author)
-                    
-                } else {
-                    Text("You are better than you were be")
-                }
-            }
-            .lineLimit(4)
-
-            
-            .task{
-                await quoteVM.getQuote()
-            }
-            
-            .padding(.top, 15)
-            
-            
-            
-            
-            
-            
-            Button {
-                refreshQuote.toggle()
-                if refreshQuote == true {
-                    Task {
-                        await quoteVM.getQuote()
+            ZStack (alignment: .bottom){
+                RoundedRectangle(cornerRadius: 15)
+                    .shadow(radius: 5)
+                    .foregroundColor(Color.white)
+//                    .frame(width: 350, height: 250)
+                HStack {
+                    Spacer()
+                    Button {
                         refreshQuote.toggle()
+                        if refreshQuote == true {
+                            Task {
+                                await quoteVM.getQuote()
+                                refreshQuote.toggle()
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(.black)
+                    }
+                }
+                .padding()
+            }
+            
+                VStack (spacing: 5){
+                    Text("Quote of the day")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    ScrollView{
+                    VStack(spacing: 10) {
+                        
+                        switch quoteVM.quoteLoadable {
+                            
+                        case .idle:
+                            Text("Idle")
+                            
+                        case .loading:
+                            Text("Loading..")
+                            
+                        case .loaded(let quote):
+                            // Quote appearance can be changed here
+                            Text(quote.first?.quote ?? "No quote")
+                                .font(.system(size: 25))
+                                .multilineTextAlignment(.center)
+                                .lineLimit(4)
+                            Text(quote.first?.author ?? "No author")
+                            
+                        case .error(let error):
+                            Text(error.localizedDescription)
+                        }
+                    }
+                    .frame(width: 300.0, height: 100)
+                    //        .onReceive(timer) { _ in
+                    .task{
+                        await quoteVM.getQuote()
                     }
                 }
             } label: {
