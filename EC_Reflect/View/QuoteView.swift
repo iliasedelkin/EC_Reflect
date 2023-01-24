@@ -70,22 +70,10 @@ struct QuoteView: View {
                         await quoteVM.getQuote()
                     }
                 }
-            } label: {
-                Image(systemName: "arrow.clockwise")
-                    .foregroundColor(.black)
+                    .padding(.top, 15)
             }
-            
-            .padding(.top, 5)
-            
-            
-            
+                .padding(.top, 30)
         }
-        .frame(width: 360, height: 240)
-  
-    }
-        //.frame(width: 350, height: 240)
-   
-        
         .padding()
     }
 }
@@ -93,7 +81,6 @@ struct QuoteView: View {
 
 struct QuoteView_Previews: PreviewProvider {
     static var previews: some View {
-        //QuoteView()
-        ContentView()
+        QuoteView()
     }
 }

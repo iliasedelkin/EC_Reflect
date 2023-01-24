@@ -18,9 +18,9 @@ struct WelcomeView: View {
                         .font(.custom("Nunito-Regular", size: 50))
                         .foregroundColor(colorScheme == .light ? .black : .white)
                     
-                    //.padding(.bottom, 40)
+                    
                     Image("emotions")
-                    //.padding(.bottom, 100)
+                    
                     Text("Track your mind")
                         .font(.custom("Nunito-Regular", size: 24))
                         .foregroundColor(colorScheme == .light ? .black : .white)
@@ -36,13 +36,13 @@ struct WelcomeView: View {
                         .frame(width: 260, height: 60)
                         .background(Color.accentColor)
                     
-                                .cornerRadius(50)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
-                                    
-                                )
+                        .cornerRadius(50)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
+                            
+                        )
                     
-                        
+                    
                 }
                 Button {
                     print("Skip for now")
