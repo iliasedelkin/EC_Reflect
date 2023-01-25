@@ -8,7 +8,7 @@
 import Foundation
 import Auth0
 
-class WelcomeViewModel: ObservableObject {
+class ProfileViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var userProfile: Profile = Profile.empty
     

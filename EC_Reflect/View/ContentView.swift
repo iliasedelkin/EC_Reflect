@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var reflectionVM = ReflectionViewModel()
-    @ObservedObject var welcomeVM = WelcomeViewModel()
+    @ObservedObject var profileVM = ProfileViewModel()
     
     var body: some View {
         
-        if welcomeVM.isAuthenticated {
+        if profileVM.isAuthenticated {
             
             TabView {
                           
@@ -28,14 +28,14 @@ struct ContentView: View {
                         Label("Journal", systemImage: "text.book.closed.fill")
                     }
                 
-                SettingsView(welcomeVM: welcomeVM)
+                SettingsView(welcomeVM: profileVM)
                     .tabItem {
                         Label("Settings", systemImage: "gearshape.fill")
                         
                     }
             }
         } else {
-            WelcomeView(welcomeVM: welcomeVM)
+            WelcomeView(welcomeVM: profileVM)
         }
         
     }

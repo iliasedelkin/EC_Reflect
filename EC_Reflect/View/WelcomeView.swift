@@ -10,7 +10,7 @@ import SwiftUI
 struct WelcomeView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @ObservedObject var welcomeVM: WelcomeViewModel
+    @ObservedObject var profileVM: ProfileViewModel
     
     var body: some View {
         ZStack {
@@ -32,7 +32,7 @@ struct WelcomeView: View {
                 .padding(.bottom, 10)
                 Button {
                     print("Sign up")
-                    welcomeVM.login()
+                    profileVM.login()
                     
                 } label: {
                     Text("Sign up")
@@ -61,7 +61,7 @@ struct WelcomeView: View {
     
     struct WelcomeView_Previews: PreviewProvider {
         static var previews: some View {
-            WelcomeView(welcomeVM: WelcomeViewModel())
+            WelcomeView(profileVM: ProfileViewModel())
         }
     }
 }
