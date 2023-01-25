@@ -44,10 +44,7 @@ struct WelcomeView: View {
                         .cornerRadius(50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
-                            
                         )
-                    
-                    
                 }
                 Button {
                     print("Skip for now")

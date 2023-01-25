@@ -8,23 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    let vm = ReflectionViewModel()
+    @ObservedObject var reflectionVM = ReflectionViewModel()
+    @ObservedObject var welcomeVM = WelcomeViewModel()
     
     var body: some View {
-        TabView {
+        
+        if welcomeVM.isAuthenticated {
             
-            WelcomeView(welcomeVM: WelcomeViewModel())
-                      
-            StartScreen(reflectionVM: vm, quoteVM: QuoteViewModel())
-                .tabItem {
-                    Label("Today", systemImage: "doc.text.image")
-                    
-                }
-            
-            JournalView(reflectionVM: vm)
-                .tabItem {
-                    Label("Journal", systemImage: "text.book.closed.fill")
-                }
+            TabView {
+                          
+                StartScreen(reflectionVM: reflectionVM, quoteVM: QuoteViewModel())
+                    .tabItem {
+                        Label("Today", systemImage: "doc.text.image")
+                        
+                    }
+                
+                JournalView(reflectionVM: reflectionVM)
+                    .tabItem {
+                        Label("Journal", systemImage: "text.book.closed.fill")
+                    }
+                
+                SettingsView(welcomeVM: welcomeVM)
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape.fill")
+                        
+                    }
+            }
+        } else {
+            WelcomeView(welcomeVM: welcomeVM)
         }
         
     }

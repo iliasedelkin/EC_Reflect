@@ -10,6 +10,7 @@ import Auth0
 
 class WelcomeViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
+    @Published var userProfile: Profile = Profile.empty
     
     func login() {
       Auth0 // 1
@@ -22,6 +23,8 @@ class WelcomeViewModel: ObservableObject {
             // 5
             case .success(let credentials):
               self.isAuthenticated = true
+              self.userProfile = Profile.from(credentials.idToken)
+              
               print("Credentials: \(credentials)")
               print("ID token: \(credentials.idToken)")
           }
@@ -39,6 +42,7 @@ class WelcomeViewModel: ObservableObject {
                 // 5
               case .success:
                 self.isAuthenticated = false
+                self.userProfile = Profile.empty
             }
           }
       }
