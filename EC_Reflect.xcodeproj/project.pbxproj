@@ -16,7 +16,6 @@
 		340484EE297FEC3D00FC47EC /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484ED297FEC3D00FC47EC /* WelcomeViewModel.swift */; };
 		340484F1297FF0F600FC47EC /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 340484F0297FF0F600FC47EC /* Auth0 */; };
 		340484F3297FF35100FC47EC /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 340484F2297FF35100FC47EC /* Auth0.plist */; };
-		340484F5297FF92900FC47EC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484F4297FF92900FC47EC /* WelcomeView.swift */; };
 		3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654829757A4400E0E663 /* ReflectionsDatabase.swift */; };
 		3429654B29757B4700E0E663 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654A29757B4700E0E663 /* Feeling.swift */; };
 		342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */; };
@@ -45,7 +44,6 @@
 		340484D1297E983600FC47EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		340484ED297FEC3D00FC47EC /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		340484F2297FF35100FC47EC /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
-		340484F4297FF92900FC47EC /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3429654829757A4400E0E663 /* ReflectionsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionsDatabase.swift; sourceTree = "<group>"; };
 		3429654A29757B4700E0E663 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		342D1EAA296EBBE700042838 /* EC_Reflect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EC_Reflect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +115,6 @@
 		3429654D29757BA000E0E663 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				340484F4297FF92900FC47EC /* WelcomeView.swift */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
@@ -270,7 +267,6 @@
 				545EDDE62978307000F04FC8 /* Quote.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
 				340484D0297C214300FC47EC /* Loadable.swift in Sources */,
-				340484F5297FF92900FC47EC /* WelcomeView.swift in Sources */,
 				342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */,
 				340484C8297AAA5900FC47EC /* Network.swift in Sources */,
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
