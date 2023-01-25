@@ -17,7 +17,7 @@ struct ContentView: View {
             
             TabView {
                           
-                StartScreen(reflectionVM: reflectionVM, quoteVM: QuoteViewModel())
+                StartScreen(reflectionVM: reflectionVM, profileVM: profileVM)
                     .tabItem {
                         Label("Today", systemImage: "doc.text.image")
                         
@@ -28,14 +28,14 @@ struct ContentView: View {
                         Label("Journal", systemImage: "text.book.closed.fill")
                     }
                 
-                SettingsView(welcomeVM: profileVM)
+                ProfileView(profileVM: profileVM)
                     .tabItem {
-                        Label("Settings", systemImage: "gearshape.fill")
+                        Label("Profile", systemImage: "person")
                         
                     }
             }
         } else {
-            WelcomeView(welcomeVM: profileVM)
+            WelcomeView(profileVM: profileVM)
         }
         
     }

@@ -1,5 +1,5 @@
 //
-//  WelcomeViewModel.swift
+//  ProfileViewModel.swift
 //  EC_Reflect
 //
 //  Created by Ilia Sedelkin on 24/01/23.
@@ -25,8 +25,8 @@ class ProfileViewModel: ObservableObject {
               self.isAuthenticated = true
               self.userProfile = Profile.from(credentials.idToken)
               
-              print("Credentials: \(credentials)")
-              print("ID token: \(credentials.idToken)")
+//              print("Credentials: \(credentials)")
+//              print("ID token: \(credentials.idToken)")
           }
         }
     }

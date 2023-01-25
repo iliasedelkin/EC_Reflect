@@ -35,7 +35,7 @@ struct WelcomeView: View {
                     profileVM.login()
                     
                 } label: {
-                    Text("Sign up")
+                    Text("Log in to start")
                         .font(.custom("Nunito-Bold", size: 20))
                         .foregroundColor(.white)
                         .frame(width: 260, height: 60)
