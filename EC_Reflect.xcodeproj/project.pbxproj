@@ -33,6 +33,7 @@
 		8AB53E5C2979505100D05348 /* StartscreenCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB53E5B2979505100D05348 /* StartscreenCardView.swift */; };
 		8ABEB1D8297567770015165A /* Reflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D6297567770015165A /* Reflection.swift */; };
 		8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D7297567770015165A /* ReflectionViewModel.swift */; };
+		BF135B1A2981483900209077 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF135B192981483900209077 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		8AB53E5B2979505100D05348 /* StartscreenCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenCardView.swift; sourceTree = "<group>"; };
 		8ABEB1D6297567770015165A /* Reflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflection.swift; sourceTree = "<group>"; };
 		8ABEB1D7297567770015165A /* ReflectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionViewModel.swift; sourceTree = "<group>"; };
+		BF135B192981483900209077 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				34F7EE662970738A00E8934B /* NoteReflectionView.swift */,
 				342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */,
 				545EDDE72978381100F04FC8 /* QuoteView.swift */,
+				BF135B192981483900209077 /* WelcomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				545EDDE62978307000F04FC8 /* Quote.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
 				340484D0297C214300FC47EC /* Loadable.swift in Sources */,
+				BF135B1A2981483900209077 /* WelcomeView.swift in Sources */,
 				342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */,
 				340484C8297AAA5900FC47EC /* Network.swift in Sources */,
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
