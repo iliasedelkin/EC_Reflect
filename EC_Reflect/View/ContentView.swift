@@ -13,6 +13,8 @@ struct ContentView: View {
     var body: some View {
         TabView {
             
+            WelcomeView(welcomeVM: WelcomeViewModel())
+            
             StartScreen(reflectionVM: vm, quoteVM: QuoteViewModel())
                 .tabItem {
                     Label("Today", systemImage: "doc.text.image")

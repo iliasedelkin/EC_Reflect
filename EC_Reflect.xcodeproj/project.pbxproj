@@ -12,6 +12,11 @@
 		340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CB297AAD3000FC47EC /* ResponseHandler.swift */; };
 		340484CE297AAF5900FC47EC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CD297AAF5900FC47EC /* NetworkError.swift */; };
 		340484D0297C214300FC47EC /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CF297C214300FC47EC /* Loadable.swift */; };
+		340484D2297E983600FC47EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484D1297E983600FC47EC /* User.swift */; };
+		340484EE297FEC3D00FC47EC /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484ED297FEC3D00FC47EC /* WelcomeViewModel.swift */; };
+		340484F1297FF0F600FC47EC /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 340484F0297FF0F600FC47EC /* Auth0 */; };
+		340484F3297FF35100FC47EC /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 340484F2297FF35100FC47EC /* Auth0.plist */; };
+		340484F5297FF92900FC47EC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484F4297FF92900FC47EC /* WelcomeView.swift */; };
 		3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654829757A4400E0E663 /* ReflectionsDatabase.swift */; };
 		3429654B29757B4700E0E663 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654A29757B4700E0E663 /* Feeling.swift */; };
 		342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */; };
@@ -37,6 +42,10 @@
 		340484CB297AAD3000FC47EC /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		340484CD297AAF5900FC47EC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		340484CF297C214300FC47EC /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		340484D1297E983600FC47EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		340484ED297FEC3D00FC47EC /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		340484F2297FF35100FC47EC /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		340484F4297FF92900FC47EC /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3429654829757A4400E0E663 /* ReflectionsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionsDatabase.swift; sourceTree = "<group>"; };
 		3429654A29757B4700E0E663 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		342D1EAA296EBBE700042838 /* EC_Reflect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EC_Reflect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340484F1297FF0F600FC47EC /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +109,7 @@
 			children = (
 				8ABEB1D7297567770015165A /* ReflectionViewModel.swift */,
 				545EDDE32978303200F04FC8 /* QuoteViewModel.swift */,
+				340484ED297FEC3D00FC47EC /* WelcomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -106,6 +117,7 @@
 		3429654D29757BA000E0E663 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				340484F4297FF92900FC47EC /* WelcomeView.swift */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
@@ -146,6 +158,7 @@
 				340484C4297AA87900FC47EC /* Network */,
 				342D1EB1296EBBE900042838 /* Assets.xcassets */,
 				342D1EB3296EBBE900042838 /* Preview Content */,
+				340484F2297FF35100FC47EC /* Auth0.plist */,
 			);
 			path = EC_Reflect;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 				3429654A29757B4700E0E663 /* Feeling.swift */,
 				545EDDE52978307000F04FC8 /* Quote.swift */,
 				340484CF297C214300FC47EC /* Loadable.swift */,
+				340484D1297E983600FC47EC /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +199,9 @@
 			dependencies = (
 			);
 			name = EC_Reflect;
+			packageProductDependencies = (
+				340484F0297FF0F600FC47EC /* Auth0 */,
+			);
 			productName = EC_Reflect;
 			productReference = 342D1EAA296EBBE700042838 /* EC_Reflect.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +230,9 @@
 				Base,
 			);
 			mainGroup = 342D1EA1296EBBE700042838;
+			packageReferences = (
+				340484EF297FF0F600FC47EC /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = 342D1EAB296EBBE700042838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -228,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */,
+				340484F3297FF35100FC47EC /* Auth0.plist in Resources */,
 				342D1EB2296EBBE900042838 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +270,7 @@
 				545EDDE62978307000F04FC8 /* Quote.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
 				340484D0297C214300FC47EC /* Loadable.swift in Sources */,
+				340484F5297FF92900FC47EC /* WelcomeView.swift in Sources */,
 				342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */,
 				340484C8297AAA5900FC47EC /* Network.swift in Sources */,
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
@@ -256,9 +278,11 @@
 				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
 				545EDDE82978381100F04FC8 /* QuoteView.swift in Sources */,
+				340484EE297FEC3D00FC47EC /* WelcomeViewModel.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
 				3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */,
 				340484CE297AAF5900FC47EC /* NetworkError.swift in Sources */,
+				340484D2297E983600FC47EC /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +485,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		340484EF297FF0F600FC47EC /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		340484F0297FF0F600FC47EC /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 340484EF297FF0F600FC47EC /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 342D1EA2296EBBE700042838 /* Project object */;
 }
