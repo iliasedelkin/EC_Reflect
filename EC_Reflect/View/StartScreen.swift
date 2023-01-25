@@ -15,29 +15,34 @@ struct StartScreen: View {
     var title = "Today"
 
     var body: some View {
-            VStack (alignment: .center) {
-                            VStack (alignment: .leading) {
-                                Text("Hello, Irina!")
-                                    .font(.system(size: 20).bold())
-                                    .fontWeight(.regular)
+        
+        VStack (alignment: .leading) {
+            VStack (alignment: .leading) {
+                Text("Hello, Irina!")
+                    .font(.system(size: 20).bold())
+                    .fontWeight(.regular)
+                    
+                Text("Today")
+                    .font(.system(size: 40).bold())
+                    .fontWeight(.bold)
                 
-                                    Text("Today")
-                                        .font(.system(size: 40).bold())
-                                        .fontWeight(.bold)
-                
-                                Text(dateToString(date: Date()))
-                                        .font(.system(size: 20).bold())
-                                        .fontWeight(.regular)             
-                            }
-                            .padding(.top, 10)
+                Text(dateToString(date: Date()))
+                    .font(.system(size: 20).bold())
+                    .fontWeight(.regular)
+            }
+            .padding(.top, 10)
+            .padding(.leading, 16)
+            VStack (alignment: .center){
                 StartscreenCardView(reflectionVM: reflectionVM)
-                .padding(.top, 20)
-               
+                    .padding(.top, 20)
+                
                 
                 QuoteView(quoteVM: QuoteViewModel())
+                    .padding(.leading, 10)
             }
+        }
+        
     }
-    
 }
 
 struct StartScreen_Previews: PreviewProvider {
