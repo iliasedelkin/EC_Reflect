@@ -9,7 +9,9 @@ import SwiftUI
 
 struct StartScreen: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
-    @ObservedObject var quoteVM: QuoteViewModel
+    @ObservedObject var profileVM: ProfileViewModel
+    
+    @ObservedObject var quoteVM: QuoteViewModel = QuoteViewModel()
 
     
     var title = "Today"
@@ -18,7 +20,7 @@ struct StartScreen: View {
         
         VStack (alignment: .leading) {
             VStack (alignment: .leading) {
-                Text("Hello, Irina!")
+                Text("Hello, \(profileVM.userProfile.name)!")
                     .font(.system(size: 20).bold())
                     .fontWeight(.regular)
                     

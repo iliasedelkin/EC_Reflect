@@ -19,6 +19,11 @@
 		342D1EB2296EBBE900042838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB1296EBBE900042838 /* Assets.xcassets */; };
 		342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB4296EBBE900042838 /* Preview Assets.xcassets */; };
 		342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */; };
+		3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */; };
+		3484DD7229814CD400C4A3E5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD7129814CD400C4A3E5 /* Profile.swift */; };
+		3484DD7429814D3200C4A3E5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3484DD7329814D3200C4A3E5 /* Auth0.plist */; };
+		3484DD7729814F0E00C4A3E5 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 3484DD7629814F0E00C4A3E5 /* Auth0 */; };
+		3484DD792981605500C4A3E5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD782981605500C4A3E5 /* ProfileView.swift */; };
 		34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE662970738A00E8934B /* NoteReflectionView.swift */; };
 		34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE682970738A00E8934B /* StartScreen.swift */; };
 		34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE692970738A00E8934B /* JournalView.swift */; };
@@ -48,6 +53,10 @@
 		342D1EB1296EBBE900042838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		342D1EB4296EBBE900042838 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionDetailsView.swift; sourceTree = "<group>"; };
+		3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		3484DD7129814CD400C4A3E5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		3484DD7329814D3200C4A3E5 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		3484DD782981605500C4A3E5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		34F7EE662970738A00E8934B /* NoteReflectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteReflectionView.swift; sourceTree = "<group>"; };
 		34F7EE682970738A00E8934B /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		34F7EE692970738A00E8934B /* JournalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
@@ -71,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3484DD7729814F0E00C4A3E5 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +118,7 @@
 			children = (
 				8ABEB1D7297567770015165A /* ReflectionViewModel.swift */,
 				545EDDE32978303200F04FC8 /* QuoteViewModel.swift */,
+				3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -124,6 +135,7 @@
 				34F7EE662970738A00E8934B /* NoteReflectionView.swift */,
 				342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */,
 				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
+				3484DD782981605500C4A3E5 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8A0B822E297FEB21000A5CA5 /* EC-Reflect-Info.plist */,
+				3484DD7329814D3200C4A3E5 /* Auth0.plist */,
 				342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */,
 				3429654D29757BA000E0E663 /* View */,
 				3429654C29757B8200E0E663 /* ViewModel */,
@@ -196,6 +209,7 @@
 				3429654A29757B4700E0E663 /* Feeling.swift */,
 				545EDDE52978307000F04FC8 /* Quote.swift */,
 				340484CF297C214300FC47EC /* Loadable.swift */,
+				3484DD7129814CD400C4A3E5 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +230,9 @@
 			dependencies = (
 			);
 			name = EC_Reflect;
+			packageProductDependencies = (
+				3484DD7629814F0E00C4A3E5 /* Auth0 */,
+			);
 			productName = EC_Reflect;
 			productReference = 342D1EAA296EBBE700042838 /* EC_Reflect.app */;
 			productType = "com.apple.product-type.application";
@@ -244,6 +261,9 @@
 				Base,
 			);
 			mainGroup = 342D1EA1296EBBE700042838;
+			packageReferences = (
+				3484DD7529814F0D00C4A3E5 /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = 342D1EAB296EBBE700042838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3484DD7429814D3200C4A3E5 /* Auth0.plist in Resources */,
 				8A0B8236297FF6A6000A5CA5 /* Nunito-Regular.ttf in Resources */,
 				342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */,
 				8A0B8234297FF69C000A5CA5 /* Nunito-Bold.ttf in Resources */,
@@ -275,11 +296,13 @@
 				34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */,
 				34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */,
 				342D1EB0296EBBE700042838 /* ContentView.swift in Sources */,
+				3484DD7229814CD400C4A3E5 /* Profile.swift in Sources */,
 				8A0B8228297FE503000A5CA5 /* WelcomeView.swift in Sources */,
 				8AE04755297FFAD40021BF8B /* QuoteView.swift in Sources */,
 				8AB53E5C2979505100D05348 /* StartscreenCardView.swift in Sources */,
 				340484C6297AA8AA00FC47EC /* Network+URLSessionDelegate.swift in Sources */,
 				8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */,
+				3484DD792981605500C4A3E5 /* ProfileView.swift in Sources */,
 				8ABEB1D8297567770015165A /* Reflection.swift in Sources */,
 				545EDDE62978307000F04FC8 /* Quote.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
@@ -289,6 +312,7 @@
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
 				3429654B29757B4700E0E663 /* Feeling.swift in Sources */,
 				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
+				3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
 				3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */,
@@ -421,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = NUWU6B2G25;
+				DEVELOPMENT_TEAM = B2849SAXBK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
@@ -436,7 +460,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -452,7 +476,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = NUWU6B2G25;
+				DEVELOPMENT_TEAM = B2849SAXBK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
@@ -467,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -497,6 +521,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3484DD7529814F0D00C4A3E5 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3484DD7629814F0E00C4A3E5 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3484DD7529814F0D00C4A3E5 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 342D1EA2296EBBE700042838 /* Project object */;
 }

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct WelcomeView: View {
     @Environment(\.colorScheme) var colorScheme
+    
+    @ObservedObject var profileVM: ProfileViewModel
+    
     var body: some View {
         ZStack {
             Color ("bg-color").edgesIgnoringSafeArea(.all)
@@ -29,8 +32,10 @@ struct WelcomeView: View {
                 .padding(.bottom, 10)
                 Button {
                     print("Sign up")
+                    profileVM.login()
+                    
                 } label: {
-                    Text("Sign up")
+                    Text("Log in to start")
                         .font(.custom("Nunito-Bold", size: 20))
                         .foregroundColor(.white)
                         .frame(width: 260, height: 60)
@@ -39,10 +44,7 @@ struct WelcomeView: View {
                         .cornerRadius(50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
-                            
                         )
-                    
-                    
                 }
                 Button {
                     print("Skip for now")
@@ -59,7 +61,7 @@ struct WelcomeView: View {
     
     struct WelcomeView_Previews: PreviewProvider {
         static var previews: some View {
-            WelcomeView()
+            WelcomeView(profileVM: ProfileViewModel())
         }
     }
 }
