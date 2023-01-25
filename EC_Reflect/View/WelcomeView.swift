@@ -9,6 +9,9 @@ import SwiftUI
 
 struct WelcomeView: View {
     @Environment(\.colorScheme) var colorScheme
+    
+    @ObservedObject var welcomeVM: WelcomeViewModel
+    
     var body: some View {
         ZStack {
             Color ("bg-color").edgesIgnoringSafeArea(.all)
@@ -29,6 +32,8 @@ struct WelcomeView: View {
                 .padding(.bottom, 10)
                 Button {
                     print("Sign up")
+                    welcomeVM.login()
+                    
                 } label: {
                     Text("Sign up")
                         .font(.custom("Nunito-Bold", size: 20))
@@ -59,7 +64,7 @@ struct WelcomeView: View {
     
     struct WelcomeView_Previews: PreviewProvider {
         static var previews: some View {
-            WelcomeView()
+            WelcomeView(welcomeVM: WelcomeViewModel())
         }
     }
 }
