@@ -10,6 +10,7 @@ import SwiftUI
 struct StartscreenCardView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     @State private var showingWriteReflectionView: Bool = false
+    
     var body: some View {
         ZStack{
             Image("bg")

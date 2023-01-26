@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ReflectionDetailsView: View {
-    @ObservedObject var reflectionVM: ReflectionViewModel
     
-    @State var reflection: Reflection
+    var reflection: ReflectionNote
 
     @Environment (\.dismiss) private var dismiss
     
@@ -18,7 +17,7 @@ struct ReflectionDetailsView: View {
         
         NavigationStack{
             VStack {
-                Text(reflection.notes)
+                Text(reflection.notes!)
                         .font(.system(size: 25))
                         .multilineTextAlignment(.leading)
                         .padding()
@@ -28,14 +27,14 @@ struct ReflectionDetailsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle(String(emojiFromFeeling(feeling: reflection.feeling))+" "+dateToString(date: reflection.date))
+            .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))+" "+dateToString(date: reflection.date!))
         }
 
     }
 }
 
-struct ReflectionDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReflectionDetailsView(reflectionVM: ReflectionViewModel(), reflection: reflection1)
-    }
-}
+//struct ReflectionDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReflectionDetailsView(reflectionVM: ReflectionViewModel(), reflection: ReflectionNote)
+//    }
+//}

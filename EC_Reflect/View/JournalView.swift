@@ -9,32 +9,17 @@ import SwiftUI
 
 struct JournalView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
-    
-    init(reflectionVM: ReflectionViewModel) {
-        self.reflectionVM = reflectionVM
         
-    }
-    
     var body: some View {
         
         NavigationStack {
             ScrollView {
                 VStack(spacing: 30) {
-                    //                    HStack{
-                    //                        Text("Journal")
-                    //                            .font(.system(size: 40).bold())
-                    //                            .fontWeight(.black)
-                    //                        Spacer()
-                    //                    }
-                    //                    .padding(.top, 40)
-                    //                    .padding(.leading, 16)
-                    
-                    ForEach(reflectionVM.reflections.reversed()) { index in
-                        
+                    ForEach(reflectionVM.reflections.reversed()) { reflection in
                         NavigationLink {
-                            ReflectionDetailsView(reflectionVM: reflectionVM, reflection: index)
+                            ReflectionDetailsView(reflection: reflection)
                         } label: {
-                            NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: index)
+                            NoteReflectionView(reflection: reflection)
                         }.buttonStyle(.plain)
                     }
                 }

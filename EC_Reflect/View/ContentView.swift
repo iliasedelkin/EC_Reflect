@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+
     @ObservedObject var reflectionVM = ReflectionViewModel()
     @ObservedObject var profileVM = ProfileViewModel()
     

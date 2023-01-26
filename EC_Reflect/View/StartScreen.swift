@@ -13,7 +13,6 @@ struct StartScreen: View {
     
     @ObservedObject var quoteVM: QuoteViewModel = QuoteViewModel()
 
-    
     var title = "Today"
 
     var body: some View {

@@ -14,8 +14,6 @@ struct WriteReflectionView: View {
     @State private var feelingToAdd: Feeling = .unknown
     @State private var isEmojiSelected: Bool = false
 
-    
-    
     @Environment (\.dismiss) private var dismiss
     
     
@@ -60,8 +58,8 @@ struct WriteReflectionView: View {
                     }
                     ToolbarItem(placement: .automatic){
                         Button("Save"){
-                            reflectionVM.saveReflection(
-                                reflection: Reflection(notes: notesToAdd, feeling: feelingToAdd))
+       
+                            reflectionVM.addNewReflectionNote(notes: notesToAdd, feeling: feelingToAdd)
                             dismiss()
                         }
                         .disabled(feelingToAdd == .unknown)
