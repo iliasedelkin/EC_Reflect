@@ -12,7 +12,7 @@ struct EC_ReflectApp: App {
    
     var body: some Scene {
         WindowGroup {
-           ContentView()
+      ContentView()
         }
     }
 }
