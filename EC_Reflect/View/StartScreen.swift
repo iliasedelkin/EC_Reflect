@@ -11,7 +11,6 @@ struct StartScreen: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var quoteVM: QuoteViewModel
 
-    
     var title = "Today"
 
     var body: some View {
