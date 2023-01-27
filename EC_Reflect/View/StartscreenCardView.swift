@@ -47,7 +47,7 @@ struct StartscreenCardView: View {
                         .cornerRadius(15)
                     }
                 }
-                .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
+                .fullScreenCover(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
                 }
                 )
                 Text("It's day 4 of reflection. Great job!")
