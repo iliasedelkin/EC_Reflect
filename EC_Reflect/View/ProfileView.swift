@@ -9,10 +9,18 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var profileVM: ProfileViewModel
+    @State var isNotificationOn: Bool = false
+    
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
-        VStack {
+        VStack (spacing: 30) {
+            Text("Notifications")
+                .font(.custom("Nunito-Regular", size: 35))
+                .foregroundColor(colorScheme == .light ? .black : .white)
+            Toggle("Turn notifications on", isOn: $isNotificationOn)
+            
             Text(profileVM.userProfile.name)
             Text(profileVM.userProfile.id)
             Text(profileVM.userProfile.email)
@@ -35,12 +43,15 @@ struct ProfileView: View {
                         RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
                     )
             }
+            .padding(.top, 10)
+            .padding(.leading, 16)
         }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(profileVM: ProfileViewModel())
+        ProfileView(profileVM: ProfileViewModel(), isNotificationOn: false)
     }
+    
 }
