@@ -13,6 +13,8 @@ struct WriteReflectionView: View {
     @State private var notesToAdd: String = ""
     @State private var feelingToAdd: Feeling = .unknown
     @State private var isEmojiSelected: Bool = false
+    
+    @FocusState private var keyboardFocus: Bool
 
     @Environment (\.dismiss) private var dismiss
     
@@ -34,6 +36,7 @@ struct WriteReflectionView: View {
                               """, text: $notesToAdd, axis: .vertical)
                         .lineLimit(1...8)
                         .padding(.all, 30.0)
+                        .focused($keyboardFocus)
                 }
                 Spacer()
                 VStack (spacing: 19){
@@ -64,6 +67,9 @@ struct WriteReflectionView: View {
                         }
                         .disabled(feelingToAdd == .unknown)
                     }
+                }
+                .onAppear {
+                    keyboardFocus = true
                 }
                 .navigationTitle("Reflect on your day")
             }
