@@ -28,7 +28,7 @@ struct NoteReflectionView: View {
             }
             .padding()
             
-            if let feeling = Feeling(rawValue: reflection.feeling!) {
+            if let feeling = Feeling(rawValue: reflection.feeling ?? "") {
                 Text(emojiFromFeeling(feeling: feeling))
                     .font(.system(size: 60, weight: .regular))
                     .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)

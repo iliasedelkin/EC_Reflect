@@ -10,6 +10,8 @@ import SwiftUI
 struct WriteReflectionView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     
+    var reflection: ReflectionNote
+    
     @State private var notesToAdd: String = ""
     @State private var feelingToAdd: Feeling = .unknown
     @State private var isEmojiSelected: Bool = false
@@ -60,8 +62,7 @@ struct WriteReflectionView: View {
                     }
                     ToolbarItem(placement: .automatic){
                         Button("Save"){
-       
-                            reflectionVM.addNewReflectionNote(notes: notesToAdd, feeling: feelingToAdd)
+                            reflectionVM.test(reflection: reflection, notes: notesToAdd, feeling: feelingToAdd)
                             dismiss()
                         }
                         .disabled(feelingToAdd == .unknown)
@@ -74,6 +75,10 @@ struct WriteReflectionView: View {
                 
                 .navigationTitle("Reflect on your day")
             }
+        }
+        .onAppear {
+            notesToAdd = reflection.notes ?? ""
+            feelingToAdd = Feeling(rawValue: reflection.feeling ?? "") ?? .unknown
         }
     }
 }
@@ -101,9 +106,9 @@ extension WriteReflectionView {
     }
 }
 
-struct WriteReflectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        WriteReflectionView(reflectionVM: ReflectionViewModel())
-    }
-}
+//struct WriteReflectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//        WriteReflectionView(reflectionVM: ReflectionViewModel())
+//    }
+//}

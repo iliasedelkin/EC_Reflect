@@ -10,6 +10,8 @@ import SwiftUI
 struct ReflectionDetailsView: View {
     
     var reflection: ReflectionNote
+    
+    @State var editReflect = false
 
     @Environment (\.dismiss) private var dismiss
     
@@ -17,7 +19,7 @@ struct ReflectionDetailsView: View {
         
         NavigationStack{
             VStack {
-                Text(reflection.notes!)
+                Text(reflection.notes ?? "")
                         .font(.system(size: 25))
                         .multilineTextAlignment(.leading)
                         .padding()
@@ -27,14 +29,34 @@ struct ReflectionDetailsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))+" "+dateToString(date: reflection.date!))
+            .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling ?? "") ?? .unknown))+" "+dateToString(date: reflection.date ?? Date()))
+            .toolbar{
+                ToolbarItem(placement: .destructiveAction) {
+                    Button ("Edit"){
+                        editReflect.toggle()
+                    }
+                }
+            }
+            .sheet(isPresented: $editReflect) {
+                WriteReflectionView(reflectionVM: ReflectionViewModel(), reflection: reflection)
+            }
         }
 
     }
 }
-
+//
 //struct ReflectionDetailsView_Previews: PreviewProvider {
+//    var reflectionNote: ReflectionNote {
+//        let context = PersistenceManager.shared.container.viewContext
+//        let note = ReflectionNote(context: context)
+//        note.notes = "New note"
+//        note.feeling = Feeling.sad.rawValue
+//        
+//        return note
+//    }
+//    
 //    static var previews: some View {
-//        ReflectionDetailsView(reflectionVM: ReflectionViewModel(), reflection: ReflectionNote)
+//        ReflectionDetailsView(reflection: reflectionNote)
 //    }
 //}
+

@@ -47,8 +47,10 @@ struct StartscreenCardView: View {
                         .cornerRadius(15)
                     }
                 }
-                .fullScreenCover(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
-                }
+                .fullScreenCover(isPresented: $showingWriteReflectionView, content: {
+                    let reflection = ReflectionNote(context: PersistenceManager.shared.container.viewContext)
+                    WriteReflectionView(reflectionVM: reflectionVM, reflection: reflection)
+                    }
                 )
                 Text("It's day 4 of reflection. Great job!")
                     .font(.system(size: 20))
