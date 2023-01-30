@@ -38,6 +38,40 @@ class ReflectionViewModel: ObservableObject {
         saveChanges()
     }
     
+    func test(reflection: ReflectionNote, notes: String, feeling: Feeling) {
+        if reflection.id == nil {
+            let newReflectionNote = ReflectionNote(context: PersistenceManager.shared.container.viewContext)
+            newReflectionNote.id = UUID()
+            newReflectionNote.notes = notes
+            newReflectionNote.date = Date()
+            newReflectionNote.feeling = feeling.rawValue
+        } else {
+            reflection.notes = notes
+            reflection.feeling = feeling.rawValue
+        }
+        saveChanges()
+    }
+    
+    func notesToChange(reflection: ReflectionNote) -> String {
+        var notes = ""
+        
+        if reflection.id != nil{
+            let reflectionNotes = reflection.notes!
+            notes = reflectionNotes
+        }
+        return notes
+    }
+    
+    func feelingToChange(reflection: ReflectionNote) -> Feeling {
+        var feeling: Feeling = .unknown
+        
+        if reflection.id != nil {
+            let reflectionFeeling = reflection.feeling
+            feeling = Feeling(rawValue: reflectionFeeling!)!
+        }
+        return feeling
+    }
+    
     func saveChanges() {
         PersistenceManager.shared.saveContext() { error in
             guard error == nil else {
