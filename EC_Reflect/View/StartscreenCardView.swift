@@ -50,18 +50,16 @@ struct StartscreenCardView: View {
                 .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
                 }
                 )
-                Text("It's day 4 of reflection. Great job!")
-                    .font(.system(size: 20))
-                    .fontWeight(.regular)
                 
-                    .frame(width: 350, height: 50)
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
+                DaysCounterView(reflectionVM: reflectionVM)
+    
+            
             }
             .padding(.top, 10)
         }
     }
 }
+
 
 struct StartscreenCardView_Previews: PreviewProvider {
     static var previews: some View {

@@ -11,6 +11,8 @@ import CoreData
 class ReflectionViewModel: ObservableObject {
     
     @Published var reflections: [ReflectionNote] = []
+    @Published var countuniqueDays: Int = 0
+    
     
     
     init() {
@@ -18,15 +20,26 @@ class ReflectionViewModel: ObservableObject {
     }
     
     func fetchLearners() {
+        let uniqueDays = NSCountedSet()
         let request = NSFetchRequest<ReflectionNote>(entityName: "ReflectionNote")
         
         do {
             reflections = try PersistenceManager.shared.container.viewContext.fetch(request)
+            
+            for reflection in reflections {
+                uniqueDays.add(dateToString(date: reflection.date!))
+            }
+            
+            countuniqueDays = uniqueDays.count
+            
         } catch {
             print("Error fetching. \(error)")
         }
         
     }
+    
+    
+    
     
     func addNewReflectionNote(notes: String, feeling: Feeling) {
         let newReflectionNote = ReflectionNote(context: PersistenceManager.shared.container.viewContext)
