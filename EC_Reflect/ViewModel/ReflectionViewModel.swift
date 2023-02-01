@@ -74,6 +74,6 @@ public func dateTimeToString(date: Date) -> String {
 
 public func dateToString(date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "d MMM y"
+    formatter.dateFormat = "d MMMM y"
     return formatter.string(from: date)
 }
