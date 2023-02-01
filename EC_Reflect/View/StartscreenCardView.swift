@@ -64,12 +64,19 @@ struct StartscreenCardView: View {
                 .fullScreenCover(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
                 }
                 )
+
                 .padding(.bottom, 15)
+
+                DaysCounterView(reflectionVM: reflectionVM)
+    
+            
+
             }
        
         }
     }
 }
+
 
 struct StartscreenCardView_Previews: PreviewProvider {
     static var previews: some View {
