@@ -8,57 +8,65 @@
 import SwiftUI
 
 struct StartscreenCardView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
     @State private var showingWriteReflectionView: Bool = false
     
     var body: some View {
-        ZStack{
-            Image("bg")
-                .resizable()
-                .scaledToFill()
+        ZStack {
+          RoundedRectangle(cornerRadius: 15)
+                .stroke(colorScheme == .light ? .black : .white)
+                
+                .frame(width: 360, height: 300)
             
-                .frame(width: 360, height: 270)
-                .clipped()
-                .cornerRadius(15)
-            
+       
             VStack{
+                Image("bg")
+                    .resizable()
+                    .frame(width: 360, height: 135)
+                    .offset(y: -2)
                 Text("How was your day?")
                 
-                    .font(.system(size: 25))
+                    .font(.custom("Nunito-Bold", size: 26))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 30)
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+             
+                Text("It's day 4 of reflection. Great job!")
+                    .font(.custom("Nunito-Regular", size: 16))
+                    .fontWeight(.regular)
                 
+                    
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                   
                 Button{
                     showingWriteReflectionView.toggle()
                     print("toggle")
                 }label: {
                     ZStack{
+                        RoundedRectangle (cornerRadius: 50)
+//                            .stroke(colorScheme == .light ? .black : .white)
+                               .frame(width: 300, height: 60)
                         HStack (alignment: .center){
                             Text("Daily reflection")
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
+                                .font(.custom("Nunito-Bold", size: 20))
+                                .foregroundColor(colorScheme == .light ? .white : .black)
                             Image(systemName: "arrow.right")
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? .white : .black)
+                                .fontWeight(.bold)
                             
                         }
-                        .padding(.init(top: 20, leading: 30, bottom: 20, trailing: 30))
-                        .background(Color.white)
-                        .cornerRadius(15)
+                   
+                       
+                        
+                     
                     }
                 }
                 .fullScreenCover(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
                 }
                 )
-                Text("It's day 4 of reflection. Great job!")
-                    .font(.system(size: 20))
-                    .fontWeight(.regular)
-                
-                    .frame(width: 350, height: 50)
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
+                .padding(.bottom, 15)
             }
-            .padding(.top, 10)
+       
         }
     }
 }

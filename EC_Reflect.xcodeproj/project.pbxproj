@@ -135,11 +135,11 @@
 				8A0B8227297FE503000A5CA5 /* WelcomeView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
+				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
 				34F7EE692970738A00E8934B /* JournalView.swift */,
 				34F7EE6E2970988600E8934B /* WriteReflectionView.swift */,
 				34F7EE662970738A00E8934B /* NoteReflectionView.swift */,
 				342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */,
-				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
 				3484DD782981605500C4A3E5 /* ProfileView.swift */,
 			);
 			path = View;
@@ -454,7 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = B2849SAXBK;
+				DEVELOPMENT_TEAM = NUWU6B2G25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
@@ -469,7 +469,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -485,7 +485,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = B2849SAXBK;
+				DEVELOPMENT_TEAM = NUWU6B2G25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
@@ -500,7 +500,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -549,6 +549,7 @@
 			productName = Auth0;
 		};
 /* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
 		BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */ = {
 			isa = XCVersionGroup;
