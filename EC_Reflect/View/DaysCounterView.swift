@@ -14,33 +14,33 @@ struct DaysCounterView: View {
         
         if (reflectionVM.countuniqueDays == 0) {
             Text("It's \(reflectionVM.countuniqueDays) day of reflection. Let's get started!")
-                .font(.system(size: 20))
+                .font(.custom("Nunito-Bold", size: 16))
                 .fontWeight(.regular)
             
-                .frame(width: 350, height: 50)
-                .foregroundColor(.white)
-                .padding(.top, 20)
+                .frame(width: 320)
+                .foregroundColor(.black)
+             
         }
         
         
         if (reflectionVM.countuniqueDays == 1) {
             Text("It's \(reflectionVM.countuniqueDays) day of reflection. Great job!")
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .fontWeight(.regular)
             
-                .frame(width: 350, height: 50)
+                .frame(width: 350)
                 .foregroundColor(.white)
-                .padding(.top, 20)
+              
         }
         
         if (reflectionVM.countuniqueDays > 1) {
             Text("It's \(reflectionVM.countuniqueDays) days of reflection. Great job!")
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .fontWeight(.regular)
             
-                .frame(width: 350, height: 50)
+                .frame(width: 350)
                 .foregroundColor(.white)
-                .padding(.top, 20)
+           
         }
     }
 }
