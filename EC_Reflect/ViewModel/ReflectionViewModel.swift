@@ -14,10 +14,10 @@ class ReflectionViewModel: ObservableObject {
     
     
     init() {
-        fetchLearners()
+        fetchReflections()
     }
     
-    func fetchLearners() {
+    func fetchReflections() {
         let request = NSFetchRequest<ReflectionNote>(entityName: "ReflectionNote")
         
         do {
@@ -44,7 +44,7 @@ class ReflectionViewModel: ObservableObject {
                 print("An error occurred while saving: \(error!)")
                 return
             }
-            self.fetchLearners()
+            self.fetchReflections()
         }
     }
     

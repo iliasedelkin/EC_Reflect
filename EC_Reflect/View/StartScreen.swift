@@ -10,8 +10,6 @@ import SwiftUI
 struct StartScreen: View {
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var profileVM: ProfileViewModel
-    
-    @ObservedObject var quoteVM: QuoteViewModel = QuoteViewModel()
 
     var title = "Today"
 

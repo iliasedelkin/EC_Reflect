@@ -12,7 +12,6 @@
 		340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CB297AAD3000FC47EC /* ResponseHandler.swift */; };
 		340484CE297AAF5900FC47EC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CD297AAF5900FC47EC /* NetworkError.swift */; };
 		340484D0297C214300FC47EC /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340484CF297C214300FC47EC /* Loadable.swift */; };
-		3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654829757A4400E0E663 /* ReflectionsDatabase.swift */; };
 		3429654B29757B4700E0E663 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429654A29757B4700E0E663 /* Feeling.swift */; };
 		342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */; };
 		342D1EB0296EBBE700042838 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D1EAF296EBBE700042838 /* ContentView.swift */; };
@@ -34,7 +33,6 @@
 		8A0B8234297FF69C000A5CA5 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0B8233297FF69C000A5CA5 /* Nunito-Bold.ttf */; };
 		8A0B8236297FF6A6000A5CA5 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A0B8235297FF6A6000A5CA5 /* Nunito-Regular.ttf */; };
 		8AB53E5C2979505100D05348 /* StartscreenCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB53E5B2979505100D05348 /* StartscreenCardView.swift */; };
-		8ABEB1D8297567770015165A /* Reflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D6297567770015165A /* Reflection.swift */; };
 		8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D7297567770015165A /* ReflectionViewModel.swift */; };
 		8AE04755297FFAD40021BF8B /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE04754297FFAD40021BF8B /* QuoteView.swift */; };
 		BEF614EF297FE6E1007B5C57 /* Reflection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */; };
@@ -47,7 +45,6 @@
 		340484CB297AAD3000FC47EC /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		340484CD297AAF5900FC47EC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		340484CF297C214300FC47EC /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		3429654829757A4400E0E663 /* ReflectionsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionsDatabase.swift; sourceTree = "<group>"; };
 		3429654A29757B4700E0E663 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		342D1EAA296EBBE700042838 /* EC_Reflect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EC_Reflect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		342D1EAD296EBBE700042838 /* EC_ReflectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EC_ReflectApp.swift; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 		8A0B8233297FF69C000A5CA5 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		8A0B8235297FF6A6000A5CA5 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		8AB53E5B2979505100D05348 /* StartscreenCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenCardView.swift; sourceTree = "<group>"; };
-		8ABEB1D6297567770015165A /* Reflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflection.swift; sourceTree = "<group>"; };
 		8ABEB1D7297567770015165A /* ReflectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionViewModel.swift; sourceTree = "<group>"; };
 		8AE04754297FFAD40021BF8B /* QuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		BEF614ED297FE6E1007B5C57 /* Reflection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reflection.xcdatamodel; sourceTree = "<group>"; };
@@ -113,7 +109,8 @@
 		3429654729757A1100E0E663 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				3429654829757A4400E0E663 /* ReflectionsDatabase.swift */,
+				BEF614F0297FEAB1007B5C57 /* Persistence.swift */,
+				BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -210,9 +207,6 @@
 		8ABEB1D5297567770015165A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BEF614F0297FEAB1007B5C57 /* Persistence.swift */,
-				BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */,
-				8ABEB1D6297567770015165A /* Reflection.swift */,
 				3429654A29757B4700E0E663 /* Feeling.swift */,
 				545EDDE52978307000F04FC8 /* Quote.swift */,
 				340484CF297C214300FC47EC /* Loadable.swift */,
@@ -311,7 +305,6 @@
 				340484C6297AA8AA00FC47EC /* Network+URLSessionDelegate.swift in Sources */,
 				8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */,
 				3484DD792981605500C4A3E5 /* ProfileView.swift in Sources */,
-				8ABEB1D8297567770015165A /* Reflection.swift in Sources */,
 				545EDDE62978307000F04FC8 /* Quote.swift in Sources */,
 				34F7EE6C2970738A00E8934B /* StartScreen.swift in Sources */,
 				340484D0297C214300FC47EC /* Loadable.swift in Sources */,
@@ -324,7 +317,6 @@
 				3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
-				3429654929757A4400E0E663 /* ReflectionsDatabase.swift in Sources */,
 				340484CE297AAF5900FC47EC /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +541,7 @@
 			productName = Auth0;
 		};
 /* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
 		BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */ = {
 			isa = XCVersionGroup;

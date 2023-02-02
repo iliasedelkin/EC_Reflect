@@ -48,6 +48,7 @@ struct WelcomeView: View {
                 }
                 Button {
                     print("Skip for now")
+                    profileVM.isAuthenticated = true
                 } label: {
                     Text("Skip for now")
                         .font(.custom("Nunito-Bold", size: 20))
