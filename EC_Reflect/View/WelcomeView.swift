@@ -16,41 +16,52 @@ struct WelcomeView: View {
         ZStack {
             Color ("bg-color").edgesIgnoringSafeArea(.all)
             VStack (){
-                VStack (spacing: 40){
-                    Text("Reflect")
-                        .font(.custom("Nunito-Regular", size: 50))
-                        .foregroundColor(colorScheme == .light ? .black : .white)
-                    
-                    
+                VStack (spacing: 10){
                     Image("emotions")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 350)
+                        
+                    Text("Reflect")
+
+                        .font(.custom("Nunito-Regular", size: 44))
+                        .foregroundColor(colorScheme == .light ? .black : .white)
+                        .padding(.top, 30)
+                    
+               
                     
                     Text("Track your mind")
-                        .font(.custom("Nunito-Regular", size: 24))
+                        .font(.custom("Nunito-Regular", size: 20))
                         .foregroundColor(colorScheme == .light ? .black : .white)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 70)
                 }
-                .padding(.bottom, 10)
+                
+              
                 Button {
                     print("Sign up")
                     profileVM.login()
                     
                 } label: {
+                    ZStack {
+                        RoundedRectangle (cornerRadius: 50)
+                               
+                               .frame(width: 240, height: 60)
                     Text("Log in to start")
-                        .font(.custom("Nunito-Bold", size: 20))
-                        .foregroundColor(.white)
-                        .frame(width: 260, height: 60)
-                        .background(Color.accentColor)
+                            .font(.custom("Nunito-Bold", size: 20))
+                    
+                        .foregroundColor(colorScheme == .light ? .white : .black)
+                    
                     
                         .cornerRadius(50)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
-                        )
+                }
                 }
                 Button {
                     print("Skip for now")
+                    profileVM.isAuthenticated = true
                 } label: {
                     Text("Skip for now")
                         .font(.custom("Nunito-Bold", size: 20))
+                
                         .foregroundColor(colorScheme == .light ? .black : .white)
                 }
                 .padding(.top, 10)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StartScreen: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var profileVM: ProfileViewModel
     
@@ -16,39 +17,42 @@ struct StartScreen: View {
     var title = "Today"
 
     var body: some View {
-        
+        ZStack {
+            Color ("bg-color").edgesIgnoringSafeArea(.all)
         VStack (alignment: .leading) {
             VStack (alignment: .leading) {
-                Text("Hello, \(profileVM.userProfile.name)!")
-                    .font(.system(size: 20).bold())
-                    .fontWeight(.regular)
-                    
+                
+                
                 Text("Today")
-                    .font(.system(size: 40).bold())
+                    .font(.custom("Nunito-Bold", size: 36))
                     .fontWeight(.bold)
+                    .padding(.top, 20)
                 
                 Text(dateToString(date: Date()))
-                    .font(.system(size: 20).bold())
+                    .font(.custom("Nunito-Bold", size: 18))
+                    
                     .fontWeight(.regular)
             }
-            .padding(.top, 10)
-            .padding(.leading, 16)
+            .offset(y: -10)
+          
             VStack (alignment: .center){
                 StartscreenCardView(reflectionVM: reflectionVM)
-                    .padding(.top, 20)
+                    .offset(y: 0)
                 
                 
                 QuoteView(quoteVM: QuoteViewModel())
-                    .padding(.leading, 10)
+                    .offset(y: -15)
+                
             }
         }
         
+    }
     }
 }
 
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
     
-       ContentView()
+        StartScreen(reflectionVM: ReflectionViewModel(), profileVM: ProfileViewModel())
     }
 }
