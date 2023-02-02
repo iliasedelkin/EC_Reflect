@@ -16,7 +16,7 @@ class ReflectionViewModel: ObservableObject {
     
     
     init() {
-        fetchReflections()
+        fetchLearners()
     }
     
     func fetchLearners() {
@@ -57,7 +57,7 @@ class ReflectionViewModel: ObservableObject {
                 print("An error occurred while saving: \(error!)")
                 return
             }
-            self.fetchReflections()
+            self.fetchLearners()
         }
     }
     
