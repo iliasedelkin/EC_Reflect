@@ -11,22 +11,35 @@ import CoreData
 class ReflectionViewModel: ObservableObject {
     
     @Published var reflections: [ReflectionNote] = []
+    @Published var countuniqueDays: Int = 0
+    
     
     
     init() {
-        fetchReflections()
+        fetchLearners()
     }
     
-    func fetchReflections() {
+    func fetchLearners() {
+        let uniqueDays = NSCountedSet()
         let request = NSFetchRequest<ReflectionNote>(entityName: "ReflectionNote")
         
         do {
             reflections = try PersistenceManager.shared.container.viewContext.fetch(request)
+            
+            for reflection in reflections {
+                uniqueDays.add(dateToString(date: reflection.date!))
+            }
+            
+            countuniqueDays = uniqueDays.count
+            
         } catch {
             print("Error fetching. \(error)")
         }
         
     }
+    
+    
+    
     
     func addNewReflectionNote(notes: String, feeling: Feeling) {
         let newReflectionNote = ReflectionNote(context: PersistenceManager.shared.container.viewContext)
@@ -44,7 +57,7 @@ class ReflectionViewModel: ObservableObject {
                 print("An error occurred while saving: \(error!)")
                 return
             }
-            self.fetchReflections()
+            self.fetchLearners()
         }
     }
     
@@ -61,6 +74,6 @@ public func dateTimeToString(date: Date) -> String {
 
 public func dateToString(date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "d MMM y"
+    formatter.dateFormat = "d MMMM y"
     return formatter.string(from: date)
 }

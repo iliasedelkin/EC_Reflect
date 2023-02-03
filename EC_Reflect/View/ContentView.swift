@@ -17,10 +17,11 @@ struct ContentView: View {
         if profileVM.isAuthenticated {
             
             TabView {
-                          
+                
                 StartScreen(reflectionVM: reflectionVM, profileVM: profileVM)
                     .tabItem {
                         Label("Today", systemImage: "doc.text.image")
+                           
                         
                     }
                 
@@ -35,10 +36,11 @@ struct ContentView: View {
                         
                     }
             }
+        
         } else {
             WelcomeView(profileVM: profileVM)
         }
-        
+            
     }
     
     

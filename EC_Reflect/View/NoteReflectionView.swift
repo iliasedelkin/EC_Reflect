@@ -9,20 +9,22 @@ import SwiftUI
 
 struct NoteReflectionView: View {
     var reflection: ReflectionNote
-    
+   
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
             RoundedRectangle(cornerRadius: 19.0)
-                .fill(.white)
+                .stroke(.black)
+                
                 .frame(width: 333, height: 141)
-                .shadow(radius: 15, x: 0, y: 0)
-                .opacity(0.5)
+                
             
             VStack(alignment: .leading, spacing: 15){
                 if let date = reflection.date, let notes = reflection.notes{
-                    Text(dateToString(date: date)).font(.system(size: 16, weight: .bold))
-                        .opacity(0.5)
-                    Text(notes).font(.system(size: 16, weight: .regular))
+                    Text(dateToString(date: date))
+                        .font(.custom("Nunito-Bold", size: 16))
+                      
+                    Text(notes)
+                        .font(.custom("Nunito-Regular", size: 16))
                         .frame(width: 250, height: 58)
                 }
             }
@@ -30,15 +32,16 @@ struct NoteReflectionView: View {
             
             if let feeling = Feeling(rawValue: reflection.feeling!) {
                 Text(emojiFromFeeling(feeling: feeling))
-                    .font(.system(size: 60, weight: .regular))
-                    .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)
+                    .font(.system(size: 30, weight: .regular))
+                    .frame(maxWidth: 310, maxHeight: 130, alignment: .topTrailing)
             }
         }
     }
 }
 
-//struct SwiftUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: reflection1)
-//    }
-//}
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+//        NoteReflectionView(reflectionVM: ReflectionViewModel(), reflection: reflection)
+        JournalView(reflectionVM: ReflectionViewModel())
+    }
+}

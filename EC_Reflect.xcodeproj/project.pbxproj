@@ -37,6 +37,7 @@
 		8AE04755297FFAD40021BF8B /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE04754297FFAD40021BF8B /* QuoteView.swift */; };
 		BEF614EF297FE6E1007B5C57 /* Reflection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */; };
 		BEF614F1297FEAB1007B5C57 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF614F0297FEAB1007B5C57 /* Persistence.swift */; };
+		BEF615312989348F007B5C57 /* DaysCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF615302989348F007B5C57 /* DaysCounterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		BEF614ED297FE6E1007B5C57 /* Reflection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reflection.xcdatamodel; sourceTree = "<group>"; };
 		BEF614EE297FE6E1007B5C57 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BEF614F0297FEAB1007B5C57 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BEF615302989348F007B5C57 /* DaysCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCounterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,11 +134,12 @@
 				8A0B8227297FE503000A5CA5 /* WelcomeView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
+				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
 				34F7EE692970738A00E8934B /* JournalView.swift */,
+				BEF615302989348F007B5C57 /* DaysCounterView.swift */,
 				34F7EE6E2970988600E8934B /* WriteReflectionView.swift */,
 				34F7EE662970738A00E8934B /* NoteReflectionView.swift */,
 				342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */,
-				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
 				3484DD782981605500C4A3E5 /* ProfileView.swift */,
 			);
 			path = View;
@@ -313,6 +316,7 @@
 				340484C8297AAA5900FC47EC /* Network.swift in Sources */,
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
 				3429654B29757B4700E0E663 /* Feeling.swift in Sources */,
+				BEF615312989348F007B5C57 /* DaysCounterView.swift in Sources */,
 				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
 				3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
@@ -446,22 +450,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = B2849SAXBK;
+				DEVELOPMENT_TEAM = NUWU6B2G25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -477,22 +481,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = B2849SAXBK;
+				DEVELOPMENT_TEAM = NUWU6B2G25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

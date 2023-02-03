@@ -74,14 +74,13 @@ struct ProfileView: View {
                 profileVM.logout()
             } label: {
                 Text("Log out")
-                    .font(.custom("Nunito-Bold", size: 20))
+                    .font(.custom("Nunito-Bold", size: 18))
                     .foregroundColor(.white)
-                    .frame(width: 260, height: 60)
+                
+                    .padding(.init(top: 18, leading: 65, bottom: 18, trailing: 65))
                     .background(Color.accentColor)
                     .cornerRadius(50)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 50).stroke(Color.black, lineWidth: 1)
-                    )
+                  
             }
             .padding(.top, 10)
             .padding(.leading, 16)
