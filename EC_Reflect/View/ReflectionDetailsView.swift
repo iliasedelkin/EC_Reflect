@@ -32,7 +32,7 @@ struct ReflectionDetailsView: View {
             .padding()
             .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))+" "+dateToString(date: reflection.date!))
             .sheet(isPresented: $isEdit){
-                WriteReflectionView(addEditVM: AddEditViewModel(), addReflection: $isEdit)
+                WriteReflectionView(addEditVM: addEditVM, addReflection: $isEdit)
             }
             .toolbar{
                 ToolbarItem(placement: .destructiveAction) {
