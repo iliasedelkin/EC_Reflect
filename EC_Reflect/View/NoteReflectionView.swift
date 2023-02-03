@@ -34,22 +34,6 @@ struct NoteReflectionView: View {
                     .frame(maxWidth: 320, maxHeight: 141, alignment: .bottomTrailing)
             }
         }
-//        .swipeActions(edge: .trailing, allowsFullSwipe: false){
-//            Button(role: .destructive, action: {
-//                addEditVM.delete(reflection: reflection, context: PersistenceManager.shared.container.viewContext)
-//            }, label: {
-//                Label("Delete",systemImage: "trash")
-//            })
-//            Button(action: {
-//                addEditVM.notes = reflection.notes ?? ""
-//                addEditVM.feeling = Feeling(rawValue: reflection.feeling!)!
-//                addEditVM.reflection = reflection
-//                isEdit.toggle()
-//            }, label: {
-//                Label("Edit",systemImage: "pencil")
-//            })
-//                .tint(.yellow)
-//        }
     }
 }
 
