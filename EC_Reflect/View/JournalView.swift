@@ -26,6 +26,9 @@ struct JournalView: View {
                 .padding(20)
             }
             .navigationTitle("Journal")
+            .onAppear{
+                reflectionVM.fetchLearners()
+            }
         }
     }
 }
