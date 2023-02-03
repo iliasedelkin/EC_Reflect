@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "pic-emotions-light.png",
+      "filename" : "welcome-bg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,6 @@
           "value" : "light"
         }
       ],
-      "filename" : "pic-emotions-light 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -23,12 +22,11 @@
           "value" : "dark"
         }
       ],
-      "filename" : "pic-emotions-dark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pic-emotions-light-2x.png",
+      "filename" : "welcome-bg 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -39,7 +37,6 @@
           "value" : "light"
         }
       ],
-      "filename" : "pic-emotions-light-2x 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -50,12 +47,11 @@
           "value" : "dark"
         }
       ],
-      "filename" : "pic-emotions-dark-2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pic-emotions-light-3x.png",
+      "filename" : "welcome-bg 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -66,7 +62,6 @@
           "value" : "light"
         }
       ],
-      "filename" : "pic-emotions-light-3x 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -77,7 +72,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "pic-emotions-dark-3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

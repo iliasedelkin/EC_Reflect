@@ -8,39 +8,39 @@
 import SwiftUI
 
 struct DaysCounterView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
     
     var body: some View {
         
         if (reflectionVM.countuniqueDays == 0) {
             Text("It's \(reflectionVM.countuniqueDays) day of reflection. Let's get started!")
-                .font(.system(size: 20))
-                .fontWeight(.regular)
-            
-                .frame(width: 350, height: 50)
-                .foregroundColor(.white)
-                .padding(.top, 20)
+                .font(.custom("Nunito-Regular", size: 16))
+                          
+               // .frame(width: 320)
+                .foregroundColor(colorScheme == .light ? .black : .white)
+             
         }
         
         
         if (reflectionVM.countuniqueDays == 1) {
             Text("It's \(reflectionVM.countuniqueDays) day of reflection. Great job!")
-                .font(.system(size: 20))
-                .fontWeight(.regular)
+                .font(.custom("Nunito-Regular", size: 16))
+     
             
-                .frame(width: 350, height: 50)
-                .foregroundColor(.white)
-                .padding(.top, 20)
+                //.frame(width: 350)
+                .foregroundColor(colorScheme == .light ? .black : .white)
+              
         }
         
         if (reflectionVM.countuniqueDays > 1) {
             Text("It's \(reflectionVM.countuniqueDays) days of reflection. Great job!")
-                .font(.system(size: 20))
-                .fontWeight(.regular)
+                .font(.custom("Nunito-Regular", size: 16))
             
-                .frame(width: 350, height: 50)
-                .foregroundColor(.white)
-                .padding(.top, 20)
+            
+                //.frame(width: 350)
+                .foregroundColor(colorScheme == .light ? .black : .white)
+           
         }
     }
 }
