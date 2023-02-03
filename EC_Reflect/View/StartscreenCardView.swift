@@ -24,12 +24,13 @@ struct StartscreenCardView: View {
                 Image("bg")
                     .resizable()
                     .frame(width: 360, height: 135)
-                    .offset(y: 0)
+                    .offset(y: -1)
                 Text("How was your day?")
                 
                     .font(.custom("Nunito-Bold", size: 26))
                     .fontWeight(.bold)
                     .foregroundColor(colorScheme == .light ? .black : .white)
+                    .padding(.top, 6)
                 DaysCounterView(reflectionVM: reflectionVM)
                     
 //                Text("It's day 4 of reflection. Great job!")
@@ -47,6 +48,7 @@ struct StartscreenCardView: View {
                         RoundedRectangle (cornerRadius: 50)
 //                            .stroke(colorScheme == .light ? .black : .white)
                                .frame(width: 300, height: 60)
+                               .foregroundColor(colorScheme == .light ? .accentColor : .white)
                         HStack (alignment: .center){
                             Text("Daily reflection")
                                 .font(.custom("Nunito-Bold", size: 20))
@@ -65,9 +67,9 @@ struct StartscreenCardView: View {
                 .fullScreenCover(isPresented: $addRefllection, content: { WriteReflectionView(addEditVM: AddEditViewModel(), addReflection: $addRefllection)
                 }
                 )
-                .padding(.top, 15)
+                .padding(.top, 10)
 
-                .padding(.bottom, 15)
+                .padding(.bottom, 13)
 
                
     

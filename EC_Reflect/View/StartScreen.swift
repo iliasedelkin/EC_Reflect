@@ -11,8 +11,6 @@ struct StartScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var profileVM: ProfileViewModel
-    
-    @ObservedObject var quoteVM: QuoteViewModel = QuoteViewModel()
 
     var title = "Today"
 

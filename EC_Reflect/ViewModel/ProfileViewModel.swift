@@ -7,45 +7,105 @@
 
 import Foundation
 import Auth0
+import UserNotifications
 
+@MainActor
 class ProfileViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var userProfile: Profile = Profile.empty
+    @Published var isNotifAuthGiven: Bool = UserDefaults.standard.bool(forKey: "isNotifAuthGiven")
+    @Published var notificationTime: Date = Date()
+    @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
+    
+    let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]
+    //    @Published var notificationTime: TimeInterval = UserDefaults.standard.bool(forKey: "notificationTime")
     
     func login() {
-      Auth0 // 1
-        .webAuth() // 2
-        .start { result in // 3
-          switch result {
-            // 4
-            case .failure(let error):
-              print("Failed with: \(error)")
-            // 5
-            case .success(let credentials):
-              self.isAuthenticated = true
-              self.userProfile = Profile.from(credentials.idToken)
-              
-//              print("Credentials: \(credentials)")
-//              print("ID token: \(credentials.idToken)")
-          }
-        }
+        Auth0 // 1
+            .webAuth() // 2
+            .start { result in // 3
+                switch result {
+                    // 4
+                case .failure(let error):
+                    print("Failed with: \(error)")
+                    // 5
+                case .success(let credentials):
+                    self.isAuthenticated = true
+                    self.userProfile = Profile.from(credentials.idToken)
+                    
+                    //              print("Credentials: \(credentials)")
+                    //              print("ID token: \(credentials.idToken)")
+                }
+            }
     }
     
     func logout() {
         Auth0 // 1
-          .webAuth() // 2
-          .clearSession { result in // 3
-            switch result {
-              // 4
-              case .failure(let error):
-                print("Failed with: \(error)")
-                // 5
-              case .success:
-                self.isAuthenticated = false
-                self.userProfile = Profile.empty
+            .webAuth() // 2
+            .clearSession { result in // 3
+                switch result {
+                    // 4
+                case .failure(let error):
+                    print("Failed with: \(error)")
+                    // 5
+                case .success:
+                    self.isAuthenticated = false
+                    self.userProfile = Profile.empty
+                }
             }
-          }
-      }
+    }
     
+//    Handling notifications
     
+    func saveNotificationStatus() {
+        UserDefaults.standard.set(isNotificationOn, forKey: "isNotificationOn")
+    }
+    
+    func saveNotificationUUID(notificationUuidString: String) {
+        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
+    }
+    
+    func saveNotifAuthStatus() {
+        UserDefaults.standard.set(isNotifAuthGiven, forKey: "isNotifAuthGiven")
+    }
+    
+    func addDailyNotifications(daysArray: [Int]) {
+        
+        for number in daysArray {
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Time for your daily reflection! 🧠❤️"
+            content.subtitle = "Take 5 minutes to record your thoughts and feelings"
+            content.sound = UNNotificationSound.default
+            
+            // Set the Days&time, iterate for every day of the week
+            var dateComponents = DateComponents()
+            dateComponents.weekday = number
+            dateComponents.hour = Calendar.current.component(.hour, from: notificationTime)
+            dateComponents.minute = Calendar.current.component(.minute, from: notificationTime)
+            
+            print(dateComponents)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            
+            // choose a random identifier
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            
+            // add our notification request
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+            saveNotificationUUID(notificationUuidString: uuidString)
+            
+            print("Notification set for \(trigger.dateComponents.hour!):  \(trigger.dateComponents.minute!)")
+        }
+        
+    }
+    func removeNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 }

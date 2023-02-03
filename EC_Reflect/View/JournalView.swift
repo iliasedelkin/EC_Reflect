@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct JournalView: View {
-    @ObservedObject var reflectionVM: ReflectionViewModel
-    
+    @ObservedObject var reflectionVM: ReflectionViewModel = ReflectionViewModel()
+
     var body: some View {
         
         NavigationStack {
