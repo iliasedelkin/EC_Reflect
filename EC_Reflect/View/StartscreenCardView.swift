@@ -10,7 +10,7 @@ import SwiftUI
 struct StartscreenCardView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
-    @State private var showingWriteReflectionView: Bool = false
+    @State private var addRefllection: Bool = false
     
     var body: some View {
         ZStack {
@@ -41,7 +41,7 @@ struct StartscreenCardView: View {
 //                    .foregroundColor(colorScheme == .light ? .black : .white)
                    
                 Button{
-                    showingWriteReflectionView.toggle()
+                    addRefllection.toggle()
                     print("toggle")
                 }label: {
                     ZStack{
@@ -64,7 +64,7 @@ struct StartscreenCardView: View {
                      
                     }
                 }
-                .fullScreenCover(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
+                .fullScreenCover(isPresented: $addRefllection, content: { WriteReflectionView(addEditVM: AddEditViewModel(), addReflection: $addRefllection)
                 }
                 )
                 .padding(.top, 10)
