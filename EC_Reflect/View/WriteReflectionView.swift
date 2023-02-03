@@ -27,27 +27,37 @@ struct WriteReflectionView: View {
     var body: some View {
         
         NavigationStack{
-            VStack{
+            VStack {
+                HStack {
+                Text ("Reflect on your day")
+                    .font(.custom("Nunito-Bold", size: 35))
+                    .padding(.top, 30)
+                    .padding(.leading, 20)
+                    Spacer()
+            }
+            
                 ZStack (alignment: .topTrailing){
-                    background
+                    //background
                     TextField("""
                               Share what made you feel good or bad
                               """, text: $notesToAdd, axis: .vertical)
+                    .font(.custom("Nunito-Regular", size: 18))
                         .lineLimit(1...8)
-                        .padding(.all, 30.0)
+                        .padding(.leading, 22)
                         .focused($textFieldFocused)
                 }
                 Spacer()
                 VStack (spacing: 19){
                     Text("Overall, was the day good or bad?")
-                        .font(.system(size: 18))
-                        .fontWeight(.black)
+                        .font(.custom("Nunito-Bold", size: 18))
+                       
                     HStack(spacing: 30){
                         EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .sad)
                         EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .neutral)
                         EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .happy)
                     }
                     .font(.system(size: 60))
+                    .padding(.bottom, 20)
                 }
                 .toolbar {
                     ToolbarItem (placement: .navigation){
@@ -72,7 +82,9 @@ struct WriteReflectionView: View {
                     textFieldFocused = true
                 }
                 
-                .navigationTitle("Reflect on your day")
+               // .navigationTitle("Reflect on your day")
+                .font(.custom("Nunito-Bold", size: 16))
+              
             }
         }
     }

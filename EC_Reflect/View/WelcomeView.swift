@@ -46,6 +46,7 @@ struct WelcomeView: View {
                         RoundedRectangle (cornerRadius: 50)
                                
                                .frame(width: 240, height: 60)
+                               .foregroundColor(colorScheme == .light ? .accentColor : .white)
                     Text("Log in to start")
                             .font(.custom("Nunito-Bold", size: 20))
                     
