@@ -51,7 +51,7 @@ struct WriteReflectionView: View {
                     .padding(.leading, 22)
                     .focused($textFieldFocused)
                     .onChange(of: addEditVM.notes) { newValue in
-                        editReflection.toggle()
+                        editReflection = true
                     }
                 }
                 Spacer()
