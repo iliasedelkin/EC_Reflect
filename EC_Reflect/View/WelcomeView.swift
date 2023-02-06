@@ -48,7 +48,7 @@ struct WelcomeView: View {
                                .frame(width: 240, height: 60)
                                .foregroundColor(colorScheme == .light ? .accentColor : .white)
                     Text("Log in to start")
-                            .font(.custom("Nunito-Bold", size: 20))
+                            .font(.custom("Nunito-Bold", size: 18))
                     
                         .foregroundColor(colorScheme == .light ? .white : .black)
                     

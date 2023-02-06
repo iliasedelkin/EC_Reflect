@@ -19,11 +19,19 @@ struct ProfileView: View {
     var body: some View {
         
         VStack (spacing: 30) {
-            
-            Text("Notifications")
-                .font(.custom("Nunito-Regular", size: 35))
-                .foregroundColor(colorScheme == .light ? .black : .white)
-            
+            HStack {
+                Text("Settings")
+                    .font(.custom("Nunito-Bold", size: 36))
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                    .padding(.top, 20)
+                Spacer()
+            }
+            HStack {
+                Text("Notifications")
+                    .font(.custom("Nunito-Regular", size: 20))
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                Spacer()
+            }
             if !profileVM.isNotifAuthGiven {
                 Button {
                     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -59,16 +67,9 @@ struct ProfileView: View {
                 }
             }
                 
-                //            Text(profileVM.userProfile.name)
-                //            Text(profileVM.userProfile.id)
-                //            Text(profileVM.userProfile.email)
-                //            Text(profileVM.userProfile.emailVerified)
-                //            Text(profileVM.userProfile.picture)
-                //            Text(profileVM.userProfile.updatedAt)
+           
             
-            Text("Profile")
-                .font(.custom("Nunito-Regular", size: 35))
-                .foregroundColor(colorScheme == .light ? .black : .white)
+          
             Button {
                 print("Log out")
                 profileVM.logout()
@@ -77,13 +78,14 @@ struct ProfileView: View {
                     .font(.custom("Nunito-Bold", size: 18))
                     .foregroundColor(.white)
                 
-                    .padding(.init(top: 18, leading: 65, bottom: 18, trailing: 65))
+                    .padding(.init(top: 18, leading: 70, bottom: 18, trailing: 70))
                     .background(Color.accentColor)
                     .cornerRadius(50)
                   
             }
             .padding(.top, 10)
             .padding(.leading, 16)
+            Spacer()
         }
         .padding()
     }

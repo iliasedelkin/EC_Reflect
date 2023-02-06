@@ -14,73 +14,68 @@ struct QuoteView: View {
     
     var body: some View {
         
-            
-            VStack (alignment: .leading, spacing: 10){
+        VStack (alignment: .leading, spacing: 10) {
+            HStack {
                 Text("Quote of the day")
-         
-                
                     .font(.custom("Nunito-Bold", size: 24))
                     .fontWeight(.bold)
-                 
-                VStack(alignment: .leading) {
-                    
-                        switch quoteVM.quoteLoadable {
-                            
-                        case .idle:
-                            Text("Idle")
-                            
-                        case .loading:
-                            Text("Loading..")
-                            
-                        case .loaded(let quote):
-                            // Quote appearance can be changed here
-                            Text(quote.first?.quote ?? "No quote")
-                                .font(.custom("Nunito-Regular", size: 24))
-                                .multilineTextAlignment(.leading)
-                                .scaledToFit()
-                                .lineLimit(4)
-                               
-                            Text(quote.first?.author ?? "No author")
-                                .font(.custom("Nunito-Regular", size: 16))
-                                .padding(.top, 20)
-                            
-                        case .error(let error):
-                            Text(error.localizedDescription)
+                
+                Spacer()
+                Button {
+                    refreshQuote.toggle()
+                    if refreshQuote == true {
+                        Task {
+                            await quoteVM.getQuote()
+                            refreshQuote.toggle()
                         }
                     }
-                    .frame(width: 340.0, height: 150)
-                   
-                    .task{
-                        await quoteVM.getQuote()
-                    }
-                
-           
-                
-                HStack {
-               
-                    Button {
-                        refreshQuote.toggle()
-                        if refreshQuote == true {
-                            Task {
-                                await quoteVM.getQuote()
-                                refreshQuote.toggle()
-                            }
-                        }
-                    } label: {
-                        HStack{
-                            Image(systemName: "arrow.clockwise")
-                                .foregroundColor(.black)
-                            Text ("Refresh")
-                        }
+                } label: {
+                    HStack{
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(.black)
                     }
                 }
-             
             }
-            
-                .padding(.top, 30)
+            HStack (alignment: .top){
+            VStack (alignment: .leading){
+               
+                switch quoteVM.quoteLoadable {
+                    
+                case .idle:
+                    Text("Idle")
+                    
+                case .loading:
+                    Text("Loading..")
+                        .font(.custom("Nunito-Regular", size: 22))
+                        .padding(.top, 5)
+                    
+                case .loaded(let quote):
+                    // Quote appearance can be changed here
+                    Text(quote.first?.quote ?? "No quote")
+                        .font(.custom("Nunito-Regular", size: 22))
+                        .minimumScaleFactor(0.01)
+                        .padding(.top, 5)
+                    Text(quote.first?.author ?? "No author")
+                        .font(.custom("Nunito-Bold", size: 16))
+                        .padding(.top, 1)
+                case .error(let error):
+                    Text(error.localizedDescription)
+                        
+                }
+            }
+            }.frame(height: 180, alignment: .topLeading)
+        }
+  
+        .task{
+            await quoteVM.getQuote()
+        }
+       
+        .padding()
         
-     
+        .padding(.top, 30)
     }
+    
+    
 }
 
 

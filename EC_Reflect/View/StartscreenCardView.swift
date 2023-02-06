@@ -24,13 +24,14 @@ struct StartscreenCardView: View {
                 Image("bg")
                     .resizable()
                     .frame(width: 360, height: 135)
-                    .offset(y: -1)
+                    .offset(y: -2)
+          
                 Text("How was your day?")
                 
                     .font(.custom("Nunito-Bold", size: 26))
                     .fontWeight(.bold)
                     .foregroundColor(colorScheme == .light ? .black : .white)
-                    .padding(.top, 6)
+                    .padding(.top, 3)
                 DaysCounterView(reflectionVM: reflectionVM)
                     
 //                Text("It's day 4 of reflection. Great job!")
