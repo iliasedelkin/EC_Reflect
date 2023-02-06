@@ -23,7 +23,7 @@ struct ReflectionDetailsView: View {
                 
                 HStack (alignment: .center){
                     Text(dateToString(date: reflection.date!))
-                        .font(.custom("Nunito-Bold", size: 36))
+                        .font(.custom("Nunito-Bold", size: 34))
                         .padding(.top, 10)
                  (emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))
                         .resizable()
