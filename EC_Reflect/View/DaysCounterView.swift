@@ -13,22 +13,22 @@ struct DaysCounterView: View {
     
     var body: some View {
         
-        if (reflectionVM.countuniqueDays == 0) {
+        if (reflectionVM.uniqueDaysСounter == 0) {
             Text("Let's get started!")
                 .font(.custom("Nunito-Regular", size: 16))
                 .foregroundColor(colorScheme == .light ? .black : .white)
         }
         
         
-        if (reflectionVM.countuniqueDays == 1) {
-            Text("It's \(reflectionVM.countuniqueDays) day of reflection.")
+        if (reflectionVM.uniqueDaysСounter == 1) {
+            Text("It's \(reflectionVM.uniqueDaysСounter) day of reflection.")
                 .font(.custom("Nunito-Regular", size: 16))
                 .foregroundColor(colorScheme == .light ? .black : .white)
               
         }
         
-        if (reflectionVM.countuniqueDays > 1) {
-            Text("It's \(reflectionVM.countuniqueDays) days of reflection.")
+        if (reflectionVM.uniqueDaysСounter > 1) {
+            Text("It's \(reflectionVM.uniqueDaysСounter) days of reflection.")
                 .font(.custom("Nunito-Regular", size: 16))
                 .foregroundColor(colorScheme == .light ? .black : .white)
            

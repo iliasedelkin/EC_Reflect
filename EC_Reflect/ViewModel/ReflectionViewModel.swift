@@ -11,7 +11,8 @@ import CoreData
 class ReflectionViewModel: ObservableObject {
     
     @Published var reflections: [ReflectionNote] = []
-    @Published var countuniqueDays: Int = 0
+    @Published var uniqueDaysСounter: Int = 0
+    @Published var daysInRowCounter: Int = 0
     
     
     
@@ -21,16 +22,30 @@ class ReflectionViewModel: ObservableObject {
     
     func fetchReflections() {
         let uniqueDays = NSCountedSet()
+        var currentDate = Date()
+        
         let request = NSFetchRequest<ReflectionNote>(entityName: "ReflectionNote")
         
         do {
             reflections = try PersistenceManager.shared.container.viewContext.fetch(request)
             
             for reflection in reflections {
-                uniqueDays.add(dateToString(date: reflection.date!))
+                let date = reflection.date!
+                let currentStreak = numberOfDaysBetween(from: date, and: currentDate)
+                
+                uniqueDays.add(dateToString(date: date))
+                
+                if (currentStreak > 2){
+                    break
+                }
+                if (currentStreak == 1){
+                    daysInRowCounter+=1
+                }
+                
+                currentDate = date
+                                
             }
-            
-            countuniqueDays = uniqueDays.count
+            uniqueDaysСounter = uniqueDays.count
             
         } catch {
             print("Error fetching. \(error)")
@@ -60,10 +75,6 @@ class ReflectionViewModel: ObservableObject {
             self.fetchReflections()
         }
     }
-    
-//    func saveReflection(reflection: Reflection) {
-//        reflections.append(reflection)
-//    }
 }
 
 public func dateTimeToString(date: Date) -> String {
@@ -77,3 +88,10 @@ public func dateToString(date: Date) -> String {
     formatter.dateFormat = "d MMMM y"
     return formatter.string(from: date)
 }
+
+
+func numberOfDaysBetween(from fromDate: Date,  and toDate: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: fromDate, to: toDate).day ?? 0
+    }
+
+
