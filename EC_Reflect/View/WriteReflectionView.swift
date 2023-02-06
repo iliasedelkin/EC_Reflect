@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct WriteReflectionView: View {
-    @ObservedObject var reflectionVM: ReflectionViewModel
     
-    @State private var notesToAdd: String = ""
-    @State private var feelingToAdd: Feeling = .unknown
+    @ObservedObject var addEditVM: AddEditViewModel
+    
     @State private var isEmojiSelected: Bool = false
     @FocusState private var textFieldFocused: Bool
-
+    
+    @Binding var addReflection: Bool
+    
+    @State var editReflection = false
+    
+    @State var showAlert = false
+    
     @Environment (\.dismiss) private var dismiss
     
     
@@ -29,32 +34,35 @@ struct WriteReflectionView: View {
         NavigationStack{
             VStack {
                 HStack {
-                Text ("Reflect on your day")
-                    .font(.custom("Nunito-Bold", size: 35))
-                    .padding(.top, 30)
-                    .padding(.leading, 20)
+                    Text ("Reflect on your day")
+                        .font(.custom("Nunito-Bold", size: 35))
+                        .padding(.top, 30)
+                        .padding(.leading, 20)
                     Spacer()
-            }
-            
+                }
+                
                 ZStack (alignment: .topTrailing){
                     //background
                     TextField("""
                               Share what made you feel good or bad
-                              """, text: $notesToAdd, axis: .vertical)
+                              """, text: $addEditVM.notes, axis: .vertical)
                     .font(.custom("Nunito-Regular", size: 18))
-                        .lineLimit(1...8)
-                        .padding(.leading, 22)
-                        .focused($textFieldFocused)
+                    .lineLimit(1...8)
+                    .padding(.leading, 22)
+                    .focused($textFieldFocused)
+                    .onChange(of: addEditVM.notes) { newValue in
+                        editReflection = true
+                    }
                 }
                 Spacer()
                 VStack (spacing: 19){
                     Text("Overall, was the day good or bad?")
                         .font(.custom("Nunito-Bold", size: 18))
-                       
+                    
                     HStack(spacing: 30){
-                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .sad)
-                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .neutral)
-                        EmojiButtonView(feelingToAdd: $feelingToAdd, feeling: .happy)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .sad)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .neutral)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .happy)
                     }
                     .font(.system(size: 60))
                     .padding(.bottom, 20)
@@ -62,29 +70,43 @@ struct WriteReflectionView: View {
                 .toolbar {
                     ToolbarItem (placement: .navigation){
                         Button{
-                            dismiss()
+                            if editReflection {
+                                showAlert.toggle()
+                            } else {
+                                dismiss()
+                            }
                         } label: {
-//                            Image(systemName: "chevron.backward")
+                            //                            Image(systemName: "chevron.backward")
                             Text("Cancel")
                         }
                     }
                     ToolbarItem(placement: .automatic){
                         Button("Save"){
-       
-                            reflectionVM.addNewReflectionNote(notes: notesToAdd, feeling: feelingToAdd)
+                            
+                            addEditVM.addNewReflectionNote(context: PersistenceManager.shared.container.viewContext)
+                            addReflection.toggle()
                             dismiss()
                         }
-                        .disabled(feelingToAdd == .unknown)
+                        .disabled(addEditVM.feeling == .unknown)
                     }
                     
                 }
                 .onAppear{
                     textFieldFocused = true
                 }
+                .alert(isPresented: $showAlert){
+                    Alert(
+                        title: Text("Reflection is not saved"),
+                        message: Text("Are you sure you want to close the window?"),
+                        primaryButton: .cancel(),
+                        secondaryButton: .destructive(Text("Close the window")){
+                            dismiss()
+                        })
+                }
                 
-               // .navigationTitle("Reflect on your day")
+                // .navigationTitle("Reflect on your day")
                 .font(.custom("Nunito-Bold", size: 16))
-              
+                
             }
         }
     }
@@ -113,9 +135,9 @@ extension WriteReflectionView {
     }
 }
 
-struct WriteReflectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        WriteReflectionView(reflectionVM: ReflectionViewModel())
-    }
-}
+//struct WriteReflectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//        WriteReflectionView(addEditVM: AddEditViewModel())
+//    }
+//}

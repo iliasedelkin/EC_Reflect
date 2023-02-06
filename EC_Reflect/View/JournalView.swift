@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JournalView: View {
     @ObservedObject var reflectionVM: ReflectionViewModel = ReflectionViewModel()
-        
+    
     var body: some View {
         
         NavigationStack {
@@ -23,7 +23,7 @@ struct JournalView: View {
                 }
                     ForEach(reflectionVM.reflections.reversed()) { reflection in
                         NavigationLink {
-                            ReflectionDetailsView(reflection: reflection)
+                            ReflectionDetailsView(addEditVM: AddEditViewModel(), reflection: reflection)
                         } label: {
                           
                             NoteReflectionView(reflection: reflection)
@@ -33,7 +33,11 @@ struct JournalView: View {
                 }
                 .padding(20)
             }
-           
+
+            .onAppear{
+                reflectionVM.fetchLearners()
+            }
+
         }
     }
 }

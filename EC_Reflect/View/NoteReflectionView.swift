@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct NoteReflectionView: View {
-    var reflection: ReflectionNote
-   
+    @ObservedObject var reflection: ReflectionNote
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
             HStack {
