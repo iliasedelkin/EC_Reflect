@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Feeling: String, Codable {
     case sad
@@ -14,16 +15,17 @@ enum Feeling: String, Codable {
     case unknown
 }
 
-func emojiFromFeeling(feeling: Feeling) -> String {
+func emojiFromFeeling(feeling: Feeling) -> Image {
     switch(feeling) {
     case .sad:
-        return "😫"
+        return Image("sad")
+        
     case .neutral:
-        return "😐"
+        return Image("neutral")
     case .happy:
-        return "😀"
+        return Image("happy")
     default:
-        return ""
+        return Image("")
     }
 }
 

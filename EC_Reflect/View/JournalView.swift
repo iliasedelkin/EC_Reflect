@@ -24,9 +24,9 @@ struct JournalView: View {
                     ForEach(reflectionVM.reflections.reversed()) { reflection in
                         NavigationLink {
                             ReflectionDetailsView(addEditVM: AddEditViewModel(), reflection: reflection)
+                                
                         } label: {
-                          
-                            NoteReflectionView(reflection: reflection)
+                        NoteReflectionView(reflection: reflection)
                             
                         }.buttonStyle(.plain)
                     }
