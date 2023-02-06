@@ -13,14 +13,11 @@ struct NoteReflectionView: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
             HStack {
-                if let feeling = Feeling(rawValue: reflection.feeling!) {
-                    Text(emojiFromFeeling(feeling: feeling))
-                        .font(.system(size: 50, weight: .regular))
-                    Divider()
-                        .frame(minWidth: 1)
-                        .background(Color.black)
-                      
-                    
+                if let feeling = Feeling(rawValue: reflection.feeling ?? "") {
+                  emojiFromFeeling(feeling: feeling)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                 
                 }
             
             VStack(alignment: .leading, spacing: 15){
@@ -31,7 +28,7 @@ struct NoteReflectionView: View {
                     
                     Text(notes)
                         .font(.custom("Nunito-Regular", size: 16))
-                        
+                        .lineLimit(2)
                 }
             }
             .padding()

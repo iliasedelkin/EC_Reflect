@@ -49,6 +49,7 @@ struct WriteReflectionView: View {
                     .font(.custom("Nunito-Regular", size: 18))
                     .lineLimit(1...8)
                     .padding(.leading, 22)
+                    .padding(.trailing, 20)
                     .focused($textFieldFocused)
                     .onChange(of: addEditVM.notes) { newValue in
                         editReflection = true
@@ -122,14 +123,26 @@ extension WriteReflectionView {
         var body: some View {
             
             if feelingToAdd == feeling {
-                Button(emojiFromFeeling(feeling: feeling)) {
+
+                Button {
                     
+                } label: {
+                    emojiFromFeeling(feeling: feeling)
+                        .resizable()
+                        .frame(width: 60, height: 60)
                 }
+                
             } else {
-                Button(emojiFromFeeling(feeling: feeling)) {
+
+                Button {
                     feelingToAdd = feeling
+                } label: {
+                    emojiFromFeeling(feeling: feeling)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .opacity(0.4)
                 }
-                .opacity(0.4)
+            
             }
         }
     }
