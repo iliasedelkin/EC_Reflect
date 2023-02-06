@@ -31,15 +31,16 @@ struct StartScreen: View {
                     
                     .fontWeight(.regular)
             }
-            .offset(y: -10)
+            .padding()
+            .offset(y: 10)
           
             VStack (alignment: .center){
                 StartscreenCardView(reflectionVM: reflectionVM)
-                    .offset(y: 0)
+                    .offset(y: 10)
                 
                 
                 QuoteView(quoteVM: QuoteViewModel())
-                    .offset(y: -15)
+                    .offset(y: -10)
                 
             }
         }

@@ -32,7 +32,7 @@ struct ContentView: View {
                 
                 ProfileView(profileVM: profileVM)
                     .tabItem {
-                        Label("Profile", systemImage: "person")
+                        Label("Settings", systemImage: "gear")
                         
                     }
             }
