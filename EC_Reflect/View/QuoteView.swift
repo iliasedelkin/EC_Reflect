@@ -9,8 +9,11 @@ import SwiftUI
 
 
 struct QuoteView: View {
+
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var quoteVM = QuoteViewModel()
+    @ObservedObject var quoteVM: QuoteViewModel
+
     @State var refreshQuote: Bool = false
     
     var body: some View {
@@ -68,7 +71,20 @@ struct QuoteView: View {
         }
   
         .task{
-            await quoteVM.getQuote()
+            switch quoteVM.quoteLoadable {
+                
+            case .idle:
+                await quoteVM.getQuote()
+                
+            case .loading:
+                await quoteVM.getQuote()
+                
+            case .loaded(_):
+                return
+                
+            case .error(_):
+                await quoteVM.getQuote()
+            }
         }
        
         .padding()
@@ -82,6 +98,6 @@ struct QuoteView: View {
 
 struct QuoteView_Previews: PreviewProvider {
     static var previews: some View {
-        QuoteView()
+        QuoteView(quoteVM: QuoteViewModel())
     }
 }
