@@ -10,9 +10,7 @@ import UserNotifications
 
 struct ProfileView: View {
     @ObservedObject var profileVM: ProfileViewModel
-    
-    //    @State var notificationTime: Date = Date()
-//    @State var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
+
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -32,20 +30,16 @@ struct ProfileView: View {
                     .foregroundColor(colorScheme == .light ? .black : .white)
                 Spacer()
             }
+            
+            //Asking for authorisation to show notifications
             if !profileVM.isNotifAuthGiven {
                 Button {
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                        if success {
-                            print("Permissions provided")
-                            profileVM.isNotifAuthGiven = true
-                            profileVM.saveNotifAuthStatus()
-                        } else if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
+                    profileVM.requestNotifPermission()
                 } label: {
                     Text("Provide permissions")
                 }
+                
+            //Showing notification controls
             } else {
                 DatePicker("Daily notification time", selection: $profileVM.notificationTime, displayedComponents: .hourAndMinute)
                     .onChange(of: profileVM.notificationTime) { _ in
@@ -59,17 +53,14 @@ struct ProfileView: View {
                 }.onChange(of: profileVM.isNotificationOn) { value in
                     if profileVM.isNotificationOn {
                         profileVM.addDailyNotifications(daysArray: profileVM.weekdaysForNotification)
-                        profileVM.saveNotificationStatus()
+                        
                     } else {
-                        print("notifications off")
-                        profileVM.removeNotifications()
+                        profileVM.removeDailyNotifications()
+                        
                     }
                 }
             }
                 
-           
-            
-          
             Button {
                 print("Log out")
                 profileVM.logout()
@@ -90,12 +81,6 @@ struct ProfileView: View {
         .padding()
     }
 }
-
-//extension ProfileView {
-//    func requestPermissions(){
-//
-//    }
-//}
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

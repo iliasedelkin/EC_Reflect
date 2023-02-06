@@ -20,29 +20,33 @@ struct ReflectionDetailsView: View {
         
         NavigationStack{
             VStack {
-
-                HStack {
+                
+                HStack (alignment: .center){
                     Text(dateToString(date: reflection.date!))
-                        .font(.custom("Nunito-Bold", size: 36))
+                        .font(.custom("Nunito-Bold", size: 34))
                         .padding(.top, 10)
-              Spacer()
+                 (emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
                 }
+                ScrollView() {
                 HStack {
                     Text(reflection.notes!)
-                        .font(.custom("Nunito-Regular", size: 26))
+                        .font(.custom("Nunito-Regular", size: 20))
                         .multilineTextAlignment(.leading)
                         .padding(.top, 10)
                     Spacer()
                 }
-
+            }
                 Spacer()
-           Text((emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!)))
-                    .font(.system(size: 150))
-                    .padding(.bottom, 60)
+
             }
             .padding()
 
-            .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))+" "+dateToString(date: reflection.date!))
+        
             .sheet(isPresented: $isEdit){
                 WriteReflectionView(addEditVM: addEditVM, addReflection: $isEdit)
             }

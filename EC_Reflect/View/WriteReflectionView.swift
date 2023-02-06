@@ -30,12 +30,14 @@ struct WriteReflectionView: View {
     }
     
     var body: some View {
-        
+
         NavigationStack{
+            ZStack {
+                Color ("bg-color").edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
                     Text ("Reflect on your day")
-                        .font(.custom("Nunito-Bold", size: 35))
+                        .font(.custom("Nunito-Bold", size: 34))
                         .padding(.top, 30)
                         .padding(.leading, 20)
                     Spacer()
@@ -49,6 +51,7 @@ struct WriteReflectionView: View {
                     .font(.custom("Nunito-Regular", size: 18))
                     .lineLimit(1...8)
                     .padding(.leading, 22)
+                    .padding(.trailing, 20)
                     .focused($textFieldFocused)
                     .onChange(of: addEditVM.notes) { newValue in
                         editReflection = true
@@ -60,9 +63,9 @@ struct WriteReflectionView: View {
                         .font(.custom("Nunito-Bold", size: 18))
                     
                     HStack(spacing: 30){
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .sad)
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .neutral)
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .happy)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .sad)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .neutral)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .happy)
                     }
                     .font(.system(size: 60))
                     .padding(.bottom, 20)
@@ -109,6 +112,8 @@ struct WriteReflectionView: View {
                 
             }
         }
+        }
+    
     }
 }
 
@@ -116,20 +121,34 @@ extension WriteReflectionView {
     
     struct EmojiButtonView: View {
         @Binding var feelingToAdd: Feeling
+        @Binding var editReflection: Bool
         
         var feeling: Feeling
         
         var body: some View {
             
             if feelingToAdd == feeling {
-                Button(emojiFromFeeling(feeling: feeling)) {
+
+                Button {
                     
+                } label: {
+                    emojiFromFeeling(feeling: feeling)
+                        .resizable()
+                        .frame(width: 60, height: 60)
                 }
+                
             } else {
-                Button(emojiFromFeeling(feeling: feeling)) {
+
+                Button {
                     feelingToAdd = feeling
+                    editReflection = true
+                } label: {
+                    emojiFromFeeling(feeling: feeling)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .opacity(0.4)
                 }
-                .opacity(0.4)
+            
             }
         }
     }

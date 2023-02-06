@@ -34,11 +34,6 @@ class AddEditViewModel: ObservableObject {
         self.reflection = reflection
     }
     
-    func delete(reflection: ReflectionNote, context:NSManagedObjectContext){
-        context.delete(reflection)
-        save(context: context)
-    }
-    
     func save(context:NSManagedObjectContext){
         do{
             try context.save()

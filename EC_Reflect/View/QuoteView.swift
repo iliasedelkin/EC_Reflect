@@ -9,7 +9,11 @@ import SwiftUI
 
 
 struct QuoteView: View {
-    @ObservedObject var quoteVM = QuoteViewModel()
+
+    @Environment(\.colorScheme) var colorScheme
+
+    @ObservedObject var quoteVM: QuoteViewModel
+
     @State var refreshQuote: Bool = false
     
     var body: some View {
@@ -32,7 +36,7 @@ struct QuoteView: View {
                 } label: {
                     HStack{
                         Image(systemName: "arrow.clockwise")
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .light ? .black : .white)
                     }
                 }
             }
@@ -51,7 +55,7 @@ struct QuoteView: View {
                     
                 case .loaded(let quote):
                     // Quote appearance can be changed here
-                    Text(quote.first?.quote ?? "No quote")
+                    Text(quote.randomElement()?.quote ?? "No quote")
                         .font(.custom("Nunito-Regular", size: 22))
                         .minimumScaleFactor(0.01)
                         .padding(.top, 5)
@@ -67,7 +71,20 @@ struct QuoteView: View {
         }
   
         .task{
-            await quoteVM.getQuote()
+            switch quoteVM.quoteLoadable {
+                
+            case .idle:
+                await quoteVM.getQuote()
+                
+            case .loading:
+                await quoteVM.getQuote()
+                
+            case .loaded(_):
+                return
+                
+            case .error(_):
+                await quoteVM.getQuote()
+            }
         }
        
         .padding()
@@ -81,6 +98,6 @@ struct QuoteView: View {
 
 struct QuoteView_Previews: PreviewProvider {
     static var previews: some View {
-        QuoteView()
+        QuoteView(quoteVM: QuoteViewModel())
     }
 }
