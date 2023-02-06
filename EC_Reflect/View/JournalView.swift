@@ -13,7 +13,7 @@ struct JournalView: View {
     var body: some View {
         
         NavigationStack {
-            ScrollView {
+//            ScrollView {
                 VStack(alignment: .center, spacing: 30) {
                     HStack {
                     Text("Journal")
@@ -21,18 +21,30 @@ struct JournalView: View {
                         .padding(.top, 20)
                         Spacer()
                 }
-                    ForEach(reflectionVM.reflections.reversed()) { reflection in
-                        NavigationLink {
-                            ReflectionDetailsView(addEditVM: AddEditViewModel(), reflection: reflection)
+                    List {
+                        ForEach(reflectionVM.reflections.reversed()) { reflection in
+                            NavigationLink (destination: ReflectionDetailsView(addEditVM: AddEditViewModel(), reflection: reflection)) {
                                 
-                        } label: {
-                        NoteReflectionView(reflection: reflection)
-                            
-                        }.buttonStyle(.plain)
+                            NoteReflectionView(reflection: reflection)
+                                
+                            }
+                            .buttonStyle(.plain)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    withAnimation {
+                                        reflectionVM.deleteReflection(reflection: reflection)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                        }
+                        .onDelete(perform: reflectionVM.deleteRefOffset)
                     }
+                    .listStyle(.inset)
                 }
                 .padding(20)
-            }
+//            }
 
             .onAppear{
                 reflectionVM.fetchLearners()
