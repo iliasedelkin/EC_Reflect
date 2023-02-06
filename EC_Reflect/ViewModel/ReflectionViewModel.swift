@@ -38,16 +38,13 @@ class ReflectionViewModel: ObservableObject {
         
     }
     
+    func deleteReflection(reflection: ReflectionNote) {
+        PersistenceManager.shared.container.viewContext.delete(reflection)
+        saveChanges()
+    }
     
-    
-    
-    func addNewReflectionNote(notes: String, feeling: Feeling) {
-        let newReflectionNote = ReflectionNote(context: PersistenceManager.shared.container.viewContext)
-        newReflectionNote.id = UUID()
-        newReflectionNote.notes = notes
-        newReflectionNote.date = Date()
-        newReflectionNote.feeling = feeling.rawValue
-        
+    func deleteRefOffset(offsets: IndexSet) {
+        offsets.map { reflections[$0] }.forEach(PersistenceManager.shared.container.viewContext.delete)
         saveChanges()
     }
     

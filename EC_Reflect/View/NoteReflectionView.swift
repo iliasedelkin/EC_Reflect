@@ -13,7 +13,7 @@ struct NoteReflectionView: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
             HStack {
-                if let feeling = Feeling(rawValue: reflection.feeling!) {
+                if let feeling = Feeling(rawValue: reflection.feeling ?? "") {
                   emojiFromFeeling(feeling: feeling)
                         .resizable()
                         .frame(width: 60, height: 60)
