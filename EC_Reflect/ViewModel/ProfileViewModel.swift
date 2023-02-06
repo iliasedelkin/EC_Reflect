@@ -14,11 +14,10 @@ class ProfileViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var userProfile: Profile = Profile.empty
     @Published var isNotifAuthGiven: Bool = UserDefaults.standard.bool(forKey: "isNotifAuthGiven")
-    @Published var notificationTime: Date = Date()
+    @Published var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
     
     let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]
-    //    @Published var notificationTime: TimeInterval = UserDefaults.standard.bool(forKey: "notificationTime")
     
     func login() {
         Auth0 // 1
@@ -57,16 +56,18 @@ class ProfileViewModel: ObservableObject {
     
 //    Handling notifications
     
-    func saveNotificationStatus() {
-        UserDefaults.standard.set(isNotificationOn, forKey: "isNotificationOn")
-    }
-    
-    func saveNotificationUUID(notificationUuidString: String) {
-        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
-    }
-    
-    func saveNotifAuthStatus() {
-        UserDefaults.standard.set(isNotifAuthGiven, forKey: "isNotifAuthGiven")
+    func requestNotifPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                self.isNotifAuthGiven = true
+                self.saveNotifAuthStatus()
+                
+                print("DEBUG: Permissions provided")
+                
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func addDailyNotifications(daysArray: [Int]) {
@@ -99,13 +100,37 @@ class ProfileViewModel: ObservableObject {
                     print(error.localizedDescription)
                 }
             }
-            saveNotificationUUID(notificationUuidString: uuidString)
             
-            print("Notification set for \(trigger.dateComponents.hour!):  \(trigger.dateComponents.minute!)")
+//            saveNotificationUUID(notificationUuidString: uuidString)
+            self.saveNotifTime()
+            self.saveNotificationStatus()
+            
+            print("DEBUG: Notification set for \(trigger.dateComponents.hour!):  \(trigger.dateComponents.minute!)")
         }
         
     }
-    func removeNotifications() {
+    
+    func removeDailyNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        self.saveNotifTime()
+        self.saveNotificationStatus()
+        
+        print("DEBUG: Notifications removed")
     }
+    
+    func saveNotificationStatus() {
+        UserDefaults.standard.set(isNotificationOn, forKey: "isNotificationOn")
+    }
+    
+//    func saveNotificationUUID(notificationUuidString: String) {
+//        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
+//    }
+    
+    func saveNotifAuthStatus() {
+        UserDefaults.standard.set(isNotifAuthGiven, forKey: "isNotifAuthGiven")
+    }
+    func saveNotifTime() {
+        UserDefaults.standard.set(notificationTime, forKey: "notificationTime")
+    }
+    
 }
