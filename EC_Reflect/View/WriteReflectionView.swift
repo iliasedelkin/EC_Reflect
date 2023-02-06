@@ -61,9 +61,9 @@ struct WriteReflectionView: View {
                         .font(.custom("Nunito-Bold", size: 18))
                     
                     HStack(spacing: 30){
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .sad)
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .neutral)
-                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, feeling: .happy)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .sad)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .neutral)
+                        EmojiButtonView(feelingToAdd: $addEditVM.feeling, editReflection: $editReflection, feeling: .happy)
                     }
                     .font(.system(size: 60))
                     .padding(.bottom, 20)
@@ -117,6 +117,7 @@ extension WriteReflectionView {
     
     struct EmojiButtonView: View {
         @Binding var feelingToAdd: Feeling
+        @Binding var editReflection: Bool
         
         var feeling: Feeling
         
@@ -136,6 +137,7 @@ extension WriteReflectionView {
 
                 Button {
                     feelingToAdd = feeling
+                    editReflection = true
                 } label: {
                     emojiFromFeeling(feeling: feeling)
                         .resizable()
