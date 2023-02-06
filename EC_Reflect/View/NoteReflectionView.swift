@@ -12,30 +12,36 @@ struct NoteReflectionView: View {
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
-            RoundedRectangle(cornerRadius: 19.0)
-                .stroke(.black)
-                
-                .frame(width: 333, height: 141)
-                
+            HStack {
+                if let feeling = Feeling(rawValue: reflection.feeling!) {
+                    Text(emojiFromFeeling(feeling: feeling))
+                        .font(.system(size: 50, weight: .regular))
+                    Divider()
+                        .frame(minWidth: 1)
+                        .background(Color.black)
+                      
+                    
+                }
             
             VStack(alignment: .leading, spacing: 15){
+                
                 if let date = reflection.date, let notes = reflection.notes{
                     Text(dateToString(date: date))
-                        .font(.custom("Nunito-Bold", size: 16))
-                      
+                        .font(.custom("Nunito-Bold", size: 20))
+                    
                     Text(notes)
                         .font(.custom("Nunito-Regular", size: 16))
-                        .frame(width: 250, height: 58)
+                        
                 }
             }
             .padding()
-            
-            if let feeling = Feeling(rawValue: reflection.feeling!) {
-                Text(emojiFromFeeling(feeling: feeling))
-                    .font(.system(size: 30, weight: .regular))
-                    .frame(maxWidth: 310, maxHeight: 130, alignment: .topTrailing)
-            }
+            Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.black)
         }
+           
+        }
+        
     }
 }
 

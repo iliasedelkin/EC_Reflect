@@ -14,21 +14,30 @@ struct JournalView: View {
         
         NavigationStack {
             ScrollView {
-                VStack(spacing: 30) {
+                VStack(alignment: .center, spacing: 30) {
+                    HStack {
+                    Text("Journal")
+                        .font(.custom("Nunito-Bold", size: 36))
+                        .padding(.top, 20)
+                        Spacer()
+                }
                     ForEach(reflectionVM.reflections.reversed()) { reflection in
                         NavigationLink {
                             ReflectionDetailsView(addEditVM: AddEditViewModel(), reflection: reflection)
                         } label: {
+                          
                             NoteReflectionView(reflection: reflection)
+                            
                         }.buttonStyle(.plain)
                     }
                 }
                 .padding(20)
             }
-            .navigationTitle("Journal")
+
             .onAppear{
                 reflectionVM.fetchLearners()
             }
+
         }
     }
 }

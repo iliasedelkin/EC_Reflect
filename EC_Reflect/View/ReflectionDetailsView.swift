@@ -20,16 +20,28 @@ struct ReflectionDetailsView: View {
         
         NavigationStack{
             VStack {
-                Text(reflection.notes!)
-                    .font(.system(size: 25))
-                    .multilineTextAlignment(.leading)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 19)
-                        .foregroundColor(.white)
-                        .shadow(radius: 5))
+
+                HStack {
+                    Text(dateToString(date: reflection.date!))
+                        .font(.custom("Nunito-Bold", size: 36))
+                        .padding(.top, 10)
+              Spacer()
+                }
+                HStack {
+                    Text(reflection.notes!)
+                        .font(.custom("Nunito-Regular", size: 26))
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 10)
+                    Spacer()
+                }
+
                 Spacer()
+           Text((emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!)))
+                    .font(.system(size: 150))
+                    .padding(.bottom, 60)
             }
             .padding()
+
             .navigationTitle(String(emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))+" "+dateToString(date: reflection.date!))
             .sheet(isPresented: $isEdit){
                 WriteReflectionView(addEditVM: addEditVM, addReflection: $isEdit)
@@ -46,6 +58,7 @@ struct ReflectionDetailsView: View {
                     })
                 }
             }
+
         }
         
     }
@@ -53,6 +66,6 @@ struct ReflectionDetailsView: View {
 
 //struct ReflectionDetailsView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ReflectionDetailsView(reflectionVM: ReflectionViewModel(), reflection: ReflectionNote)
+//        ReflectionDetailsView(reflection: ReflectionNote())
 //    }
 //}
