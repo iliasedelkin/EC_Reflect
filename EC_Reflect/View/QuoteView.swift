@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct QuoteView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var quoteVM = QuoteViewModel()
     @State var refreshQuote: Bool = false
     
@@ -32,7 +33,7 @@ struct QuoteView: View {
                 } label: {
                     HStack{
                         Image(systemName: "arrow.clockwise")
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .light ? .black : .white)
                     }
                 }
             }

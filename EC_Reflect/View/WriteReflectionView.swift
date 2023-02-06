@@ -30,12 +30,14 @@ struct WriteReflectionView: View {
     }
     
     var body: some View {
-        
+
         NavigationStack{
+            ZStack {
+                Color ("bg-color").edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
                     Text ("Reflect on your day")
-                        .font(.custom("Nunito-Bold", size: 35))
+                        .font(.custom("Nunito-Bold", size: 34))
                         .padding(.top, 30)
                         .padding(.leading, 20)
                     Spacer()
@@ -110,6 +112,8 @@ struct WriteReflectionView: View {
                 
             }
         }
+        }
+    
     }
 }
 
