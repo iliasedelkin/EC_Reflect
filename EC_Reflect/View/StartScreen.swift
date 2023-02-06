@@ -11,6 +11,7 @@ struct StartScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var profileVM: ProfileViewModel
+    @ObservedObject var quoteVM = QuoteViewModel()
 
     var title = "Today"
 
@@ -39,7 +40,7 @@ struct StartScreen: View {
                     .offset(y: 10)
                 
                 
-                QuoteView(quoteVM: QuoteViewModel())
+                QuoteView(quoteVM: quoteVM)
                     .offset(y: -10)
                 
             }
@@ -52,6 +53,6 @@ struct StartScreen: View {
 struct StartScreen_Previews: PreviewProvider {
     static var previews: some View {
     
-        StartScreen(reflectionVM: ReflectionViewModel(), profileVM: ProfileViewModel())
+        StartScreen(reflectionVM: ReflectionViewModel(), profileVM: ProfileViewModel(), quoteVM: QuoteViewModel())
     }
 }

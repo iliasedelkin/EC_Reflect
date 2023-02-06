@@ -11,6 +11,7 @@ struct ContentView: View {
 
     @ObservedObject var reflectionVM = ReflectionViewModel()
     @ObservedObject var profileVM = ProfileViewModel()
+    @ObservedObject var quoteVM = QuoteViewModel()
     
     var body: some View {
         
@@ -18,7 +19,7 @@ struct ContentView: View {
             
             TabView {
                 
-                StartScreen(reflectionVM: reflectionVM, profileVM: profileVM)
+                StartScreen(reflectionVM: reflectionVM, profileVM: profileVM, quoteVM: quoteVM)
                     .tabItem {
                         Label("Today", systemImage: "doc.text.image")
                            
