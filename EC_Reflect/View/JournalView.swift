@@ -47,7 +47,7 @@ struct JournalView: View {
 //            }
 
             .onAppear{
-                reflectionVM.fetchLearners()
+                reflectionVM.fetchReflections()
             }
 
         }

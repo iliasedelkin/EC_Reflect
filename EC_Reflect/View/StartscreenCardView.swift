@@ -33,13 +33,6 @@ struct StartscreenCardView: View {
                     .foregroundColor(colorScheme == .light ? .black : .white)
                     .padding(.top, 3)
                 DaysCounterView(reflectionVM: reflectionVM)
-                    
-//                Text("It's day 4 of reflection. Great job!")
-//                    .font(.custom("Nunito-Regular", size: 16))
-//                    .fontWeight(.regular)
-//
-//
-//                    .foregroundColor(colorScheme == .light ? .black : .white)
                    
                 Button{
                     addRefllection.toggle()
