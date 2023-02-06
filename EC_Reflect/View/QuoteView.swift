@@ -11,7 +11,7 @@ import SwiftUI
 struct QuoteView: View {
 
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var quoteVM = QuoteViewModel()
+
     @ObservedObject var quoteVM: QuoteViewModel
 
     @State var refreshQuote: Bool = false
