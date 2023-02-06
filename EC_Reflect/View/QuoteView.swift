@@ -51,7 +51,7 @@ struct QuoteView: View {
                     
                 case .loaded(let quote):
                     // Quote appearance can be changed here
-                    Text(quote.first?.quote ?? "No quote")
+                    Text(quote.randomElement()?.quote ?? "No quote")
                         .font(.custom("Nunito-Regular", size: 22))
                         .minimumScaleFactor(0.01)
                         .padding(.top, 5)
