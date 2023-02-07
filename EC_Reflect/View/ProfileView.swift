@@ -15,7 +15,8 @@ struct ProfileView: View {
     
     
     var body: some View {
-        
+        ZStack {
+            Color ("bg-color").edgesIgnoringSafeArea(.all)
         VStack (spacing: 30) {
             HStack {
                 Text("Settings")
@@ -39,7 +40,7 @@ struct ProfileView: View {
                     Text("Provide permissions")
                 }
                 
-            //Showing notification controls
+                //Showing notification controls
             } else {
                 DatePicker("Daily notification time", selection: $profileVM.notificationTime, displayedComponents: .hourAndMinute)
                     .onChange(of: profileVM.notificationTime) { _ in
@@ -60,25 +61,26 @@ struct ProfileView: View {
                     }
                 }
             }
-                
+            
             Button {
                 print("Log out")
                 profileVM.logout()
             } label: {
                 Text("Log out")
                     .font(.custom("Nunito-Bold", size: 18))
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .light ? .white : .black)
                 
                     .padding(.init(top: 18, leading: 70, bottom: 18, trailing: 70))
-                    .background(Color.accentColor)
+                    .background(colorScheme == .light ? .black : .white)
                     .cornerRadius(50)
-                  
+                
             }
             .padding(.top, 10)
             .padding(.leading, 16)
             Spacer()
         }
         .padding()
+    }
     }
 }
 

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NoteReflectionView: View {
     @ObservedObject var reflection: ReflectionNote
-    
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+        ZStack{
+            Color ("bg-color").edgesIgnoringSafeArea(.all)
             HStack {
                 if let feeling = Feeling(rawValue: reflection.feeling ?? "") {
                   emojiFromFeeling(feeling: feeling)
@@ -25,16 +26,16 @@ struct NoteReflectionView: View {
                 if let date = reflection.date, let notes = reflection.notes{
                     Text(dateToString(date: date))
                         .font(.custom("Nunito-Bold", size: 20))
-                    
+                        .foregroundColor(colorScheme == .light ? .black : .white)
                     Text(notes)
                         .font(.custom("Nunito-Regular", size: 16))
+                        .foregroundColor(colorScheme == .light ? .black : .white)
                         .lineLimit(2)
                 }
             }
             .padding()
             Spacer()
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.black)
+            
         }
            
         }
