@@ -16,8 +16,9 @@ struct ProfileView: View {
     
     
     var body: some View {
-        
-        VStack (alignment: .leading, spacing: 30) {
+        ZStack {
+            Color ("bg-color").edgesIgnoringSafeArea(.all)
+        VStack (spacing: 30) {
             HStack {
                 Text("Settings")
                     .font(.custom("Nunito-Bold", size: 36))
@@ -40,7 +41,7 @@ struct ProfileView: View {
                     Text("Tap to provide permission")
                 }
                 
-            //Showing notification controls
+                //Showing notification controls
             } else {
                 DatePicker("Daily notification time",
                            selection: $profileVM.notificationTime,
@@ -93,6 +94,7 @@ struct ProfileView: View {
             Spacer()
         }
         .padding()
+    }
     }
 }
 

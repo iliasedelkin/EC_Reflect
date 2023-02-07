@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReflectionDetailsView: View {
     @ObservedObject var addEditVM: AddEditViewModel
-    
+    @Environment(\.colorScheme) var colorScheme
     var reflection: ReflectionNote
     
     @State var isEdit = false
@@ -19,13 +19,15 @@ struct ReflectionDetailsView: View {
     var body: some View {
         
         NavigationStack{
+            ZStack {
+                Color ("bg-color").edgesIgnoringSafeArea(.all)
             VStack {
                 
                 HStack (alignment: .center){
                     Text(dateToString(date: reflection.date!))
-                        .font(.custom("Nunito-Bold", size: 36))
+                        .font(.custom("Nunito-Bold", size: 34))
                         .padding(.top, 10)
-                 (emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))
+                    (emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))
                         .resizable()
                         .frame(width: 40, height: 40)
                         .padding(.leading, 20)
@@ -33,18 +35,19 @@ struct ReflectionDetailsView: View {
                     Spacer()
                 }
                 ScrollView() {
-                HStack {
-                    Text(reflection.notes!)
-                        .font(.custom("Nunito-Regular", size: 20))
-                        .multilineTextAlignment(.leading)
-                        .padding(.top, 10)
-                    Spacer()
+                    HStack {
+                        Text(reflection.notes!)
+                            .font(.custom("Nunito-Regular", size: 20))
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 10)
+                        Spacer()
+                    }
                 }
-            }
                 Spacer()
-
+                
             }
             .padding()
+        }
 
         
             .sheet(isPresented: $isEdit){
@@ -64,6 +67,10 @@ struct ReflectionDetailsView: View {
             }
 
         }
+        .accentColor(.white)
+        .font(.custom("Nunito-Regular", size: 16))
+        .foregroundColor(colorScheme == .light ? .black : .white)
+    
         
     }
 }
