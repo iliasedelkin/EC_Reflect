@@ -18,6 +18,7 @@
 		342D1EB2296EBBE900042838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB1296EBBE900042838 /* Assets.xcassets */; };
 		342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB4296EBBE900042838 /* Preview Assets.xcassets */; };
 		342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */; };
+		345F681329929B7E00ADE48C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F681229929B7E00ADE48C /* AuthView.swift */; };
 		3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */; };
 		3484DD7229814CD400C4A3E5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD7129814CD400C4A3E5 /* Profile.swift */; };
 		3484DD7429814D3200C4A3E5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3484DD7329814D3200C4A3E5 /* Auth0.plist */; };
@@ -54,6 +55,7 @@
 		342D1EB1296EBBE900042838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		342D1EB4296EBBE900042838 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionDetailsView.swift; sourceTree = "<group>"; };
+		345F681229929B7E00ADE48C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		3484DD7129814CD400C4A3E5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3484DD7329814D3200C4A3E5 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
@@ -133,8 +135,9 @@
 		3429654D29757BA000E0E663 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				8A0B8227297FE503000A5CA5 /* WelcomeView.swift */,
+				345F681229929B7E00ADE48C /* AuthView.swift */,
+				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
 				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
@@ -308,6 +311,7 @@
 				8A0B8228297FE503000A5CA5 /* WelcomeView.swift in Sources */,
 				8AE04755297FFAD40021BF8B /* QuoteView.swift in Sources */,
 				8AB53E5C2979505100D05348 /* StartscreenCardView.swift in Sources */,
+				345F681329929B7E00ADE48C /* AuthView.swift in Sources */,
 				340484C6297AA8AA00FC47EC /* Network+URLSessionDelegate.swift in Sources */,
 				8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */,
 				3484DD792981605500C4A3E5 /* ProfileView.swift in Sources */,
@@ -458,6 +462,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_CFBundleDisplayName = Reflect;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -489,6 +494,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_CFBundleDisplayName = Reflect;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
