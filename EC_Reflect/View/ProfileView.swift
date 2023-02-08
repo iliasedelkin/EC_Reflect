@@ -58,7 +58,17 @@ struct ProfileView: View {
                 Button {
                     profileVM.requestNotifPermission()
                 } label: {
-                    Text("Tap to provide permission")
+                    ZStack{
+                        RoundedRectangle (cornerRadius: 50)
+                            .frame(width: 250, height: 60)
+                            .foregroundColor(colorScheme == .light ? .accentColor : .white)
+                        HStack (alignment: .center){
+                            Text("Provide permission")
+                                .font(.custom("Nunito-Bold", size: 20))
+                                .foregroundColor(colorScheme == .light ? .white : .black)
+                            
+                        }
+                    }
                 }
                 
                 //Showing notification controls

@@ -41,7 +41,7 @@ struct StartscreenCardView: View {
                 }label: {
                     ZStack{
                         RoundedRectangle (cornerRadius: 50)
-//                            .stroke(colorScheme == .light ? .black : .white)
+//                        
                                .frame(width: 300, height: 60)
                                .foregroundColor(colorScheme == .light ? .accentColor : .white)
                         HStack (alignment: .center){
