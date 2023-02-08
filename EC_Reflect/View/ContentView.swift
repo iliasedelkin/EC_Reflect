@@ -6,48 +6,78 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct ContentView: View {
-
+    
+    @ObservedObject var profileVM: ProfileViewModel
+    
     @ObservedObject var reflectionVM = ReflectionViewModel()
-    @ObservedObject var profileVM = ProfileViewModel()
     @ObservedObject var quoteVM = QuoteViewModel()
+    
     
     var body: some View {
         
-        if profileVM.isAuthenticated {
+        TabView {
             
-            TabView {
-                
-                StartScreen(reflectionVM: reflectionVM, profileVM: profileVM, quoteVM: quoteVM)
-                    .tabItem {
-                        Label("Today", systemImage: "doc.text.image")
-                           
-                        
-                    }
-                
-                JournalView(reflectionVM: reflectionVM)
-                    .tabItem {
-                        Label("Journal", systemImage: "text.book.closed.fill")
-                    }
-                
-                ProfileView(profileVM: profileVM)
-                    .tabItem {
-                        Label("Settings", systemImage: "gear")
-                        
-                    }
-            }
-        
-        } else {
-            WelcomeView(profileVM: profileVM)
+            StartScreen(reflectionVM: reflectionVM, profileVM: profileVM, quoteVM: quoteVM)
+                .tabItem {
+                    Label("Today", systemImage: "doc.text.image")
+                    
+                }
+            
+            JournalView(reflectionVM: reflectionVM)
+                .tabItem {
+                    Label("Journal", systemImage: "text.book.closed.fill")
+                }
+            
+            ProfileView(profileVM: profileVM)
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                    
+                }
         }
-            
     }
+}
+        
+//        VStack {
+//            if profileVM.isUnlocked {
+//
+//                if profileVM.isAuthenticated {
+//
+//                    TabView {
+//
+//                        StartScreen(reflectionVM: reflectionVM, profileVM: profileVM, quoteVM: quoteVM)
+//                            .tabItem {
+//                                Label("Today", systemImage: "doc.text.image")
+//
+//
+//                            }
+//
+//                        JournalView(reflectionVM: reflectionVM)
+//                            .tabItem {
+//                                Label("Journal", systemImage: "text.book.closed.fill")
+//                            }
+//
+//                        ProfileView(profileVM: profileVM)
+//                            .tabItem {
+//                                Label("Settings", systemImage: "gear")
+//
+//                            }
+//                    }
+//
+//                } else {
+//                    WelcomeView(profileVM: profileVM)
+//                }
+//
+//            } else {
+//
+//            }
+//        }
+//        .onAppear(perform: profileVM.authenticate)
     
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(profileVM: ProfileViewModel())
     }
 }

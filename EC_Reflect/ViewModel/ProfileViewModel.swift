@@ -8,16 +8,24 @@
 import Foundation
 import Auth0
 import UserNotifications
+import LocalAuthentication
 
 @MainActor
 class ProfileViewModel: ObservableObject {
+    
     @Published var isAuthenticated: Bool = false
     @Published var userProfile: Profile = Profile.empty
+    
     @Published var isNotifAuthGiven: Bool = UserDefaults.standard.bool(forKey: "isNotifAuthGiven")
     @Published var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
     @Published var dayTrackingMode: DayTrackingMode = DayTrackingMode.total
+
     
+//    @Published var welcomeScreenShown: Bool = UserDefaults.standard.bool(forKey: "isWelcomeScreenShown")
+//    @Published var isFaceIdOn: Bool = UserDefaults.standard.bool(forKey: "isFaceIdOn")
+    
+
     let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]
     
     func login() {
@@ -54,8 +62,13 @@ class ProfileViewModel: ObservableObject {
                 }
             }
     }
+}
     
+
+
 //    Handling notifications
+    
+extension ProfileViewModel {
     
     func requestNotifPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -86,8 +99,6 @@ class ProfileViewModel: ObservableObject {
             dateComponents.hour = Calendar.current.component(.hour, from: notificationTime)
             dateComponents.minute = Calendar.current.component(.minute, from: notificationTime)
             
-            print(dateComponents)
-            
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
             
             // choose a random identifier
@@ -106,7 +117,7 @@ class ProfileViewModel: ObservableObject {
             self.saveNotifTime()
             self.saveNotificationStatus()
             
-            print("DEBUG: Notification set for \(trigger.dateComponents.hour!):  \(trigger.dateComponents.minute!)")
+            print("DEBUG: Notification set for day \(number) at \(trigger.dateComponents.hour!):\(trigger.dateComponents.minute!)")
         }
         
     }
@@ -123,10 +134,6 @@ class ProfileViewModel: ObservableObject {
         UserDefaults.standard.set(isNotificationOn, forKey: "isNotificationOn")
     }
     
-//    func saveNotificationUUID(notificationUuidString: String) {
-//        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
-//    }
-    
     func saveNotifAuthStatus() {
         UserDefaults.standard.set(isNotifAuthGiven, forKey: "isNotifAuthGiven")
     }
@@ -134,4 +141,58 @@ class ProfileViewModel: ObservableObject {
         UserDefaults.standard.set(notificationTime, forKey: "notificationTime")
     }
     
+    //    func saveNotificationUUID(notificationUuidString: String) {
+    //        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
+    //    }
+    
+}
+
+// Local Authentication
+
+extension ProfileViewModel {
+    
+    func authenticate() {
+        
+        let context = LAContext()
+        var error: NSError?
+        
+    // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                if success {
+                    self.isUnlocked = true
+                    print("DEBUG: App Unlocked")
+                } else {
+                    self.failedIdentification = true
+                    print("DEBUG: FaceID Failed")
+                }
+            }
+        } else {
+            // no biometrics
+        }
+    }
+}
+
+extension UserDefaults {
+    var welcomeScreenShown: Bool {
+        get {
+            return (UserDefaults.standard.value(forKey: "welcomeScreenShown") as? Bool) ?? false
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "welcomeScreenShown")
+        }
+    }
+    
+    var isFaceIdOn: Bool {
+        get {
+            return (UserDefaults.standard.value(forKey: "isFaceIdOn") as? Bool) ?? false
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "isFaceIdOn")
+        }
+    }
 }
