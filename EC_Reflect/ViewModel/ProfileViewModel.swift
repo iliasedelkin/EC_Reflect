@@ -21,6 +21,9 @@ class ProfileViewModel: ObservableObject {
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
 //    @Published var dayTrackingMode: String = UserDefaults.standard.register(defaults: ["day_tracking_mode" : DayTrackingMode.total.rawValue])
     
+    @Published var isUnlocked = false
+    @Published var failedIdentification = false
+    
     private let defaults: UserDefaults
     
     private enum Keys {
@@ -56,8 +59,6 @@ class ProfileViewModel: ObservableObject {
     
 //    @Published var welcomeScreenShown: Bool = UserDefaults.standard.bool(forKey: "isWelcomeScreenShown")
 //    @Published var isFaceIdOn: Bool = UserDefaults.standard.bool(forKey: "isFaceIdOn")
-    @Published var isUnlocked = false
-    @Published var failedIdentification = false
     
 
     let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]

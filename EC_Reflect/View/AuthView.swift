@@ -26,11 +26,11 @@ import SwiftUI
                             .multilineTextAlignment(.center)
                         Button {
                             do { profileVM.authenticate() }
+                            profileVM.failedIdentification = false
                         } label: {
                             Text("Try Again")
                                 .font(.custom("Nunito-Bold", size: 18))
-                                .foregroundColor(.white)
-            
+                                .foregroundColor(colorScheme == .light ? .white : .black)
                                 .padding(.init(top: 18, leading: 70, bottom: 18, trailing: 70))
                                 .background(Color.accentColor)
                                 .cornerRadius(50)

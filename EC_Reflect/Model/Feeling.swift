@@ -19,7 +19,6 @@ func emojiFromFeeling(feeling: Feeling) -> Image {
     switch(feeling) {
     case .sad:
         return Image("sad")
-        
     case .neutral:
         return Image("neutral")
     case .happy:
