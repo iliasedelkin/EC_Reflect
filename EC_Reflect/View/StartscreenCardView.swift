@@ -10,6 +10,7 @@ import SwiftUI
 struct StartscreenCardView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
+    @ObservedObject var profileVM: ProfileViewModel
     @State private var addRefllection: Bool = false
     
     var body: some View {
@@ -32,7 +33,7 @@ struct StartscreenCardView: View {
                     .fontWeight(.bold)
                     .foregroundColor(colorScheme == .light ? .black : .white)
                     .padding(.top, 3)
-                DaysCounterView(reflectionVM: reflectionVM)
+                DaysCounterView(reflectionVM: reflectionVM, profileVM: profileVM)
                    
                 Button{
                     addRefllection.toggle()
@@ -78,7 +79,7 @@ struct StartscreenCardView: View {
 
 struct StartscreenCardView_Previews: PreviewProvider {
     static var previews: some View {
-        StartscreenCardView(reflectionVM: ReflectionViewModel())
+        StartscreenCardView(reflectionVM: ReflectionViewModel(), profileVM: ProfileViewModel())
     }
 }
 

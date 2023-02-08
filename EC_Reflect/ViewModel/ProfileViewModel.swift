@@ -16,40 +16,7 @@ class ProfileViewModel: ObservableObject {
     @Published var isNotifAuthGiven: Bool = UserDefaults.standard.bool(forKey: "isNotifAuthGiven")
     @Published var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
-//    @Published var dayTrackingMode: String = UserDefaults.standard.register(defaults: ["day_tracking_mode" : DayTrackingMode.total.rawValue])
-    
-    private let defaults: UserDefaults
-    
-    private enum Keys {
-           static let dayTrackingMode = "day_tracking_mode"
-       }
-
-    
-    init(defaults: UserDefaults = .standard) {
-           self.defaults = defaults
-
-           defaults.register(defaults: [
-            Keys.dayTrackingMode: DayTrackingMode.total.rawValue
-           ])
-       }
-    
-    
-    enum DayTrackingMode: String, CaseIterable {
-           case total
-           case inRow
-       }
-    
-    var dayTrackingMode: DayTrackingMode {
-            get {
-                return defaults.string(forKey: Keys.dayTrackingMode)
-                    .flatMap { DayTrackingMode(rawValue: $0) } ?? .total
-            }
-
-            set {
-                defaults.set(newValue.rawValue, forKey: Keys.dayTrackingMode)
-            }
-        }
-    
+    @Published var dayTrackingMode: DayTrackingMode = DayTrackingMode.total
     
     let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]
     
