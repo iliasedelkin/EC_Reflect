@@ -22,6 +22,9 @@ class ProfileViewModel: ObservableObject {
     @Published var dayTrackingMode: DayTrackingMode = DayTrackingMode.total
 
     
+    @Published var isUnlocked = false
+    @Published var failedIdentification = false
+    
 //    @Published var welcomeScreenShown: Bool = UserDefaults.standard.bool(forKey: "isWelcomeScreenShown")
 //    @Published var isFaceIdOn: Bool = UserDefaults.standard.bool(forKey: "isFaceIdOn")
     
