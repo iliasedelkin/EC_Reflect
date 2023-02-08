@@ -19,43 +19,8 @@ class ProfileViewModel: ObservableObject {
     @Published var isNotifAuthGiven: Bool = UserDefaults.standard.bool(forKey: "isNotifAuthGiven")
     @Published var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
-//    @Published var dayTrackingMode: String = UserDefaults.standard.register(defaults: ["day_tracking_mode" : DayTrackingMode.total.rawValue])
-    
-    @Published var isUnlocked = false
-    @Published var failedIdentification = false
-    
-    private let defaults: UserDefaults
-    
-    private enum Keys {
-           static let dayTrackingMode = "day_tracking_mode"
-       }
+    @Published var dayTrackingMode: DayTrackingMode = DayTrackingMode.total
 
-    
-    init(defaults: UserDefaults = .standard) {
-           self.defaults = defaults
-
-           defaults.register(defaults: [
-            Keys.dayTrackingMode: DayTrackingMode.total.rawValue
-           ])
-       }
-    
-    
-    enum DayTrackingMode: String, CaseIterable {
-           case total
-           case inRow
-       }
-    
-    var dayTrackingMode: DayTrackingMode {
-            get {
-                return defaults.string(forKey: Keys.dayTrackingMode)
-                    .flatMap { DayTrackingMode(rawValue: $0) } ?? .total
-            }
-
-            set {
-                defaults.set(newValue.rawValue, forKey: Keys.dayTrackingMode)
-            }
-        }
-    
     
 //    @Published var welcomeScreenShown: Bool = UserDefaults.standard.bool(forKey: "isWelcomeScreenShown")
 //    @Published var isFaceIdOn: Bool = UserDefaults.standard.bool(forKey: "isFaceIdOn")

@@ -26,6 +26,26 @@ struct ProfileView: View {
                     .padding(.top, 20)
                 Spacer()
             }
+            
+            
+            HStack {
+                Text("Statistics")
+                    .font(.custom("Nunito-Regular", size: 20))
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                Spacer()
+            }
+            
+            HStack(){
+                Text("Day tracking mode: ")
+                Picker("Day tracking mode", selection: $profileVM.dayTrackingMode) {
+                    ForEach(DayTrackingMode.allCases, id: \.self) { dayTrackingMode in
+                        
+                        Text(dayTrackingMode.rawValue).tag(dayTrackingMode)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+            
             HStack {
                 Text("Notifications")
                     .font(.custom("Nunito-Regular", size: 20))
@@ -63,11 +83,13 @@ struct ProfileView: View {
                     }
                 }
             }
+
             HStack {
                 Text("Privacy")
                     .font(.custom("Nunito-Regular", size: 20))
                     .foregroundColor(colorScheme == .light ? .black : .white)
                 Spacer()
+
             }
             Toggle(isOn: $isFaceIdOn) {
                 Text("FaceID Authentification")
