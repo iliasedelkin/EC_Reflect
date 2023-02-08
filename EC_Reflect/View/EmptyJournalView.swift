@@ -13,7 +13,7 @@ struct EmptyJournalView: View {
 //            Spacer()
             Image("writeNote")
             Text("""
-There is nothing in journal yet.
+There is nothing in the journal yet.
 Write your first reflection
 """)
             .font(.custom("Nunito-Bold", size: 20))
