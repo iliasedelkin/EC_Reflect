@@ -70,10 +70,11 @@ struct QuoteView: View {
             }.frame(height: 180, alignment: .topLeading)
         }
   
-        .task{
+        .task() {
             switch quoteVM.quoteLoadable {
                 
             case .idle:
+                print("DEBUG: Loading quote from idle")
                 await quoteVM.getQuote()
                 
             case .loading:

@@ -13,7 +13,9 @@ struct EC_ReflectApp: App {
     var body: some Scene {
         
         WindowGroup {
-            WelcomeView()
+            ZStack{
+                WelcomeView()
+            }
         }
     }
 }

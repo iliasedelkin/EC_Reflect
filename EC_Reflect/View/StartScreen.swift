@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartScreen: View {
     @Environment(\.colorScheme) var colorScheme
+    
     @ObservedObject var reflectionVM: ReflectionViewModel
     @ObservedObject var profileVM: ProfileViewModel
     @ObservedObject var quoteVM = QuoteViewModel()
@@ -38,7 +39,6 @@ struct StartScreen: View {
             VStack (alignment: .center){
                 StartscreenCardView(reflectionVM: reflectionVM)
                     .offset(y: 10)
-                
                 
                 QuoteView(quoteVM: quoteVM)
                     .offset(y: -10)

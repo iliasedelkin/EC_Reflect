@@ -8,7 +8,6 @@
 import Foundation
 import Auth0
 import UserNotifications
-import LocalAuthentication
 
 @MainActor
 class ProfileViewModel: ObservableObject {
@@ -20,9 +19,6 @@ class ProfileViewModel: ObservableObject {
     @Published var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     @Published var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
 //    @Published var dayTrackingMode: String = UserDefaults.standard.register(defaults: ["day_tracking_mode" : DayTrackingMode.total.rawValue])
-    
-    @Published var isUnlocked = false
-    @Published var failedIdentification = false
     
     private let defaults: UserDefaults
     
@@ -62,41 +58,6 @@ class ProfileViewModel: ObservableObject {
     
 
     let weekdaysForNotification: [Int] = [1, 2, 3, 4, 5, 6, 7]
-    
-    func login() {
-        Auth0 // 1
-            .webAuth() // 2
-            .start { result in // 3
-                switch result {
-                    // 4
-                case .failure(let error):
-                    print("Failed with: \(error)")
-                    // 5
-                case .success(let credentials):
-                    self.isAuthenticated = true
-                    self.userProfile = Profile.from(credentials.idToken)
-                    
-                    //              print("Credentials: \(credentials)")
-                    //              print("ID token: \(credentials.idToken)")
-                }
-            }
-    }
-    
-    func logout() {
-        Auth0 // 1
-            .webAuth() // 2
-            .clearSession { result in // 3
-                switch result {
-                    // 4
-                case .failure(let error):
-                    print("Failed with: \(error)")
-                    // 5
-                case .success:
-                    self.isAuthenticated = false
-                    self.userProfile = Profile.empty
-                }
-            }
-    }
 }
     
 
@@ -124,8 +85,9 @@ extension ProfileViewModel {
         for number in daysArray {
             
             let content = UNMutableNotificationContent()
-            content.title = "Time for your daily reflection! 🧠❤️"
+            content.title = "Time for the daily reflection!"
             content.subtitle = "Take 5 minutes to record your thoughts and feelings"
+            content.body = "🧠 💛"
             content.sound = UNNotificationSound.default
             
             // Set the Days&time, iterate for every day of the week
@@ -148,7 +110,6 @@ extension ProfileViewModel {
                 }
             }
             
-//            saveNotificationUUID(notificationUuidString: uuidString)
             self.saveNotifTime()
             self.saveNotificationStatus()
             
@@ -175,59 +136,47 @@ extension ProfileViewModel {
     func saveNotifTime() {
         UserDefaults.standard.set(notificationTime, forKey: "notificationTime")
     }
-    
-    //    func saveNotificationUUID(notificationUuidString: String) {
-    //        UserDefaults.standard.set(notificationUuidString, forKey: "notificationUuidString")
-    //    }
-    
+
 }
 
-// Local Authentication
+//// Deprecated authentification with Auth0
+//
+//extension ProfileViewModel {
+//
+//    func login() {
+//        Auth0 // 1
+//            .webAuth() // 2
+//            .start { result in // 3
+//                switch result {
+//                    // 4
+//                case .failure(let error):
+//                    print("Failed with: \(error)")
+//                    // 5
+//                case .success(let credentials):
+//                    self.isAuthenticated = true
+//                    self.userProfile = Profile.from(credentials.idToken)
+//
+//                    //              print("Credentials: \(credentials)")
+//                    //              print("ID token: \(credentials.idToken)")
+//                }
+//            }
+//    }
+//
+//    func logout() {
+//        Auth0 // 1
+//            .webAuth() // 2
+//            .clearSession { result in // 3
+//                switch result {
+//                    // 4
+//                case .failure(let error):
+//                    print("Failed with: \(error)")
+//                    // 5
+//                case .success:
+//                    self.isAuthenticated = false
+//                    self.userProfile = Profile.empty
+//                }
+//            }
+//    }
+//}
 
-extension ProfileViewModel {
-    
-    func authenticate() {
-        
-        let context = LAContext()
-        var error: NSError?
-        
-    // check whether biometric authentication is possible
-        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-            // it's possible, so go ahead and use it
-            let reason = "We need to unlock your data."
 
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
-                // authentication has now completed
-                if success {
-                    self.isUnlocked = true
-                    print("DEBUG: App Unlocked")
-                } else {
-                    self.failedIdentification = true
-                    print("DEBUG: FaceID Failed")
-                }
-            }
-        } else {
-            // no biometrics
-        }
-    }
-}
-
-extension UserDefaults {
-    var welcomeScreenShown: Bool {
-        get {
-            return (UserDefaults.standard.value(forKey: "welcomeScreenShown") as? Bool) ?? false
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: "welcomeScreenShown")
-        }
-    }
-    
-    var isFaceIdOn: Bool {
-        get {
-            return (UserDefaults.standard.value(forKey: "isFaceIdOn") as? Bool) ?? false
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: "isFaceIdOn")
-        }
-    }
-}

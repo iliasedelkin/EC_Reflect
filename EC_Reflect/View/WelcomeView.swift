@@ -19,7 +19,7 @@ struct WelcomeView: View {
             if isFaceIdOn {
                 AuthView()
             } else {
-                ContentView(profileVM: ProfileViewModel())
+                ContentView()
             }
         } else {
             ZStack {

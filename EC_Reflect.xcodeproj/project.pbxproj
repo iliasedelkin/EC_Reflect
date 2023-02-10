@@ -19,6 +19,9 @@
 		342D1EB5296EBBE900042838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342D1EB4296EBBE900042838 /* Preview Assets.xcassets */; };
 		342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */; };
 		345F681329929B7E00ADE48C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F681229929B7E00ADE48C /* AuthView.swift */; };
+		345F68182993A1E600ADE48C /* AuthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F68172993A1E600ADE48C /* AuthStatus.swift */; };
+		345F681A2993B25300ADE48C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F68192993B25300ADE48C /* AuthViewModel.swift */; };
+		345F681E299559C000ADE48C /* AuthLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345F681D299559C000ADE48C /* AuthLoadingView.swift */; };
 		3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */; };
 		3484DD7229814CD400C4A3E5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3484DD7129814CD400C4A3E5 /* Profile.swift */; };
 		3484DD7429814D3200C4A3E5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3484DD7329814D3200C4A3E5 /* Auth0.plist */; };
@@ -56,6 +59,9 @@
 		342D1EB4296EBBE900042838 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		342F63912978009E00D9DE5A /* ReflectionDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionDetailsView.swift; sourceTree = "<group>"; };
 		345F681229929B7E00ADE48C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		345F68172993A1E600ADE48C /* AuthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStatus.swift; sourceTree = "<group>"; };
+		345F68192993B25300ADE48C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		345F681D299559C000ADE48C /* AuthLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoadingView.swift; sourceTree = "<group>"; };
 		3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		3484DD7129814CD400C4A3E5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3484DD7329814D3200C4A3E5 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				5412FF46298BBB4900C21719 /* AddEditViewModel.swift */,
 				545EDDE32978303200F04FC8 /* QuoteViewModel.swift */,
 				3484DD6F29814C3200C4A3E5 /* ProfileViewModel.swift */,
+				345F68192993B25300ADE48C /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 			children = (
 				8A0B8227297FE503000A5CA5 /* WelcomeView.swift */,
 				345F681229929B7E00ADE48C /* AuthView.swift */,
+				345F681D299559C000ADE48C /* AuthLoadingView.swift */,
 				342D1EAF296EBBE700042838 /* ContentView.swift */,
 				34F7EE682970738A00E8934B /* StartScreen.swift */,
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
@@ -220,6 +228,7 @@
 				545EDDE52978307000F04FC8 /* Quote.swift */,
 				340484CF297C214300FC47EC /* Loadable.swift */,
 				3484DD7129814CD400C4A3E5 /* Profile.swift */,
+				345F68172993A1E600ADE48C /* AuthStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +315,7 @@
 				34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */,
 				BEF614EF297FE6E1007B5C57 /* Reflection.xcdatamodeld in Sources */,
 				34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */,
+				345F681E299559C000ADE48C /* AuthLoadingView.swift in Sources */,
 				342D1EB0296EBBE700042838 /* ContentView.swift in Sources */,
 				3484DD7229814CD400C4A3E5 /* Profile.swift in Sources */,
 				8A0B8228297FE503000A5CA5 /* WelcomeView.swift in Sources */,
@@ -320,12 +330,14 @@
 				340484D0297C214300FC47EC /* Loadable.swift in Sources */,
 				BEF614F1297FEAB1007B5C57 /* Persistence.swift in Sources */,
 				342F63922978009F00D9DE5A /* ReflectionDetailsView.swift in Sources */,
+				345F68182993A1E600ADE48C /* AuthStatus.swift in Sources */,
 				340484C8297AAA5900FC47EC /* Network.swift in Sources */,
 				340484CC297AAD3000FC47EC /* ResponseHandler.swift in Sources */,
 				3429654B29757B4700E0E663 /* Feeling.swift in Sources */,
 				5412FF47298BBB4900C21719 /* AddEditViewModel.swift in Sources */,
 				BEF615312989348F007B5C57 /* DaysCounterView.swift in Sources */,
 				34F7EE6A2970738A00E8934B /* NoteReflectionView.swift in Sources */,
+				345F681A2993B25300ADE48C /* AuthViewModel.swift in Sources */,
 				3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
@@ -458,12 +470,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = NUWU6B2G25;
+				DEVELOPMENT_TEAM = B2849SAXBK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_CFBundleDisplayName = Reflect;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -490,12 +502,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EC_Reflect/Preview Content\"";
-				DEVELOPMENT_TEAM = NUWU6B2G25;
+				DEVELOPMENT_TEAM = B2849SAXBK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EC-Reflect-Info.plist";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_CFBundleDisplayName = Reflect;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "You can turn this off in settings";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
