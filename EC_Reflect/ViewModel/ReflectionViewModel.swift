@@ -13,6 +13,7 @@ class ReflectionViewModel: ObservableObject {
     @Published var reflections: [ReflectionNote] = []
     @Published var uniqueDaysСounter: Int = 0
     @Published var daysInRowCounter: Int = 0
+    @Published var todayCounter: Int = 0
     
     
     
@@ -23,6 +24,7 @@ class ReflectionViewModel: ObservableObject {
     func fetchReflections() {
         let uniqueDays = NSCountedSet()
         var currentDate = Date()
+        var currentDateReflection = false
         
         let request = NSFetchRequest<ReflectionNote>(entityName: "ReflectionNote")
         
@@ -31,9 +33,13 @@ class ReflectionViewModel: ObservableObject {
             
             for reflection in reflections {
                 let date = reflection.date!
-                let currentStreak = numberOfDaysBetween(from: date, and: currentDate)
-                
                 uniqueDays.add(dateToString(date: date))
+            }
+            uniqueDaysСounter = uniqueDays.count
+            
+            for reflection in reflections {
+                let date = reflection.date!
+                let currentStreak = numberOfDaysBetween(from: date, and: currentDate)
                 
                 if (currentStreak > 2){
                     break
@@ -42,10 +48,15 @@ class ReflectionViewModel: ObservableObject {
                     daysInRowCounter+=1
                 }
                 
+                if (dateToString(date: Date()) == dateToString(date: date)){
+                   todayCounter = 1
+                }
+                
                 currentDate = date
-                                
             }
-            uniqueDaysСounter = uniqueDays.count
+        
+            print(uniqueDaysСounter)
+            print(daysInRowCounter)
             
         } catch {
             print("Error fetching. \(error)")

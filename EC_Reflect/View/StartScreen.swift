@@ -37,7 +37,7 @@ struct StartScreen: View {
             .offset(y: 10)
           
             VStack (alignment: .center){
-                StartscreenCardView(reflectionVM: reflectionVM)
+                StartscreenCardView(reflectionVM: reflectionVM, profileVM: profileVM)
                     .offset(y: 10)
                 
                 QuoteView(quoteVM: quoteVM)

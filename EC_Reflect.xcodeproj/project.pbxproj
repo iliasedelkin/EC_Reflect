@@ -32,6 +32,7 @@
 		34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE692970738A00E8934B /* JournalView.swift */; };
 		34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7EE6E2970988600E8934B /* WriteReflectionView.swift */; };
 		5412FF47298BBB4900C21719 /* AddEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412FF46298BBB4900C21719 /* AddEditViewModel.swift */; };
+		544C72B72993B6590077209F /* EmptyJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544C72B62993B6590077209F /* EmptyJournalView.swift */; };
 		545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EDDE32978303200F04FC8 /* QuoteViewModel.swift */; };
 		545EDDE62978307000F04FC8 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EDDE52978307000F04FC8 /* Quote.swift */; };
 		8A0B8228297FE503000A5CA5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B8227297FE503000A5CA5 /* WelcomeView.swift */; };
@@ -40,6 +41,7 @@
 		8AB53E5C2979505100D05348 /* StartscreenCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB53E5B2979505100D05348 /* StartscreenCardView.swift */; };
 		8ABEB1D9297567770015165A /* ReflectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB1D7297567770015165A /* ReflectionViewModel.swift */; };
 		8AE04755297FFAD40021BF8B /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE04754297FFAD40021BF8B /* QuoteView.swift */; };
+		BEC9F92E29928B9A007FC040 /* DayTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC9F92D29928B9A007FC040 /* DayTrackingMode.swift */; };
 		BEF614EF297FE6E1007B5C57 /* Reflection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEF614EC297FE6E1007B5C57 /* Reflection.xcdatamodeld */; };
 		BEF614F1297FEAB1007B5C57 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF614F0297FEAB1007B5C57 /* Persistence.swift */; };
 		BEF615312989348F007B5C57 /* DaysCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF615302989348F007B5C57 /* DaysCounterView.swift */; };
@@ -71,6 +73,7 @@
 		34F7EE692970738A00E8934B /* JournalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		34F7EE6E2970988600E8934B /* WriteReflectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReflectionView.swift; sourceTree = "<group>"; };
 		5412FF46298BBB4900C21719 /* AddEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewModel.swift; sourceTree = "<group>"; };
+		544C72B62993B6590077209F /* EmptyJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyJournalView.swift; sourceTree = "<group>"; };
 		545EDDE32978303200F04FC8 /* QuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
 		545EDDE52978307000F04FC8 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		8A0B8227297FE503000A5CA5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		8AB53E5B2979505100D05348 /* StartscreenCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenCardView.swift; sourceTree = "<group>"; };
 		8ABEB1D7297567770015165A /* ReflectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionViewModel.swift; sourceTree = "<group>"; };
 		8AE04754297FFAD40021BF8B /* QuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		BEC9F92D29928B9A007FC040 /* DayTrackingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTrackingMode.swift; sourceTree = "<group>"; };
 		BEF614ED297FE6E1007B5C57 /* Reflection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reflection.xcdatamodel; sourceTree = "<group>"; };
 		BEF614EE297FE6E1007B5C57 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		BEF614F0297FEAB1007B5C57 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				8AB53E5B2979505100D05348 /* StartscreenCardView.swift */,
 				8AE04754297FFAD40021BF8B /* QuoteView.swift */,
 				34F7EE692970738A00E8934B /* JournalView.swift */,
+				544C72B62993B6590077209F /* EmptyJournalView.swift */,
 				BEF615302989348F007B5C57 /* DaysCounterView.swift */,
 				34F7EE6E2970988600E8934B /* WriteReflectionView.swift */,
 				34F7EE662970738A00E8934B /* NoteReflectionView.swift */,
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				3429654A29757B4700E0E663 /* Feeling.swift */,
+				BEC9F92D29928B9A007FC040 /* DayTrackingMode.swift */,
 				545EDDE52978307000F04FC8 /* Quote.swift */,
 				340484CF297C214300FC47EC /* Loadable.swift */,
 				3484DD7129814CD400C4A3E5 /* Profile.swift */,
@@ -314,6 +320,7 @@
 			files = (
 				34F7EE6D2970738A00E8934B /* JournalView.swift in Sources */,
 				BEF614EF297FE6E1007B5C57 /* Reflection.xcdatamodeld in Sources */,
+				544C72B72993B6590077209F /* EmptyJournalView.swift in Sources */,
 				34F7EE6F2970988600E8934B /* WriteReflectionView.swift in Sources */,
 				345F681E299559C000ADE48C /* AuthLoadingView.swift in Sources */,
 				342D1EB0296EBBE700042838 /* ContentView.swift in Sources */,
@@ -341,6 +348,7 @@
 				3484DD7029814C3200C4A3E5 /* ProfileViewModel.swift in Sources */,
 				545EDDE42978303200F04FC8 /* QuoteViewModel.swift in Sources */,
 				342D1EAE296EBBE700042838 /* EC_ReflectApp.swift in Sources */,
+				BEC9F92E29928B9A007FC040 /* DayTrackingMode.swift in Sources */,
 				340484CE297AAF5900FC47EC /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,14 +487,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.Irina.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -511,14 +519,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.EC-Reflect";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aheroes.Irina.EC-Reflect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
