@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum Loadable <T, E: Error> {
+enum Loadable<T, E: Error> {
+    
     case idle
     case loading
     case loaded(T)
