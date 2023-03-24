@@ -29,7 +29,7 @@ struct QuoteView: View {
                     refreshQuote.toggle()
                     if refreshQuote == true {
                         Task {
-                            await quoteVM.getQuote()
+                            quoteVM.changeIndex()
                             refreshQuote.toggle()
                         }
                     }
@@ -55,11 +55,11 @@ struct QuoteView: View {
                     
                 case .loaded(let quote):
                     // Quote appearance can be changed here
-                    Text(quote.randomElement()?.quote ?? "No quote")
+                    Text(quote[quoteVM.quoteIndex].quote)
                         .font(.custom("Nunito-Regular", size: 22))
                         .minimumScaleFactor(0.01)
                         .padding(.top, 5)
-                    Text(quote.first?.author ?? "No author")
+                    Text(quote[quoteVM.quoteIndex].author)
                         .font(.custom("Nunito-Bold", size: 16))
                         .padding(.top, 1)
                 case .error(let error):
@@ -70,21 +70,23 @@ struct QuoteView: View {
             }.frame(height: 180, alignment: .topLeading)
         }
   
-        .task() {
-            switch quoteVM.quoteLoadable {
-                
-            case .idle:
-                print("DEBUG: Loading quote from idle")
-                await quoteVM.getQuote()
-                
-            case .loading:
-                await quoteVM.getQuote()
-                
-            case .loaded(_):
-                return
-                
-            case .error(_):
-                await quoteVM.getQuote()
+        .onAppear() {
+            Task {
+                switch quoteVM.quoteLoadable {
+                    
+                case .idle:
+                    print("DEBUG: Loading quote from idle")
+                    await quoteVM.fetchQuotesIfNeeded()
+                    
+                case .loading:
+                    await quoteVM.fetchQuotesIfNeeded()
+                    
+                case .loaded(_):
+                    return
+                    
+                case .error(_):
+                    await quoteVM.fetchQuotesIfNeeded()
+                }
             }
         }
        

@@ -11,19 +11,31 @@ import Foundation
 class QuoteViewModel: ObservableObject {
     
     @Published var quoteLoadable: Loadable = Loadable<[Quote], NetworkError>.idle
+    @Published var quoteIndex: Int = 0
+    private var lengthQuote = 5
+    let userDefaults = UserDefaults.standard
+    let encoder = JSONEncoder()
     
     let quotePath: String = "/quotes"
     let quoteApiKey: String = "P4jKiNzcdmk2Sl45KdpXRA==1VhEpeajatu91FgP"
-    let quoteQueryItems: [URLQueryItem] = [URLQueryItem(name: "category", value: "inspirational")]
+    let quoteQueryItems: [URLQueryItem] = [URLQueryItem(name: "category", value: "inspirational"), URLQueryItem(name: "limit", value: "5")]
     
     func getQuote() async {
         do {
             if case .loading = quoteLoadable { return } 
             quoteLoadable = .loading
-            quoteLoadable = try await .loaded(
-                Network.shared.get(path: quotePath,
-                                   apiKey: quoteApiKey,
-                                   queryItems: quoteQueryItems) ?? [])
+            let loaded = try await (Network.shared.get(
+                path: quotePath,
+                apiKey: quoteApiKey,
+                queryItems: quoteQueryItems))
+            userDefaults.set(Date(), forKey: "lastUpdate")
+            if let encoded = try? encoder.encode(loaded) {
+                UserDefaults.standard.set(encoded, forKey: "myQuotes")
+            }
+            if let quotesData = UserDefaults.standard.data(forKey: "myQuotes"),
+               let decodedQuotes = try? JSONDecoder().decode([Quote].self, from: quotesData){
+                quoteLoadable = .loaded(decodedQuotes)
+            }
         } catch {
             let error = ResponseHandler.shared.mapError(error)
             print("The error is: " + error.localizedDescription)
@@ -32,44 +44,21 @@ class QuoteViewModel: ObservableObject {
         }
     }
     
+    func changeIndex () {
+        if quoteIndex < lengthQuote-1 {
+            quoteIndex += 1
+        } else {
+            quoteIndex = 0
+        }
+    }
+    
+    func fetchQuotesIfNeeded() async {
+        if let lastUpdate = userDefaults.object(forKey: "lastUpdate") as? Date {
+            if userDefaults.object(forKey: "lastUpdate") == nil || lastUpdate.timeIntervalSinceNow < -24 * 60 * 60 {
+                await getQuote()
+            } else {
+                return
+            }
+        }
+    }
 }
-    
-    
-    
-//    func getQuote() async {
-//
-//
-//
-//    let decoder = JSONDecoder()
-//
-//    var urlComponents = URLComponents(string: "https://api.api-ninjas.com")
-//
-//    func getQuote() async {
-//        do {
-//            urlComponents!.path = "/v1/quotes"
-//            urlComponents?.queryItems = [URLQueryItem(name: "category", value: "inspirational")]
-//
-//            var request = URLRequest(url: urlComponents!.url!)
-//
-//            request.setValue(
-//                "P4jKiNzcdmk2Sl45KdpXRA==1VhEpeajatu91FgP",
-//                forHTTPHeaderField: "X-Api-Key"
-//            )
-//
-//            request.httpMethod = "GET"
-//
-//            let (data, _) = try await URLSession.shared.data(for: request)
-//
-//
-//            print(String(data: data, encoding: .utf8))
-//
-//
-//            self.quote = try decoder.decode([Quote].self, from: data)
-//
-//
-//        } catch {
-//
-//            print(error)
-//
-//        }
-//    }

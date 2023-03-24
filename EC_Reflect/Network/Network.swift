@@ -24,7 +24,7 @@ class Network: NSObject {
     /// Encoder for JSON `Data`.
     lazy var encoder = JSONEncoder()
     
-    func get(path: String, apiKey: String, queryItems: [URLQueryItem]) async throws -> [Quote]? {
+    func get(path: String, apiKey: String, queryItems: [URLQueryItem]) async throws -> [Quote] {
         
         let request = buildRequest(
             method: "GET",
