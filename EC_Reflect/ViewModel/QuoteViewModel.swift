@@ -18,7 +18,7 @@ class QuoteViewModel: ObservableObject {
     
     func getQuote() async {
         do {
-            if case .loading = quoteLoadable { return }
+            if case .loading = quoteLoadable { return } 
             quoteLoadable = .loading
             quoteLoadable = try await .loaded(
                 Network.shared.get(path: quotePath,

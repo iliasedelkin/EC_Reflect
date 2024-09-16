@@ -7,80 +7,97 @@
 
 import SwiftUI
 
+
 struct QuoteView: View {
-    @ObservedObject var quoteVM = QuoteViewModel()
+
+    @Environment(\.colorScheme) var colorScheme
+
+    @ObservedObject var quoteVM: QuoteViewModel
+
     @State var refreshQuote: Bool = false
     
     var body: some View {
         
-        ZStack{
-            ZStack (alignment: .bottom){
-                RoundedRectangle(cornerRadius: 15)
-                    .shadow(radius: 5)
-                    .foregroundColor(Color.white)
-//                    .frame(width: 350, height: 250)
-                HStack {
-                    Spacer()
-                    Button {
-                        refreshQuote.toggle()
-                        if refreshQuote == true {
-                            Task {
-                                await quoteVM.getQuote()
-                                refreshQuote.toggle()
-                            }
+        VStack (alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Quote of the day")
+                    .font(.custom("Nunito-Bold", size: 24))
+                    .fontWeight(.bold)
+                
+                Spacer()
+                Button {
+                    refreshQuote.toggle()
+                    if refreshQuote == true {
+                        Task {
+                            await quoteVM.getQuote()
+                            refreshQuote.toggle()
                         }
-                    } label: {
+                    }
+                } label: {
+                    HStack{
                         Image(systemName: "arrow.clockwise")
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .light ? .black : .white)
                     }
                 }
-                .padding()
             }
-            
-                VStack (spacing: 5){
-                    Text("Quote of the day")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                    ScrollView{
-                    VStack(spacing: 10) {
+            HStack (alignment: .top){
+            VStack (alignment: .leading){
+               
+                switch quoteVM.quoteLoadable {
+                    
+                case .idle:
+                    Text("Idle")
+                    
+                case .loading:
+                    Text("Loading..")
+                        .font(.custom("Nunito-Regular", size: 22))
+                        .padding(.top, 5)
+                    
+                case .loaded(let quote):
+                    // Quote appearance can be changed here
+                    Text(quote.randomElement()?.quote ?? "No quote")
+                        .font(.custom("Nunito-Regular", size: 22))
+                        .minimumScaleFactor(0.01)
+                        .padding(.top, 5)
+                    Text(quote.first?.author ?? "No author")
+                        .font(.custom("Nunito-Bold", size: 16))
+                        .padding(.top, 1)
+                case .error(let error):
+                    Text(error.localizedDescription)
                         
-                        switch quoteVM.quoteLoadable {
-                            
-                        case .idle:
-                            Text("Idle")
-                            
-                        case .loading:
-                            Text("Loading..")
-                            
-                        case .loaded(let quote):
-                            // Quote appearance can be changed here
-                            Text(quote.first?.quote ?? "No quote")
-                                .font(.system(size: 25))
-                                .multilineTextAlignment(.center)
-                                .lineLimit(4)
-                            Text(quote.first?.author ?? "No author")
-                            
-                        case .error(let error):
-                            Text(error.localizedDescription)
-                        }
-                    }
-                    .frame(width: 300.0, height: 100)
-                    //        .onReceive(timer) { _ in
-                    .task{
-                        await quoteVM.getQuote()
-                    }
                 }
-                    .padding(.top, 15)
             }
-                .padding(.top, 30)
+            }.frame(height: 180, alignment: .topLeading)
         }
+  
+        .task{
+            switch quoteVM.quoteLoadable {
+                
+            case .idle:
+                await quoteVM.getQuote()
+                
+            case .loading:
+                await quoteVM.getQuote()
+                
+            case .loaded(_):
+                return
+                
+            case .error(_):
+                await quoteVM.getQuote()
+            }
+        }
+       
         .padding()
+        
+        .padding(.top, 30)
     }
+    
+    
 }
 
 
 struct QuoteView_Previews: PreviewProvider {
     static var previews: some View {
-        QuoteView()
+        QuoteView(quoteVM: QuoteViewModel())
     }
 }

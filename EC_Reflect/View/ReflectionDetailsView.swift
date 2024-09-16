@@ -8,34 +8,75 @@
 import SwiftUI
 
 struct ReflectionDetailsView: View {
-    @ObservedObject var reflectionVM: ReflectionViewModel
+    @ObservedObject var addEditVM: AddEditViewModel
+    @Environment(\.colorScheme) var colorScheme
+    var reflection: ReflectionNote
     
-    @State var reflection: Reflection
-
+    @State var isEdit = false
+    
     @Environment (\.dismiss) private var dismiss
     
     var body: some View {
         
         NavigationStack{
+            ZStack {
+                Color ("bg-color").edgesIgnoringSafeArea(.all)
             VStack {
-                Text(reflection.notes)
-                        .font(.system(size: 25))
-                        .multilineTextAlignment(.leading)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 19)
-                            .foregroundColor(.white)
-                            .shadow(radius: 5))
+                
+                HStack (alignment: .center){
+                    Text(dateToString(date: reflection.date!))
+                        .font(.custom("Nunito-Bold", size: 34))
+                        .padding(.top, 10)
+                    (emojiFromFeeling(feeling: Feeling(rawValue: reflection.feeling!)!))
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .padding(.leading, 20)
+                    
+                    Spacer()
+                }
+                ScrollView() {
+                    HStack {
+                        Text(reflection.notes!)
+                            .font(.custom("Nunito-Regular", size: 20))
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 10)
+                        Spacer()
+                    }
+                }
                 Spacer()
+                
             }
             .padding()
-            .navigationTitle(String(emojiFromFeeling(feeling: reflection.feeling))+" "+dateToString(date: reflection.date))
         }
 
+        
+            .sheet(isPresented: $isEdit){
+                WriteReflectionView(addEditVM: addEditVM, addReflection: $isEdit)
+            }
+            .toolbar{
+                ToolbarItem(placement: .destructiveAction) {
+                    Button(action: {
+                        addEditVM.notes = reflection.notes ?? ""
+                        addEditVM.feeling = Feeling(rawValue: reflection.feeling!)!
+                        addEditVM.reflection = reflection
+                        isEdit.toggle()
+                    }, label: {
+                        Text("Edit")
+                    })
+                }
+            }
+
+        }
+        .accentColor(.white)
+        .font(.custom("Nunito-Regular", size: 16))
+        .foregroundColor(colorScheme == .light ? .black : .white)
+    
+        
     }
 }
 
-struct ReflectionDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReflectionDetailsView(reflectionVM: ReflectionViewModel(), reflection: reflection1)
-    }
-}
+//struct ReflectionDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReflectionDetailsView(reflection: ReflectionNote())
+//    }
+//}

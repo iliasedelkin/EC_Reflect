@@ -8,63 +8,78 @@
 import SwiftUI
 
 struct StartscreenCardView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var reflectionVM: ReflectionViewModel
-    @State private var showingWriteReflectionView: Bool = false
+    @ObservedObject var profileVM: ProfileViewModel
+    @State private var addRefllection: Bool = false
+    
     var body: some View {
-        ZStack{
-            Image("bg")
-                .resizable()
-                .scaledToFill()
+        ZStack {
+          RoundedRectangle(cornerRadius: 15)
+                .stroke(colorScheme == .light ? .black : .white)
+                
+                .frame(width: 360, height: 300)
             
-                .frame(width: 360, height: 270)
-                .clipped()
-                .cornerRadius(15)
-            
-            VStack{
+       
+            VStack (spacing: 5){
+                Image("bg")
+                    .resizable()
+                    .frame(width: 360, height: 135)
+                    .offset(y: -2)
+          
                 Text("How was your day?")
                 
-                    .font(.system(size: 25))
+                    .font(.custom("Nunito-Bold", size: 26))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 30)
-                
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                    .padding(.top, 3)
+                DaysCounterView(reflectionVM: reflectionVM, profileVM: profileVM)
+                   
                 Button{
-                    showingWriteReflectionView.toggle()
+                    addRefllection.toggle()
                     print("toggle")
                 }label: {
                     ZStack{
+                        RoundedRectangle (cornerRadius: 50)
+//                            .stroke(colorScheme == .light ? .black : .white)
+                               .frame(width: 300, height: 60)
+                               .foregroundColor(colorScheme == .light ? .accentColor : .white)
                         HStack (alignment: .center){
                             Text("Daily reflection")
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
+                                .font(.custom("Nunito-Bold", size: 20))
+                                .foregroundColor(colorScheme == .light ? .white : .black)
                             Image(systemName: "arrow.right")
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .light ? .white : .black)
+                                .fontWeight(.bold)
                             
                         }
-                        .padding(.init(top: 20, leading: 30, bottom: 20, trailing: 30))
-                        .background(Color.white)
-                        .cornerRadius(15)
+                   
+                       
+                        
+                     
                     }
                 }
-                .sheet(isPresented: $showingWriteReflectionView, content: { WriteReflectionView(reflectionVM: reflectionVM)
+                .fullScreenCover(isPresented: $addRefllection, content: { WriteReflectionView(addEditVM: AddEditViewModel(), addReflection: $addRefllection)
                 }
                 )
-                Text("It's day 4 of reflection. Great job!")
-                    .font(.system(size: 20))
-                    .fontWeight(.regular)
-                
-                    .frame(width: 350, height: 50)
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
+                .padding(.top, 10)
+
+                .padding(.bottom, 13)
+
+               
+    
+            
+
             }
-            .padding(.top, 10)
+       
         }
     }
 }
 
+
 struct StartscreenCardView_Previews: PreviewProvider {
     static var previews: some View {
-        StartscreenCardView(reflectionVM: ReflectionViewModel())
+        StartscreenCardView(reflectionVM: ReflectionViewModel(), profileVM: ProfileViewModel())
     }
 }
 
